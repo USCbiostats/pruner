@@ -1,6 +1,9 @@
 #include <Rcpp.h>
 using namespace Rcpp;
 
+#ifndef H_PRUNER_BONES
+#define H_PRUNER_BONES
+
 #define DEBUG_TREE true
 
 #ifdef DEBUG_TREE
@@ -29,7 +32,7 @@ void print_vector(const std::vector< T > & V) {
 // - Model parameters can should be modifiable by a function
 // - Additional data such as matrices and what not
 // We start by declaring it, the user later on defines it
-struct FunArgs {int nnodes;};
+class FunArgs;
 
 typedef unsigned int uint;
 typedef std::vector< uint > v_uint;
@@ -40,6 +43,7 @@ class Tree {
   
 private:
   bool is_dag_(int i = -1, int caller = -1, bool up_search = false);
+  void postorder_(uint i);
   
 protected:
   vv_uint parents;
@@ -50,7 +54,13 @@ protected:
   v_uint visit_counts;
   uint current_node = 0u;
   
-  friend struct FunArgs;
+  // Constant
+  uint N_NODES;
+  uint N_EDGES;
+  v_uint POSTORDER;
+  
+  friend class FunArgs;
+  
   
 public:
   // This is public as users can modify it at will
@@ -66,12 +76,17 @@ public:
   Tree(const v_uint & parents_, const v_uint & offspring_, uint & out);
   
   // Getter --------------------------------------------------------------------
+  
+  // As pointers
   const v_uint * get_parents_of(uint i);
   const v_uint * get_offspring_of(uint i);
-  vv_uint get_parents() {return this->parents;};
-  vv_uint get_offspring() {return this->offspring;};
   
-  uint n_nodes() {return parents.size();};
+  // As data
+  vv_uint get_parents()   const {return this->parents;};
+  vv_uint get_offspring() const {return this->offspring;};
+  v_uint get_postorder()  const {return this->POSTORDER;};
+  uint n_nodes()          const {return this->N_NODES;};
+  uint n_edges()          const {return this->N_EDGES;};
   
   // Checker functions ---------------------------------------------------------
   bool is_dag();
@@ -97,7 +112,54 @@ public:
     return ;
   };
   
+  // Postorder -----------------------------------------------------------------
+  void postorder();
+  
 };
+
+inline void Tree::postorder() {
+  
+  if (this->POSTORDER.size() == 0u)
+    this->POSTORDER.reserve(this->N_NODES);
+  
+  this->postorder_(0u);
+  this->reset_visited();
+  
+  return;
+  
+}
+
+inline void Tree::postorder_(uint i) {
+  
+  // Setting as visited
+  this->visited[i] = true;
+  
+  // Checking the offspring first
+  for (int j = 0; j < this->offspring[i].size(); ++j) {
+    
+    if (this-visited[this->offspring[i][j]])
+      continue;
+    
+    postorder_(this->offspring[i][j]);
+    
+  }
+  
+  // Checking the parents then. Since we are moving up, we now can add this
+  // node to the pruning list
+  this->POSTORDER.push_back(i);
+  for (int j = 0; j < this->parents[i].size(); ++j) {
+    
+    if (this-visited[this->parents[i][j]])
+      continue;
+    
+    postorder_(this->parents[i][j]);
+    
+  }
+  
+  return;
+  
+  
+}
 
 // Return codes:
 // 0: OK
@@ -133,11 +195,16 @@ inline Tree::Tree(const v_uint & parents_, const v_uint & offspring_, uint & out
   this->visit_counts.resize(maxid + 1u, 0u);
   
   // Adding the data
-  for (uint i = 0; i < maxid; ++i) {
+  for (uint i = 0; i < m; ++i) {
     this->offspring[parents_[i]].push_back(offspring_[i]);
     this->parents[offspring_[i]].push_back(parents_[i]);
   }
   
+  // Constant
+  this->N_NODES = maxid + 1u;
+  this->N_EDGES = m;
+  
+  this->postorder();
   
   out = 0u;
   return;
@@ -148,70 +215,73 @@ inline Tree::Tree(const v_uint & parents_, const v_uint & offspring_, uint & out
 typedef v_uint::const_iterator v_uint_iter;
 inline bool Tree::is_dag() {
   
-  // Creating copies to delete stuff
-  v_uint noff(this->offspring.size());
-  int n = noff.size();
-  for (int i = 0; i < n; ++i)
-    noff[i] = offspring[i].size();
+//   // Creating copies to delete stuff
+//   v_uint noff(this->offspring.size());
+//   int n = noff.size();
+//   for (int i = 0; i < n; ++i)
+//     noff[i] = offspring[i].size();
+//   
+//   v_uint  nodes(n);
+//   for (int i = 0; i < n; ++i)
+//     nodes[i] = i;
+// #ifdef DEBUG_TREE
+//   for (int i = 0; i < n; ++i) {
+//     printf("Offspring of [%i]\n", i);
+//     print_vector(this->offspring[i]);
+//   }
+// #endif
+//   
+//   int cur0 = 0;
+//   bool change;
+//   while (cur0 < n) {
+//     
+//     // Removing nodes with no offspring
+//     int i = cur0;
+//     change = false;
+//     for (; i < n; ++i) {
+//       
+// #ifdef DEBUG_TREE
+//       printf("---- Current set (i: noffs[nodes[i]]): (%i, %i): -----\n",
+//              nodes[i], (int) noff[nodes[i]]);
+//       print_vector(noff);
+// #endif
+//       
+//       // Moving i to the tail and shrinking the pool (index only)
+//       if (noff[nodes[i]] == 0u) {
+//         
+//         // Removing from list of previous individuals
+//         for (int j = 0; j < (int) this->parents[nodes[i]].size(); ++j)
+//           --noff[this->parents[nodes[i]][j]];
+//         
+//         nodes[i] = nodes[cur0]; // Bumping the last good one to the current state
+//         // Next time we start from the next
+//         cur0++;
+//         change = true;
+//         break;
+//       }
+//       
+//     }
+//     
+//     if (!change)
+//       break;
+//     
+//   }
+//   
+// #ifdef DEBUG_TREE
+//   printf("n: %i\n", cur0);
+//   print_vector(nodes);
+// #endif
+//   
+//   
+//   if (cur0 == n)
+//     return true;
+//   else
+//     return false;
   
-  v_uint  nodes(n);
-  for (int i = 0; i < n; ++i)
-    nodes[i] = i;
-#ifdef DEBUG_TREE
-  for (int i = 0; i < n; ++i) {
-    printf("Offspring of [%i]\n", i);
-    print_vector(this->offspring[i]);
-  }
-#endif
+  bool ans = this->is_dag_();
+  this->reset_visited();
   
-  int cur0 = 0;
-  bool change;
-  while (cur0 < n) {
-    
-    // Removing nodes with no offspring
-    int i = cur0;
-    change = false;
-    for (; i < n; ++i) {
-      
-#ifdef DEBUG_TREE
-      printf("---- Current set (i: noffs[nodes[i]]): (%i, %i): -----\n",
-             nodes[i], (int) noff[nodes[i]]);
-      print_vector(noff);
-#endif
-      
-      // Moving i to the tail and shrinking the pool (index only)
-      if (noff[nodes[i]] == 0u) {
-        
-        // Removing from list of previous individuals
-        for (int j = 0; j < (int) this->parents[nodes[i]].size(); ++j)
-          --noff[this->parents[nodes[i]][j]];
-        
-        nodes[i] = nodes[cur0]; // Bumping the last good one to the current state
-        // Next time we start from the next
-        cur0++;
-        change = true;
-        break;
-      }
-      
-    }
-    
-    if (!change)
-      break;
-    
-  }
-  
-#ifdef DEBUG_TREE
-  printf("n: %i\n", cur0);
-  print_vector(nodes);
-#endif
-  
-  
-  if (cur0 == n)
-    return true;
-  else
-    return false;
-  
-  
+  return ans;
 }
 
 
@@ -275,3 +345,5 @@ inline bool Tree::is_dag_(int i, int caller, bool up_search) {
   return true;
   
 }
+
+#endif
