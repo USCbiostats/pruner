@@ -4,12 +4,21 @@
 
 // Need to declare this class
 class FunArgs {
-public:
   int nnodes;
+public:
+  
+  ~FunArgs() {};
+  FunArgs(int n): nnodes(n) {};
+  
+  int get_nnodes() {return this->nnodes;};
+  void set_nnodes(int n) {
+    this->nnodes = n;
+    return;
   };
+};
 
 void myfunction(Tree * data) {
-  printf("We have %d nodes.\n", data->args->nnodes);
+  printf("We have %d nodes.\n", data->args->get_nnodes());
 }
 
 // [[Rcpp::export]]
@@ -20,11 +29,12 @@ List fancytree(const v_uint & parents, const v_uint & offspring) {
   Tree mytree(parents, offspring, ans);
   
   // Adding function arguments
-  mytree.args->nnodes = 0;
+  mytree.args = new FunArgs(1);
   mytree.fun = myfunction;
   
   // Calling functions
   mytree.fun(&mytree); // Explicit call
+  mytree.args->set_nnodes(5);
   mytree.eval_fun();   // Implicit call
   
   // Example printing

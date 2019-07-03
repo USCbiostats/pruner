@@ -4,7 +4,7 @@ using namespace Rcpp;
 #ifndef H_PRUNER_BONES
 #define H_PRUNER_BONES
 
-#define DEBUG_TREE true
+// #define DEBUG_TREE 
 
 #ifdef DEBUG_TREE
 template <class T>
@@ -61,10 +61,9 @@ protected:
   
   friend class FunArgs;
   
-  
 public:
   // This is public as users can modify it at will
-  FunArgs args;
+  FunArgs *args;
   std::function<void(Tree*)> fun;
   void eval_fun() {
     fun(this);
@@ -87,6 +86,9 @@ public:
   v_uint get_postorder()  const {return this->POSTORDER;};
   uint n_nodes()          const {return this->N_NODES;};
   uint n_edges()          const {return this->N_EDGES;};
+  vv_uint get_edgelist()  const;
+  
+  void print(bool details = true) const;
   
   // Checker functions ---------------------------------------------------------
   bool is_dag();
@@ -117,233 +119,5 @@ public:
   
 };
 
-inline void Tree::postorder() {
-  
-  if (this->POSTORDER.size() == 0u)
-    this->POSTORDER.reserve(this->N_NODES);
-  
-  this->postorder_(0u);
-  this->reset_visited();
-  
-  return;
-  
-}
-
-inline void Tree::postorder_(uint i) {
-  
-  // Setting as visited
-  this->visited[i] = true;
-  
-  // Checking the offspring first
-  for (int j = 0; j < this->offspring[i].size(); ++j) {
-    
-    if (this-visited[this->offspring[i][j]])
-      continue;
-    
-    postorder_(this->offspring[i][j]);
-    
-  }
-  
-  // Checking the parents then. Since we are moving up, we now can add this
-  // node to the pruning list
-  this->POSTORDER.push_back(i);
-  for (int j = 0; j < this->parents[i].size(); ++j) {
-    
-    if (this-visited[this->parents[i][j]])
-      continue;
-    
-    postorder_(this->parents[i][j]);
-    
-  }
-  
-  return;
-  
-  
-}
-
-// Return codes:
-// 0: OK
-// 1: Sizes of parent and offspring differ
-// 2: MAX_TREE_SIZE reached.
-inline Tree::Tree(const v_uint & parents_, const v_uint & offspring_, uint & out) {
-  
-  // If different sizes, then it shouldn't work
-  if (parents_.size() != offspring_.size()) {
-    out = 1u;
-    return;
-  }
-  
-  // Checking ranges
-  int maxid = 0, m = (int) parents_.size();
-  for (int i = 0; i < m; ++i) {
-    if ((parents_[i] > MAX_TREE_SIZE) || (offspring_[i] > MAX_TREE_SIZE)) {
-      out = 2u;
-      return;
-    }
-    
-    if (maxid < parents_[i])
-      maxid = parents_[i];
-    if (maxid < offspring_[i])
-      maxid = offspring_[i];
-  }
-  
-  // Resizing the vectors
-  this->parents.resize(maxid + 1u);
-  this->offspring.resize(maxid + 1u);
-  
-  this->visited.resize(maxid + 1u, false);
-  this->visit_counts.resize(maxid + 1u, 0u);
-  
-  // Adding the data
-  for (uint i = 0; i < m; ++i) {
-    this->offspring[parents_[i]].push_back(offspring_[i]);
-    this->parents[offspring_[i]].push_back(parents_[i]);
-  }
-  
-  // Constant
-  this->N_NODES = maxid + 1u;
-  this->N_EDGES = m;
-  
-  this->postorder();
-  
-  out = 0u;
-  return;
-  
-}
-
-// A recursive function to check whether the tree is a DAG or not. -------------
-typedef v_uint::const_iterator v_uint_iter;
-inline bool Tree::is_dag() {
-  
-//   // Creating copies to delete stuff
-//   v_uint noff(this->offspring.size());
-//   int n = noff.size();
-//   for (int i = 0; i < n; ++i)
-//     noff[i] = offspring[i].size();
-//   
-//   v_uint  nodes(n);
-//   for (int i = 0; i < n; ++i)
-//     nodes[i] = i;
-// #ifdef DEBUG_TREE
-//   for (int i = 0; i < n; ++i) {
-//     printf("Offspring of [%i]\n", i);
-//     print_vector(this->offspring[i]);
-//   }
-// #endif
-//   
-//   int cur0 = 0;
-//   bool change;
-//   while (cur0 < n) {
-//     
-//     // Removing nodes with no offspring
-//     int i = cur0;
-//     change = false;
-//     for (; i < n; ++i) {
-//       
-// #ifdef DEBUG_TREE
-//       printf("---- Current set (i: noffs[nodes[i]]): (%i, %i): -----\n",
-//              nodes[i], (int) noff[nodes[i]]);
-//       print_vector(noff);
-// #endif
-//       
-//       // Moving i to the tail and shrinking the pool (index only)
-//       if (noff[nodes[i]] == 0u) {
-//         
-//         // Removing from list of previous individuals
-//         for (int j = 0; j < (int) this->parents[nodes[i]].size(); ++j)
-//           --noff[this->parents[nodes[i]][j]];
-//         
-//         nodes[i] = nodes[cur0]; // Bumping the last good one to the current state
-//         // Next time we start from the next
-//         cur0++;
-//         change = true;
-//         break;
-//       }
-//       
-//     }
-//     
-//     if (!change)
-//       break;
-//     
-//   }
-//   
-// #ifdef DEBUG_TREE
-//   printf("n: %i\n", cur0);
-//   print_vector(nodes);
-// #endif
-//   
-//   
-//   if (cur0 == n)
-//     return true;
-//   else
-//     return false;
-  
-  bool ans = this->is_dag_();
-  this->reset_visited();
-  
-  return ans;
-}
-
-
-inline bool Tree::is_dag_(int i, int caller, bool up_search) {
-  
-  // For the first iteration
-  if (i < 0) 
-    i = this->current_node, caller = -1;
-  
-  // Yes, this is not a dag (came here multiple times)
-  if (this->visited[i])
-    return false;
-  this->visited[i] = true;
-  
-  // Iterating through parents
-  for (v_uint_iter n = this->parents[i].begin(); n != this->parents[i].end(); ++n) {
-    
-#ifdef DEBUG_TREE
-    std::printf(
-      "Tree::is_dag() @ parents   (i, caller, *n, up_search): (%i, %i, %i, %i)\n",
-      i, caller, *n, up_search
-    );
-#endif
-    
-    // Checking 1:1 cycles
-    if ((int) *n == caller) {
-#ifdef DEBUG_TREE
-      std::printf("\tChecking 1:1 cycles.\n");
-#endif
-      if (up_search) return false;
-      else continue; 
-    }
-    
-    if (!(this->is_dag_((int) *n, i, true)))
-      return false;
-  }
-  
-  // Iterating through offspring
-  for (v_uint_iter n = this->offspring[i].begin(); n != this->offspring[i].end(); ++n) {
-    
-#ifdef DEBUG_TREE
-    std::printf(
-      "Tree::is_dag() @ offspring (i, caller, *n, up_search): (%i, %i, %i, %i)\n",
-      i, caller, *n, up_search
-    );
-#endif
-    
-    // Checking 1:1 cycles
-    if ((int) *n == caller) {
-#ifdef DEBUG_TREE
-      std::printf("\tChecking 1:1 cycles.\n");
-#endif
-      if (!up_search) return false;
-      else continue; 
-    }
-    
-    if (!(this->is_dag_((int) *n, i, false)))
-      return false;
-  }
-  
-  return true;
-  
-}
 
 #endif
