@@ -1,7 +1,10 @@
-#include "pruner_bones.h"
+#include "tree_bones.h"
+#include "treeiterator_bones.h"
+#include "treeiterator_meat.h"
+#include <memory> // For the std::shared_ptr
 
-#ifndef H_PRUNER_MEAT
-#define H_PRUNER_MEAT
+#ifndef H_PRUNER_TREE_MEAT
+#define H_PRUNER_TREE_MEAT
 
 
 // Pruning ---------------------------------------------------------------------
@@ -174,6 +177,9 @@ inline Tree::Tree(const v_uint & parents_, const v_uint & offspring_, uint & out
   // Generating the postorder sequence
   this->postorder();
   
+  // Initializing iterator 
+  this->I = TreeIterator(this);
+  
   out = 0u;
   return;
   
@@ -195,7 +201,7 @@ inline bool Tree::is_dag_(int i, int caller, bool up_search) {
   
   // For the first iteration
   if (i < 0) 
-    i = this->current_node, caller = -1;
+    i = 0u, caller = -1;
   
   // Yes, this is not a dag (came here multiple times)
   if (this->visited[i])
@@ -249,6 +255,15 @@ inline bool Tree::is_dag_(int i, int caller, bool up_search) {
   }
   
   return true;
+  
+}
+
+// The preorder is just the post order reversed
+inline v_uint Tree::get_preorder() const {
+  
+  v_uint res = this->get_postorder();
+  std::reverse(res.begin(), res.end());
+  return res;
   
 }
 

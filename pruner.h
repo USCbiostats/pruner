@@ -1,5 +1,5 @@
 #ifndef H_PRUNER
-#define H_PRUNER 1
-#include "pruner_bones.h"
-#include "pruner_meat.h"
+#define H_PRUNER
+#include "tree_bones.h"
+#include "tree_meat.h"
 #endif

@@ -1,23 +1,12 @@
 #include <Rcpp.h>
+#include <memory>
+#include "typedefs.h"
+#include "treeiterator_bones.h"
+
 using namespace Rcpp;
 
-#ifndef H_PRUNER_BONES
-#define H_PRUNER_BONES
-
-// #define DEBUG_TREE 
-
-#ifdef DEBUG_TREE
-template <class T>
-void print_vector(const std::vector< T > & V) {
-  
-  for (int i = 0; i < V.size(); ++i)
-    std::cout << "[" << (V.at(i)) << "]\n";
-  
-  return;
-  
-}
-
-#endif
+#ifndef H_PRUNER_TREE_BONES
+#define H_PRUNER_TREE_BONES
 
 // [[Rcpp::plugins(cpp11)]]
 
@@ -33,17 +22,16 @@ void print_vector(const std::vector< T > & V) {
 // - Additional data such as matrices and what not
 // We start by declaring it, the user later on defines it
 class FunArgs;
-
-typedef unsigned int uint;
-typedef std::vector< uint > v_uint;
-typedef std::vector< v_uint > vv_uint;
-typedef std::vector< bool > v_bool;
+class Tree;
+class TreeIterator;
 
 class Tree {
   
 private:
   bool is_dag_(int i = -1, int caller = -1, bool up_search = false);
   void postorder_(uint i);
+  void postorder();
+  TreeIterator I;
   
 protected:
   vv_uint parents;
@@ -60,15 +48,19 @@ protected:
   v_uint POSTORDER;
   
   friend class FunArgs;
+  friend class TreeIterator;
   
 public:
   // This is public as users can modify it at will
-  FunArgs *args;
-  std::function<void(Tree*)> fun;
+  std::shared_ptr< FunArgs > args;
+  std::function<void(
+    std::shared_ptr< FunArgs >,
+    Tree*,
+    TreeIterator*)> fun;
   void eval_fun() {
-    fun(this);
+    fun(this->args, this, &this->I);
   };
-  
+   
   // Creation ------------------------------------------------------------------
   ~Tree() {};
   Tree() {};
@@ -84,6 +76,7 @@ public:
   vv_uint get_parents()   const {return this->parents;};
   vv_uint get_offspring() const {return this->offspring;};
   v_uint get_postorder()  const {return this->POSTORDER;};
+  v_uint get_preorder()   const;
   uint n_nodes()          const {return this->N_NODES;};
   uint n_edges()          const {return this->N_EDGES;};
   vv_uint get_edgelist()  const;
@@ -114,8 +107,25 @@ public:
     return ;
   };
   
-  // Postorder -----------------------------------------------------------------
-  void postorder();
+  // Pre-Post/order ------------------------------------------------------------
+  void prune_postorder();
+  void prune_preorder();
+  
+  // uint 
+  
+  /*** The implementation should be as follows:
+   * 1. Initialize the algorithm (this can be done once the object is created).
+   *    For this to work we need to check that the variable POSTORDER has been
+   *    created.
+   * 2. Have function next_node(), which essentially moves the head according
+   *    to wether we are going with a POSTORDER or PREORDER.
+   * 3. Once the pointer has been moved, the user should have the following functions
+   *    a. list_offspring
+   *    b. list_parent
+   *    c. 
+   */
+  
+    
   
 };
 
