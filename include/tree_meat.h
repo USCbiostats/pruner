@@ -1,11 +1,10 @@
-#include "tree_bones.h"
-#include "treeiterator_bones.h"
-#include "treeiterator_meat.h"
-#include <memory> // For the std::shared_ptr
+// #include "tree_bones.h"
+// #include "treeiterator_bones.h"
+// #include "treeiterator_meat.h"
+// #include <memory> // For the std::shared_ptr
 
 #ifndef H_PRUNER_TREE_MEAT
 #define H_PRUNER_TREE_MEAT
-
 
 // Pruning ---------------------------------------------------------------------
 

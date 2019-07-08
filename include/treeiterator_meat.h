@@ -1,5 +1,5 @@
-#include "treeiterator_bones.h"
-#include "tree_bones.h"
+// #include "treeiterator_bones.h"
+// #include "tree_bones.h"
 
 inline TreeIterator::TreeIterator(Tree * tree) {
   

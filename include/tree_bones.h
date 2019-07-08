@@ -1,9 +1,9 @@
-#include <Rcpp.h>
-#include <memory>
-#include "typedefs.h"
-#include "treeiterator_bones.h"
-
-using namespace Rcpp;
+// // #include <Rcpp.h>
+// // #include <memory>
+// // #include "typedefs.h"
+// // #include "treeiterator_bones.h"
+// 
+// using namespace Rcpp;
 
 #ifndef H_PRUNER_TREE_BONES
 #define H_PRUNER_TREE_BONES

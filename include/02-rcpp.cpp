@@ -1,9 +1,12 @@
+#include <Rcpp.h>
 #include "pruner.h"  
+
+using namespace Rcpp; 
 
 // Users work from here on -----------------------------------------------------
 
 // Need to declare this class
-class FunArgs {
+class pruner::FunArgs {
   int nnodes;
 public:
   
@@ -18,20 +21,20 @@ public:
 };
 
 void myfunction(
-    std::shared_ptr<FunArgs> a,
-    Tree * t,
-    TreeIterator * iter) {
+    std::shared_ptr<pruner::FunArgs> a,
+    pruner::Tree * t,
+    pruner::TreeIterator * iter) {
   
   // Moving a single step up
   printf("Currently sitting on the node %i.\nCurrent parents are: ", iter->id());
-  for (v_uint::const_iterator i = iter->begin_par(); i != iter->end_par(); ++i) {
+  for (pruner::v_uint::const_iterator i = iter->begin_par(); i != iter->end_par(); ++i) {
     printf(" %i", *i);
   }
   printf("\n");
   
   iter->up();
   printf("Currently sitting on the node %i.\nCurrent parents are: ", iter->id());
-  for (v_uint::const_iterator i = iter->begin_par(); i != iter->end_par(); ++i) {
+  for (pruner::v_uint::const_iterator i = iter->begin_par(); i != iter->end_par(); ++i) {
     printf(" %i", *i);
   }
   printf("\n");
@@ -39,14 +42,14 @@ void myfunction(
 }
 
 // [[Rcpp::export]]
-List fancytree(const v_uint & parents, const v_uint & offspring) {
+List fancytree(const pruner::v_uint & parents, const pruner::v_uint & offspring) {
   
   // Creating the object
   uint ans;
-  Tree mytree(parents, offspring, ans);
+  pruner::Tree mytree(parents, offspring, ans);
   
   // Adding function arguments
-  mytree.args = std::make_shared< FunArgs >(1);
+  mytree.args = std::make_shared< pruner::FunArgs >(1);
   mytree.fun = myfunction;
   
   // Calling functions
