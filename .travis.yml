@@ -1,4 +1,9 @@
+dist: xenial
+
 language: cpp
+
 compiler: g++
-script: cd tests/ && make &
+
+script: cd tests/ && make 
+
 
