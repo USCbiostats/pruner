@@ -1,20 +1,13 @@
-// // #include <Rcpp.h>
-// // #include <memory>
-// // #include "typedefs.h"
-// // #include "treeiterator_bones.h"
-// 
-// using namespace Rcpp;
+// #include <memory>
+// #include "typedefs.h"
+// #include "treeiterator_bones.h"
 
 #ifndef H_PRUNER_TREE_BONES
 #define H_PRUNER_TREE_BONES
 
-// [[Rcpp::plugins(cpp11)]]
-
 #ifndef MAX_TREE_SIZE
 #define MAX_TREE_SIZE 20000
 #endif
-
-
 
 // Arbtrary set of arguments, this is the class that the creator function should
 // inherit. Ideally it should have:
@@ -53,10 +46,7 @@ protected:
 public:
   // This is public as users can modify it at will
   std::shared_ptr< FunArgs > args;
-  std::function<void(
-    std::shared_ptr< FunArgs >,
-    Tree*,
-    TreeIterator*)> fun;
+  std::function<void(std::shared_ptr< FunArgs >, Tree*, TreeIterator*)> fun;
   void eval_fun() {
     fun(this->args, this, &this->I);
   };
@@ -99,6 +89,8 @@ public:
       i = current_node;
     return !this->is_root(i) && offspring[i].size() == 0u;
   }
+  
+  bool is_connected() const {return this->POSTORDER.size() == this->N_NODES;};
   
   // Setters -------------------------------------------------------------------
   void reset_visited() {

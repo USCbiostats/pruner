@@ -1,4 +1,4 @@
-#include "typedefs.h"
+// #include "typedefs.h"
 
 #ifndef H_PRUNER_TREEITERATOR_BONES
 #define H_PRUNER_TREEITERATOR_BONES
@@ -25,6 +25,12 @@ public:
   
   int up();
   int down();
+  
+  int operator++();
+  int operator--();
+  
+  void top();
+  void bottom();
   
   uint id() const {return current_node;};
   

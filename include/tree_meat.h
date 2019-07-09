@@ -1,3 +1,5 @@
+// #include <vector>
+// #include "typedefs.h"
 // #include "tree_bones.h"
 // #include "treeiterator_bones.h"
 // #include "treeiterator_meat.h"
@@ -17,6 +19,7 @@ inline void Tree::postorder() {
   
   // We can start the algorithm from any place
   postorder_(0u);
+  POSTORDER.shrink_to_fit();
   
   this->reset_visited();
   
@@ -133,6 +136,8 @@ inline void Tree::print(bool details) const {
 // 0: OK
 // 1: Sizes of parent and offspring differ
 // 2: MAX_TREE_SIZE reached.
+// 3: Disconnected tree
+// 4: Not a Dag.
 inline Tree::Tree(const v_uint & parents_, const v_uint & offspring_, uint & out) {
   
   // If different sizes, then it shouldn't work
@@ -178,6 +183,12 @@ inline Tree::Tree(const v_uint & parents_, const v_uint & offspring_, uint & out
   
   // Initializing iterator 
   this->I = TreeIterator(this);
+  
+  // Some checks
+  if (!this->is_connected())
+    out = 3u;
+  if (!this->is_dag())
+    out = 4u;
   
   out = 0u;
   return;
@@ -263,6 +274,38 @@ inline v_uint Tree::get_preorder() const {
   v_uint res = this->get_postorder();
   std::reverse(res.begin(), res.end());
   return res;
+  
+}
+
+inline void Tree::prune_postorder() {
+  
+  // Set the head in the first node of the sequence
+  this->I.bottom();
+  int status = 0;
+  while (status == 0) {
+    
+    this->eval_fun();
+    status = this->I.up();
+    
+  }
+  
+  return;
+  
+}
+
+inline void Tree::prune_preorder() {
+  
+  // Set the head in the first node of the sequence
+  this->I.top();
+  int status = 0;
+  while (status == 0) {
+    
+    this->eval_fun();
+    status = this->I.down();
+    
+  }
+  
+  return;
   
 }
 

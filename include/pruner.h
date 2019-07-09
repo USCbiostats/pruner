@@ -7,7 +7,6 @@
 
 namespace pruner {
 
-
 #include "typedefs.h"
 #include "treeiterator_bones.h"
 #include "tree_bones.h"
