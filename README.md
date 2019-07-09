@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/USCbiostats/pruner.svg?branch=master)](https://travis-ci.org/USCbiostats/pruner)
+
 # pruner: Implementing the Felsenstein's Tree Pruning algorithm
 
 This C++ template library provides classes to implement Felsenstein tree-pruning

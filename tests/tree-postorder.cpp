@@ -58,7 +58,7 @@ TEST_CASE("Post order sequences respects all", "[postorder]") {
   po = tree4.get_postorder();
   print(po);    
 
-  REQUIRE(tree1.get_postorder().size() == 5u);
+  REQUIRE(tree1.get_postorder().size() == 4u);
  
   // return 0;
   
