@@ -1,0 +1,113 @@
+\hypertarget{classTree}{}\section{Tree Class Reference}
+\label{classTree}\index{Tree@{Tree}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries eval\+\_\+fun} ()\hypertarget{classTree_a5a24565d179a3bd6edae1ff323060a93}{}\label{classTree_a5a24565d179a3bd6edae1ff323060a93}
+
+\item 
+{\bfseries Tree} (const v\+\_\+uint \&parents\+\_\+, const v\+\_\+uint \&offspring\+\_\+, uint \&out)\hypertarget{classTree_a0f964d9ba9834822d3e18946a5361839}{}\label{classTree_a0f964d9ba9834822d3e18946a5361839}
+
+\item 
+const v\+\_\+uint $\ast$ {\bfseries get\+\_\+parents\+\_\+of} (uint i)\hypertarget{classTree_adb9bede67bc875b58bb240d4c5421821}{}\label{classTree_adb9bede67bc875b58bb240d4c5421821}
+
+\item 
+const v\+\_\+uint $\ast$ {\bfseries get\+\_\+offspring\+\_\+of} (uint i)\hypertarget{classTree_a02c43c8a0bb0e7be7bf33436a8c05b30}{}\label{classTree_a02c43c8a0bb0e7be7bf33436a8c05b30}
+
+\item 
+vv\+\_\+uint {\bfseries get\+\_\+parents} () const \hypertarget{classTree_ae4f36e6d306946015965a7d9bc577a2a}{}\label{classTree_ae4f36e6d306946015965a7d9bc577a2a}
+
+\item 
+vv\+\_\+uint {\bfseries get\+\_\+offspring} () const \hypertarget{classTree_af8780369e1bc3a0d4e396bb91ad85a72}{}\label{classTree_af8780369e1bc3a0d4e396bb91ad85a72}
+
+\item 
+v\+\_\+uint {\bfseries get\+\_\+postorder} () const \hypertarget{classTree_a333503b86f195c8e84248a59eefe2fdf}{}\label{classTree_a333503b86f195c8e84248a59eefe2fdf}
+
+\item 
+v\+\_\+uint {\bfseries get\+\_\+preorder} () const \hypertarget{classTree_a22f81a8b7062b224f13dd1f2e7a1f7e0}{}\label{classTree_a22f81a8b7062b224f13dd1f2e7a1f7e0}
+
+\item 
+uint {\bfseries n\+\_\+nodes} () const \hypertarget{classTree_a69612e5a3a479c16d12b661e6bac4062}{}\label{classTree_a69612e5a3a479c16d12b661e6bac4062}
+
+\item 
+uint {\bfseries n\+\_\+edges} () const \hypertarget{classTree_a055847ae7ad6387a32113a1fe24ca61b}{}\label{classTree_a055847ae7ad6387a32113a1fe24ca61b}
+
+\item 
+vv\+\_\+uint {\bfseries get\+\_\+edgelist} () const \hypertarget{classTree_a700fd8abdcb805f53999b2fb00fc2710}{}\label{classTree_a700fd8abdcb805f53999b2fb00fc2710}
+
+\item 
+void {\bfseries print} (bool details=true) const \hypertarget{classTree_afe757ac173ac177a0ebefd222a06eed5}{}\label{classTree_afe757ac173ac177a0ebefd222a06eed5}
+
+\item 
+bool {\bfseries is\+\_\+dag} ()\hypertarget{classTree_af793b391043a88ceea805b584efb982a}{}\label{classTree_af793b391043a88ceea805b584efb982a}
+
+\item 
+bool {\bfseries is\+\_\+root} (int i=-\/1)\hypertarget{classTree_ac7cc72373de46f73b747206d025854c0}{}\label{classTree_ac7cc72373de46f73b747206d025854c0}
+
+\item 
+bool {\bfseries is\+\_\+leaf} (int i=-\/1)\hypertarget{classTree_a47c36d92497bd98860e17937def7620c}{}\label{classTree_a47c36d92497bd98860e17937def7620c}
+
+\item 
+bool {\bfseries is\+\_\+connected} () const \hypertarget{classTree_a9f911acd648bbae87eaa018e61289903}{}\label{classTree_a9f911acd648bbae87eaa018e61289903}
+
+\item 
+void {\bfseries reset\+\_\+visited} ()\hypertarget{classTree_adb83bb19c14623ce57ac6d1b84b1c2ff}{}\label{classTree_adb83bb19c14623ce57ac6d1b84b1c2ff}
+
+\item 
+void {\bfseries prune\+\_\+postorder} ()\hypertarget{classTree_a7d465880d18acf79f3a772ea5412b0d7}{}\label{classTree_a7d465880d18acf79f3a772ea5412b0d7}
+
+\item 
+void {\bfseries prune\+\_\+preorder} ()\hypertarget{classTree_ac85bfb083b3856e65987e1d15885a61c}{}\label{classTree_ac85bfb083b3856e65987e1d15885a61c}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ Fun\+Args $>$ {\bfseries args}\hypertarget{classTree_ab9e870a9889c897bb6164eed1047b5eb}{}\label{classTree_ab9e870a9889c897bb6164eed1047b5eb}
+
+\item 
+std\+::function$<$ void(std\+::shared\+\_\+ptr$<$ Fun\+Args $>$, \hyperlink{classTree}{Tree} $\ast$, \hyperlink{classTreeIterator}{Tree\+Iterator} $\ast$)$>$ {\bfseries fun}\hypertarget{classTree_aed3ea5ee55cf81fca64812e34a5050de}{}\label{classTree_aed3ea5ee55cf81fca64812e34a5050de}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+vv\+\_\+uint {\bfseries parents}\hypertarget{classTree_a4d26e079c9d0b250a4bda27de8ad223c}{}\label{classTree_a4d26e079c9d0b250a4bda27de8ad223c}
+
+\item 
+vv\+\_\+uint {\bfseries offspring}\hypertarget{classTree_ade5fd3ba5b6480c4edf8590eb0e41e34}{}\label{classTree_ade5fd3ba5b6480c4edf8590eb0e41e34}
+
+\item 
+v\+\_\+bool {\bfseries visited}\hypertarget{classTree_a45813764070bd88238a3372c16b423fa}{}\label{classTree_a45813764070bd88238a3372c16b423fa}
+
+\item 
+v\+\_\+uint {\bfseries visit\+\_\+counts}\hypertarget{classTree_ac504d0c090c1f76363fc00cff2de0e7f}{}\label{classTree_ac504d0c090c1f76363fc00cff2de0e7f}
+
+\item 
+uint {\bfseries current\+\_\+node} = 0u\hypertarget{classTree_a94b6910514cea207bf4b144eeb7d27cf}{}\label{classTree_a94b6910514cea207bf4b144eeb7d27cf}
+
+\item 
+uint {\bfseries N\+\_\+\+N\+O\+D\+ES}\hypertarget{classTree_a41b7a5ddd47b82688c099ee47561eb4f}{}\label{classTree_a41b7a5ddd47b82688c099ee47561eb4f}
+
+\item 
+uint {\bfseries N\+\_\+\+E\+D\+G\+ES}\hypertarget{classTree_a123cdf871af449443aa8b7c05029d72a}{}\label{classTree_a123cdf871af449443aa8b7c05029d72a}
+
+\item 
+v\+\_\+uint {\bfseries P\+O\+S\+T\+O\+R\+D\+ER}\hypertarget{classTree_a310e76b803db38e7067514822b21a58f}{}\label{classTree_a310e76b803db38e7067514822b21a58f}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class {\bfseries Fun\+Args}\hypertarget{classTree_a667d4fbc407b7cce57e87064b934f905}{}\label{classTree_a667d4fbc407b7cce57e87064b934f905}
+
+\item 
+class {\bfseries Tree\+Iterator}\hypertarget{classTree_a925e5a7f5dc110e63f7062d0e6898af9}{}\label{classTree_a925e5a7f5dc110e63f7062d0e6898af9}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/tree\+\_\+bones.\+h\item 
+include/tree\+\_\+meat.\+h\end{DoxyCompactItemize}

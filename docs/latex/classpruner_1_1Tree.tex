@@ -1,0 +1,112 @@
+\hypertarget{classpruner_1_1Tree}{}\section{pruner\+:\+:Tree Class Reference}
+\label{classpruner_1_1Tree}\index{pruner\+::\+Tree@{pruner\+::\+Tree}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries eval\+\_\+fun} ()\hypertarget{classpruner_1_1Tree_abaa9ef6d7eacf37302d29c12c2180c3a}{}\label{classpruner_1_1Tree_abaa9ef6d7eacf37302d29c12c2180c3a}
+
+\item 
+{\bfseries Tree} (const v\+\_\+uint \&parents\+\_\+, const v\+\_\+uint \&offspring\+\_\+, uint \&out)\hypertarget{classpruner_1_1Tree_a0f964d9ba9834822d3e18946a5361839}{}\label{classpruner_1_1Tree_a0f964d9ba9834822d3e18946a5361839}
+
+\item 
+const v\+\_\+uint $\ast$ {\bfseries get\+\_\+parents\+\_\+of} (uint i)\hypertarget{classpruner_1_1Tree_a63ce508227afee3535e6ebc1bf864ab1}{}\label{classpruner_1_1Tree_a63ce508227afee3535e6ebc1bf864ab1}
+
+\item 
+const v\+\_\+uint $\ast$ {\bfseries get\+\_\+offspring\+\_\+of} (uint i)\hypertarget{classpruner_1_1Tree_aa1cb5b73d8071e8c5b8be1ec29b54519}{}\label{classpruner_1_1Tree_aa1cb5b73d8071e8c5b8be1ec29b54519}
+
+\item 
+vv\+\_\+uint {\bfseries get\+\_\+parents} () const \hypertarget{classpruner_1_1Tree_af6fc180708707649aea726520e0380dd}{}\label{classpruner_1_1Tree_af6fc180708707649aea726520e0380dd}
+
+\item 
+vv\+\_\+uint {\bfseries get\+\_\+offspring} () const \hypertarget{classpruner_1_1Tree_a6e4c504b4cb062572f0e2be0ae9d78f2}{}\label{classpruner_1_1Tree_a6e4c504b4cb062572f0e2be0ae9d78f2}
+
+\item 
+v\+\_\+uint {\bfseries get\+\_\+postorder} () const \hypertarget{classpruner_1_1Tree_a6b3a01f3e0b29522341fe5ba59117471}{}\label{classpruner_1_1Tree_a6b3a01f3e0b29522341fe5ba59117471}
+
+\item 
+v\+\_\+uint {\bfseries get\+\_\+preorder} () const \hypertarget{classpruner_1_1Tree_a22f81a8b7062b224f13dd1f2e7a1f7e0}{}\label{classpruner_1_1Tree_a22f81a8b7062b224f13dd1f2e7a1f7e0}
+
+\item 
+uint {\bfseries n\+\_\+nodes} () const \hypertarget{classpruner_1_1Tree_acad4b3bf35a7ae1b8cc23747fd31cbed}{}\label{classpruner_1_1Tree_acad4b3bf35a7ae1b8cc23747fd31cbed}
+
+\item 
+uint {\bfseries n\+\_\+edges} () const \hypertarget{classpruner_1_1Tree_a88d91ac33a6746c502884855f9edc5c2}{}\label{classpruner_1_1Tree_a88d91ac33a6746c502884855f9edc5c2}
+
+\item 
+vv\+\_\+uint {\bfseries get\+\_\+edgelist} () const \hypertarget{classpruner_1_1Tree_a700fd8abdcb805f53999b2fb00fc2710}{}\label{classpruner_1_1Tree_a700fd8abdcb805f53999b2fb00fc2710}
+
+\item 
+void {\bfseries print} (bool details=true) const \hypertarget{classpruner_1_1Tree_afe757ac173ac177a0ebefd222a06eed5}{}\label{classpruner_1_1Tree_afe757ac173ac177a0ebefd222a06eed5}
+
+\item 
+bool {\bfseries is\+\_\+dag} ()\hypertarget{classpruner_1_1Tree_af793b391043a88ceea805b584efb982a}{}\label{classpruner_1_1Tree_af793b391043a88ceea805b584efb982a}
+
+\item 
+bool {\bfseries is\+\_\+root} (int i=-\/1)\hypertarget{classpruner_1_1Tree_a2bff85520992d00c0eb15f42b96b58d9}{}\label{classpruner_1_1Tree_a2bff85520992d00c0eb15f42b96b58d9}
+
+\item 
+bool {\bfseries is\+\_\+leaf} (int i=-\/1)\hypertarget{classpruner_1_1Tree_aee19d96af3f9a90ae9ea21838ed6c0aa}{}\label{classpruner_1_1Tree_aee19d96af3f9a90ae9ea21838ed6c0aa}
+
+\item 
+bool {\bfseries is\+\_\+connected} () const \hypertarget{classpruner_1_1Tree_ad47fa64c50fa9931f4e98d4dc4b94272}{}\label{classpruner_1_1Tree_ad47fa64c50fa9931f4e98d4dc4b94272}
+
+\item 
+void {\bfseries reset\+\_\+visited} ()\hypertarget{classpruner_1_1Tree_a3ff712c25817e2bb3d1a87baef7b87d0}{}\label{classpruner_1_1Tree_a3ff712c25817e2bb3d1a87baef7b87d0}
+
+\item 
+void {\bfseries prune\+\_\+postorder} ()\hypertarget{classpruner_1_1Tree_a7d465880d18acf79f3a772ea5412b0d7}{}\label{classpruner_1_1Tree_a7d465880d18acf79f3a772ea5412b0d7}
+
+\item 
+void {\bfseries prune\+\_\+preorder} ()\hypertarget{classpruner_1_1Tree_ac85bfb083b3856e65987e1d15885a61c}{}\label{classpruner_1_1Tree_ac85bfb083b3856e65987e1d15885a61c}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ Fun\+Args $>$ {\bfseries args}\hypertarget{classpruner_1_1Tree_ac205a6f18c76016b2c526e62ed986d24}{}\label{classpruner_1_1Tree_ac205a6f18c76016b2c526e62ed986d24}
+
+\item 
+std\+::function$<$ void(std\+::shared\+\_\+ptr$<$ Fun\+Args $>$, \hyperlink{classpruner_1_1Tree}{Tree} $\ast$, \hyperlink{classpruner_1_1TreeIterator}{Tree\+Iterator} $\ast$)$>$ {\bfseries fun}\hypertarget{classpruner_1_1Tree_a6a54846f5e95a7d07369e4075ff651a7}{}\label{classpruner_1_1Tree_a6a54846f5e95a7d07369e4075ff651a7}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+vv\+\_\+uint {\bfseries parents}\hypertarget{classpruner_1_1Tree_a9911227c95222495556b75e0bb93d255}{}\label{classpruner_1_1Tree_a9911227c95222495556b75e0bb93d255}
+
+\item 
+vv\+\_\+uint {\bfseries offspring}\hypertarget{classpruner_1_1Tree_a4681c11147392e23d9a09b247700bc85}{}\label{classpruner_1_1Tree_a4681c11147392e23d9a09b247700bc85}
+
+\item 
+v\+\_\+bool {\bfseries visited}\hypertarget{classpruner_1_1Tree_a2a8b91180af3a3af45364b10647c0fca}{}\label{classpruner_1_1Tree_a2a8b91180af3a3af45364b10647c0fca}
+
+\item 
+v\+\_\+uint {\bfseries visit\+\_\+counts}\hypertarget{classpruner_1_1Tree_a883d95ef62e679309e80e167ed02a96e}{}\label{classpruner_1_1Tree_a883d95ef62e679309e80e167ed02a96e}
+
+\item 
+uint {\bfseries current\+\_\+node} = 0u\hypertarget{classpruner_1_1Tree_a4d66035f145c9f9e9bdbd4a365ad8761}{}\label{classpruner_1_1Tree_a4d66035f145c9f9e9bdbd4a365ad8761}
+
+\item 
+uint {\bfseries N\+\_\+\+N\+O\+D\+ES}\hypertarget{classpruner_1_1Tree_a1f9cc9d18f9a4c06a32c5bf127f21027}{}\label{classpruner_1_1Tree_a1f9cc9d18f9a4c06a32c5bf127f21027}
+
+\item 
+uint {\bfseries N\+\_\+\+E\+D\+G\+ES}\hypertarget{classpruner_1_1Tree_af3e29b31a9fd7e634df390462a44ef19}{}\label{classpruner_1_1Tree_af3e29b31a9fd7e634df390462a44ef19}
+
+\item 
+v\+\_\+uint {\bfseries P\+O\+S\+T\+O\+R\+D\+ER}\hypertarget{classpruner_1_1Tree_a547937e845fdbceafae4db25cd74f880}{}\label{classpruner_1_1Tree_a547937e845fdbceafae4db25cd74f880}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class {\bfseries Fun\+Args}\hypertarget{classpruner_1_1Tree_a667d4fbc407b7cce57e87064b934f905}{}\label{classpruner_1_1Tree_a667d4fbc407b7cce57e87064b934f905}
+
+\item 
+class {\bfseries Tree\+Iterator}\hypertarget{classpruner_1_1Tree_a925e5a7f5dc110e63f7062d0e6898af9}{}\label{classpruner_1_1Tree_a925e5a7f5dc110e63f7062d0e6898af9}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/pruner.\+h\end{DoxyCompactItemize}
