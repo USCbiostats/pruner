@@ -14,3 +14,18 @@ Trees are stored as two lists: each nodes' offspring, and each nodes' parents,
 which can be accessed at any point using `TreeIterator` class that implements
 tree traversals (pre and post order for pruning).
 
+## Contributing
+
+We welcome contributions to `pruner`. Whether it is reporting a bug,
+starting a discussion by asking a question, or proposing/requesting a
+new feature, please go by creating a new issue
+[here](https://github.com/USCbiostats/pruner/issues) so that we can talk
+about it.
+
+Please note that this project is released with a
+[Contributor Code of Conduct](https://github.com/USCbiostats/pruner/blob/master/CODE_OF_CONDUCT.md). By participating in this project you agree
+to abide by its terms.
+
+## Funding
+
+Supported by National Cancer Institute Grant \#1P01CA196596.

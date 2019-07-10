@@ -1,0 +1,28 @@
+\hypertarget{00-hello-world_8cpp-example}{}\section{00-\/hello-\/world.\+cpp}
+This shows how to create and print a \hyperlink{classTree}{Tree} class object.
+
+
+\begin{DoxyCodeInclude}
+\textcolor{preprocessor}{#include <iostream>}
+\textcolor{preprocessor}{#include <vector>}
+\textcolor{preprocessor}{#include "../include/pruner.h"}
+
+\textcolor{keywordtype}{int} main () \{
+  
+  \textcolor{comment}{// Fake tree data}
+  std::vector< unsigned int > source = \{0u, 0u, 1u, 2u, 3u\};
+  std::vector< unsigned int > target = \{1u, 5u, 2u, 3u, 4u\};
+
+  \textcolor{comment}{// Initialization of a tree object}
+  \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} res;
+  \hyperlink{classpruner_1_1Tree}{pruner::Tree} tree(source, target, res);
+  
+  \textcolor{comment}{// Looking at the data}
+  tree.print();         
+  
+  
+  \textcolor{keywordflow}{return} 0;
+  
+\}
+\end{DoxyCodeInclude}
+ 

@@ -1,0 +1,113 @@
+\hypertarget{02-rcpp_8cpp-example}{}\section{02-\/rcpp.\+cpp}
+Shows how can this library be used within R.
+
+
+\begin{DoxyCodeInclude}
+\textcolor{preprocessor}{#include <Rcpp.h>}
+\textcolor{preprocessor}{#include "pruner.h"}  
+
+\textcolor{keyword}{using namespace }Rcpp; 
+
+\textcolor{comment}{// Users work from here on -----------------------------------------------------}
+
+\textcolor{comment}{// Need to declare this class}
+\textcolor{keyword}{class }pruner::FunArgs \{
+  \textcolor{keywordtype}{int} nnodes;
+\textcolor{keyword}{public}:
+  
+  ~FunArgs() \{\};
+  FunArgs(\textcolor{keywordtype}{int} n): nnodes(n) \{\};
+  
+  \textcolor{keywordtype}{int} get\_nnodes() \{\textcolor{keywordflow}{return} this->nnodes;\};
+  \textcolor{keywordtype}{void} set\_nnodes(\textcolor{keywordtype}{int} n) \{
+    this->nnodes = n;
+    \textcolor{keywordflow}{return};
+  \};
+\};
+
+\textcolor{keywordtype}{void} myfunction(
+    std::shared\_ptr<pruner::FunArgs> a,
+    \hyperlink{classpruner_1_1Tree}{pruner::Tree} * t,
+    \hyperlink{classpruner_1_1TreeIterator}{pruner::TreeIterator} * iter) \{
+  
+  \textcolor{comment}{// Moving a single step up}
+  printf(\textcolor{stringliteral}{"Currently sitting on the node %i.\(\backslash\)nCurrent parents are: "}, iter->id());
+  \textcolor{keywordflow}{for} (pruner::v\_uint::const\_iterator i = iter->begin\_par(); i != iter->end\_par(); ++i) \{
+    printf(\textcolor{stringliteral}{" %i"}, *i);
+  \}
+  printf(\textcolor{stringliteral}{"\(\backslash\)n"});
+  
+  iter->up();
+  printf(\textcolor{stringliteral}{"Currently sitting on the node %i.\(\backslash\)nCurrent parents are: "}, iter->id());
+  \textcolor{keywordflow}{for} (pruner::v\_uint::const\_iterator i = iter->begin\_par(); i != iter->end\_par(); ++i) \{
+    printf(\textcolor{stringliteral}{" %i"}, *i);
+  \}
+  printf(\textcolor{stringliteral}{"\(\backslash\)n"});
+  \textcolor{keywordflow}{return};
+\}
+
+\textcolor{comment}{// [[Rcpp::export]]}
+List fancytree(\textcolor{keyword}{const} pruner::v\_uint & parents, \textcolor{keyword}{const} pruner::v\_uint & offspring) \{
+  
+  \textcolor{comment}{// Creating the object}
+  uint ans;
+  \hyperlink{classpruner_1_1Tree}{pruner::Tree} mytree(parents, offspring, ans);
+  
+  \textcolor{comment}{// Adding function arguments}
+  mytree.args = std::make\_shared< pruner::FunArgs >(1);
+  mytree.fun = myfunction;
+  
+  \textcolor{comment}{// Calling functions}
+  mytree.args->set\_nnodes(5);
+  mytree.eval\_fun();   \textcolor{comment}{// Implicit call}
+  
+  \textcolor{comment}{// Example printing}
+  mytree.print();
+  
+  \textcolor{keywordflow}{return} List::create(
+    \_[\textcolor{stringliteral}{"edgelist"}]  = mytree.get\_edgelist(),
+    \_[\textcolor{stringliteral}{"postorder"}] = mytree.get\_postorder(),
+    \_[\textcolor{stringliteral}{"dag"}]       = mytree.is\_dag()
+  );
+  
+\}
+
+\textcolor{comment}{/***R}
+\textcolor{comment}{# set.seed(8)}
+\textcolor{comment}{}
+\textcolor{comment}{# Is it working?}
+\textcolor{comment}{tree <-}
+\textcolor{comment}{  structure(}
+\textcolor{comment}{    list(}
+\textcolor{comment}{      edge = structure(c(4L, 5L, 5L, 4L, 5L, 1L, 2L,}
+\textcolor{comment}{                         3L), .Dim = c(4L, 2L)),}
+\textcolor{comment}{      tip.label = c("t3", "t2", "t1"),}
+\textcolor{comment}{      edge.length = c(}
+\textcolor{comment}{        0.718927504029125,}
+\textcolor{comment}{        0.290873386897147,}
+\textcolor{comment}{        0.932269813260064,}
+\textcolor{comment}{        0.769146954407915}
+\textcolor{comment}{      ),}
+\textcolor{comment}{      Nnode = 2L}
+\textcolor{comment}{    ),}
+\textcolor{comment}{    class = "phylo",}
+\textcolor{comment}{    order = "cladewise"}
+\textcolor{comment}{  )}
+\textcolor{comment}{ans <- fancytree(tree$edge[,1] - 1, tree$edge[,2] - 1)}
+\textcolor{comment}{}
+\textcolor{comment}{# plot(tree, show.node.label = TRUE)}
+\textcolor{comment}{# cbind(1:length(unlist(ans[[1]])), unlist(ans[[1]]) + 1)}
+\textcolor{comment}{# }
+\textcolor{comment}{# # DAGS NO DAGS}
+\textcolor{comment}{# invisible(fancytree(tree$edge[,1] - 1, tree$edge[,2] - 1))}
+\textcolor{comment}{# E <- tree$edge}
+\textcolor{comment}{# E <- rbind(E, rev(E[3,]))}
+\textcolor{comment}{# E - 1L}
+\textcolor{comment}{# fancytree(E[,1] - 1, E[,2] - 1) # NOT A DAG}
+\textcolor{comment}{# }
+\textcolor{comment}{# library(igraph)}
+\textcolor{comment}{# plot(graph\_from\_edgelist(E), vertex.label = 0:4, vertex.size = 40)}
+\textcolor{comment}{}
+\textcolor{comment}{*/}
+\end{DoxyCodeInclude}
+ 

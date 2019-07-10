@@ -14,10 +14,26 @@
 // - Model parameters can should be modifiable by a function
 // - Additional data such as matrices and what not
 // We start by declaring it, the user later on defines it
+
+/** Arguments to be passed to Tree::fun.
+ * 
+ */
 class FunArgs;
 class Tree;
 class TreeIterator;
 
+
+/** Tree class 
+ * 
+ */
+/** 
+ * The Tree class is the core of pruner. The most relevant members are
+ * - `parents`
+ * - `offspring`
+ * - `iterator`
+ * - `args`
+ * - `fun`
+ */
 class Tree {
   
 private:
@@ -121,5 +137,15 @@ public:
   
 };
 
+/** \example 00-hello-world.cpp This shows how to create and print a Tree class
+ * object.
+ * 
+ * \example 01-adding-function.cpp In this example we add a function to the tree
+ * (including a pointer to the arguments). This includes the definition of the
+ * class FunArgs, which is stored as args in the Tree object.
+ * 
+ * \example 02-rcpp.cpp Shows how can this library be used within R.
+ * 
+ */
 
 #endif

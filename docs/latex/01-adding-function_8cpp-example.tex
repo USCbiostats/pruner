@@ -1,0 +1,74 @@
+\hypertarget{01-adding-function_8cpp-example}{}\section{01-\/adding-\/function.\+cpp}
+In this example we add a function to the tree (including a pointer to the arguments). This includes the definition of the class Fun\+Args, which is stored as args in the \hyperlink{classTree}{Tree} object.
+
+
+\begin{DoxyCodeInclude}
+\textcolor{preprocessor}{#include <iostream>}
+\textcolor{preprocessor}{#include <vector>}
+\textcolor{preprocessor}{#include "../include/pruner.h"}
+
+\textcolor{comment}{// STEP 1: Need to declare this class}
+\textcolor{keyword}{class }pruner::FunArgs \{
+  \textcolor{keywordtype}{int} nnodes;
+\textcolor{keyword}{public}:
+  
+  ~FunArgs() \{\};
+  FunArgs(\textcolor{keywordtype}{int} n): nnodes(n) \{\};
+  
+  \textcolor{keywordtype}{int} get\_nnodes() \{\textcolor{keywordflow}{return} this->nnodes;\};
+  \textcolor{keywordtype}{void} set\_nnodes(\textcolor{keywordtype}{int} n) \{
+    this->nnodes = n;
+    \textcolor{keywordflow}{return};
+  \};
+\};
+
+\textcolor{comment}{// STEP 2: Define a function to be passed to the algorithm}
+\textcolor{keywordtype}{void} myfunction(
+    std::shared\_ptr<pruner::FunArgs> a,
+    \hyperlink{classpruner_1_1Tree}{pruner::Tree} * t,
+    \hyperlink{classpruner_1_1TreeIterator}{pruner::TreeIterator} * iter) \{
+  
+  \textcolor{comment}{// Moving a single step up}
+  printf(\textcolor{stringliteral}{"Currently sitting on the node %i.\(\backslash\)nCurrent parents are: "}, iter->id());
+  \textcolor{keywordflow}{for} (pruner::v\_uint::const\_iterator i = iter->begin\_par(); i != iter->end\_par(); ++i) \{
+    printf(\textcolor{stringliteral}{" %i"}, *i);
+  \}
+  printf(\textcolor{stringliteral}{"\(\backslash\)n"});
+  
+  iter->up();
+  printf(\textcolor{stringliteral}{"Currently sitting on the node %i.\(\backslash\)nCurrent parents are: "}, iter->id());
+  \textcolor{keywordflow}{for} (pruner::v\_uint::const\_iterator i = iter->begin\_par(); i != iter->end\_par(); ++i) \{
+    printf(\textcolor{stringliteral}{" %i"}, *i);
+  \}
+  printf(\textcolor{stringliteral}{"\(\backslash\)n"});
+  \textcolor{keywordflow}{return};
+\}
+
+\textcolor{keywordtype}{int} main () \{
+  
+  \textcolor{comment}{// Fake tree data}
+  pruner::v\_uint source = \{0u, 0u, 1u, 2u, 3u\};
+  pruner::v\_uint target = \{1u, 5u, 2u, 3u, 4u\};
+  
+  \textcolor{comment}{// Initialization of a tree object}
+  pruner::uint res;
+  \hyperlink{classpruner_1_1Tree}{pruner::Tree} tree(source, target, res);
+  
+  \textcolor{comment}{// Looking at the data}
+  tree.print();         
+  
+  \textcolor{comment}{// We can pass the function:}
+  \textcolor{comment}{// Adding function arguments}
+  tree.args = std::make\_shared< pruner::FunArgs >(1);
+  tree.fun = myfunction;
+  
+  \textcolor{comment}{// Calling functions}
+  tree.args->set\_nnodes(5);
+  tree.eval\_fun();   \textcolor{comment}{// Implicit call}
+  
+  
+  \textcolor{keywordflow}{return} 0;
+  
+\}
+\end{DoxyCodeInclude}
+ 
