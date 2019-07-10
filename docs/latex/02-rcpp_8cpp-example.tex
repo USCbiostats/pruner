@@ -31,14 +31,14 @@ Shows how can this library be used within R.
     \hyperlink{classpruner_1_1TreeIterator}{pruner::TreeIterator} * iter) \{
   
   \textcolor{comment}{// Moving a single step up}
-  printf(\textcolor{stringliteral}{"Currently sitting on the node %i.\(\backslash\)nCurrent parents are: "}, iter->id());
+  printf(\textcolor{stringliteral}{"Currently sitting on the node %i.\(\backslash\)nCurrent parents are: "}, iter->\hyperlink{classpruner_1_1TreeIterator_ae76ec4f2c1390d72889f78a51d65d19c}{id}());
   \textcolor{keywordflow}{for} (pruner::v\_uint::const\_iterator i = iter->begin\_par(); i != iter->end\_par(); ++i) \{
     printf(\textcolor{stringliteral}{" %i"}, *i);
   \}
   printf(\textcolor{stringliteral}{"\(\backslash\)n"});
   
-  iter->up();
-  printf(\textcolor{stringliteral}{"Currently sitting on the node %i.\(\backslash\)nCurrent parents are: "}, iter->id());
+  iter->\hyperlink{classpruner_1_1TreeIterator_adca1d999f093a69e2f5d044b358e5da7}{up}();
+  printf(\textcolor{stringliteral}{"Currently sitting on the node %i.\(\backslash\)nCurrent parents are: "}, iter->\hyperlink{classpruner_1_1TreeIterator_ae76ec4f2c1390d72889f78a51d65d19c}{id}());
   \textcolor{keywordflow}{for} (pruner::v\_uint::const\_iterator i = iter->begin\_par(); i != iter->end\_par(); ++i) \{
     printf(\textcolor{stringliteral}{" %i"}, *i);
   \}
@@ -50,15 +50,15 @@ Shows how can this library be used within R.
 List fancytree(\textcolor{keyword}{const} pruner::v\_uint & parents, \textcolor{keyword}{const} pruner::v\_uint & offspring) \{
   
   \textcolor{comment}{// Creating the object}
-  uint ans;
+  \hyperlink{typedefs_8h_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} ans;
   \hyperlink{classpruner_1_1Tree}{pruner::Tree} mytree(parents, offspring, ans);
   
   \textcolor{comment}{// Adding function arguments}
-  mytree.args = std::make\_shared< pruner::FunArgs >(1);
-  mytree.fun = myfunction;
+  mytree.\hyperlink{classpruner_1_1Tree_ac205a6f18c76016b2c526e62ed986d24}{args} = std::make\_shared< pruner::FunArgs >(1);
+  mytree.\hyperlink{classpruner_1_1Tree_a6a54846f5e95a7d07369e4075ff651a7}{fun} = myfunction;
   
   \textcolor{comment}{// Calling functions}
-  mytree.args->set\_nnodes(5);
+  mytree.\hyperlink{classpruner_1_1Tree_ac205a6f18c76016b2c526e62ed986d24}{args}->set\_nnodes(5);
   mytree.eval\_fun();   \textcolor{comment}{// Implicit call}
   
   \textcolor{comment}{// Example printing}

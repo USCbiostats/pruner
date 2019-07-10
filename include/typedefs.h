@@ -15,9 +15,18 @@ inline void print_vector(const std::vector< T > & V) {
 #ifndef H_PRUNER_TYPEDEFS
 #define H_PRUNER_TYPEDEFS
 
+//! @file typedefs.h
+
+//! Unsigned integer
 typedef unsigned int uint;
+
+//! A vector of unsigned integers
 typedef std::vector< uint > v_uint;
+
+//! A vector of unsigned integer vectors
 typedef std::vector< v_uint > vv_uint;
+
+//! A vector of logicals
 typedef std::vector< bool > v_bool;
 
 // Auxiliar functions ----------------------------------------------------------

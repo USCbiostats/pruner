@@ -23,11 +23,8 @@ class Tree;
 class TreeIterator;
 
 
-/** Tree class 
- * 
- */
-/** 
- * The Tree class is the core of pruner. The most relevant members are
+//! Tree class 
+/** The Tree class is the core of pruner. The most relevant members are
  * - `parents`
  * - `offspring`
  * - `iterator`
@@ -54,15 +51,31 @@ protected:
   // Constant
   uint N_NODES;
   uint N_EDGES;
+  
+  //! Postorder sequence
+  /**
+   * The POSTORDER vector shows the order in which TreeIterator runs through
+   * the tree. This is set at the moment during which the tree is created.
+   */
   v_uint POSTORDER;
   
   friend class FunArgs;
   friend class TreeIterator;
   
 public:
-  // This is public as users can modify it at will
+  
+  //! Arbitrary set of arguments
   std::shared_ptr< FunArgs > args;
+  
+  //! Callable function during the the tree traversal
+  /**
+   * The idea of this function is that the users can specify what to do 
+   * during a call to Tree::prune_postorder and Tree::prune_preorder conditional
+   * on the current node. The argument of class TreeIterator allows them to
+   * get that information by accessing the member function TreeIterator::id.
+   */
   std::function<void(std::shared_ptr< FunArgs >, Tree*, TreeIterator*)> fun;
+  
   void eval_fun() {
     fun(this->args, this, &this->I);
   };
@@ -116,7 +129,17 @@ public:
   };
   
   // Pre-Post/order ------------------------------------------------------------
+  
+  //! Do the tree-traversal using the postorder
+  /** The user defined function `fun` will be called at each step. This allows
+   * users implementing their own model.
+   */
   void prune_postorder();
+  
+  //! Do the tree-traversal using the preorder
+  /**
+   * See Tree::prune_postorder.
+   */
   void prune_preorder();
   
   // uint 

@@ -23,7 +23,10 @@ public:
   v_uint::const_iterator begin_par() const;
   v_uint::const_iterator end_par() const;
   
+  //! Sets the `current_node` to the next value as specified in Tree::POSTORDER.
   int up();
+  
+  //! Sets the `current_node` to the previous value as specified in Tree::POSTORDER.
   int down();
   
   int operator++();
@@ -32,6 +35,7 @@ public:
   void top();
   void bottom();
   
+  //! Returns the id (index) of the current node
   uint id() const {return current_node;};
   
 };
