@@ -1,22 +1,22 @@
-// #include <iostream>
-// #include <vector>
-// #include "../include/pruner.h"
+#include <iostream>
+#include <vector>
+#include "../include/pruner.h"
 // For creating the MAIN
-// #define CATCH_CONFIG_MAIN
-// #include "catch.hpp"
+#define CATCH_CONFIG_MAIN
+#include "catch.hpp"
 
 // Need to predefined this object
-class pruner::FunArgs {
+class pruner::TreeData {
 public:
-  ~FunArgs() {};
-  FunArgs(std::vector< double > attrs_) : attrs(attrs_), total(0.0)  {};
+  ~TreeData() {};
+  TreeData(std::vector< double > attrs_) : attrs(attrs_), total(0.0)  {};
   std::vector< double > attrs;
   double total;
 };
 
 // Creating the function
 void myfun1(
-    std::shared_ptr< pruner::FunArgs > args,
+    std::shared_ptr< pruner::TreeData > args,
     pruner::TreeIterator & titer
 ) {
   
@@ -28,7 +28,7 @@ void myfun1(
 }
 
 void myfun2(
-    std::shared_ptr< pruner::FunArgs > args,
+    std::shared_ptr< pruner::TreeData > args,
     pruner::TreeIterator & titer
 ) {
   
@@ -50,7 +50,7 @@ TEST_CASE("Postorder pruner", "[tree][postorder]") {
   unsigned int res;
   pruner::Tree tree(source, target, res);
   std::vector< double > values = {0.1, 0.2, 0.3, 0.4};
-  tree.args = std::make_shared< pruner::FunArgs >(values);
+  tree.args = std::make_shared< pruner::TreeData >(values);
   tree.fun  = myfun1;
   
   // Calling the pruning algo

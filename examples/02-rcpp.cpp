@@ -6,12 +6,12 @@ using namespace Rcpp;
 // Users work from here on -----------------------------------------------------
 
 // Need to declare this class
-class pruner::FunArgs {
+class pruner::TreeData {
   int nnodes;
 public:
   
-  ~FunArgs() {};
-  FunArgs(int n): nnodes(n) {};
+  ~TreeData() {};
+  TreeData(int n): nnodes(n) {};
   
   int get_nnodes() {return this->nnodes;};
   void set_nnodes(int n) {
@@ -21,7 +21,7 @@ public:
 };
 
 void myfunction(
-    pruner::sptr_args a,
+    pruner::sptr_treedata a,
     pruner::TreeIterator & iter
   ) {
   
@@ -49,7 +49,7 @@ List fancytree(const pruner::v_uint & parents, const pruner::v_uint & offspring)
   pruner::Tree mytree(parents, offspring, ans);
   
   // Adding function arguments
-  mytree.args = std::make_shared< pruner::FunArgs >(1);
+  mytree.args = std::make_shared< pruner::TreeData >(1);
   mytree.fun = myfunction;
   
   // Calling functions

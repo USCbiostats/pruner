@@ -61,6 +61,9 @@ TEST_CASE("Post order sequences respects all", "[postorder]") {
   REQUIRE(tree1.get_postorder().size() == 4u);
  
   // return 0;
+  pruner::TreeIterator myiter(&tree1);
+  myiter.top();
+  REQUIRE(myiter.id() == *myiter);
   
 // }
 }

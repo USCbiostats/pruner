@@ -5,6 +5,7 @@
 #ifndef H_PRUNER
 #define H_PRUNER
 
+//! Tree class and TreeIterator class
 namespace pruner {
 
 #include "typedefs.h"

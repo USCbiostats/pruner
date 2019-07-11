@@ -1,5 +1,7 @@
-// #include "treeiterator_bones.h"
-// #include "tree_bones.h"
+#ifndef H_PRUNER
+#include "tree_bones.h"
+#include "treeiterator_bones.h"
+#endif
 
 inline TreeIterator::TreeIterator(Tree * tree) {
   
@@ -81,4 +83,16 @@ inline bool TreeIterator::is_root() const {
 
 inline bool TreeIterator::is_leaf() const { 
   return this->tree->offspring[current_node].size() == 0u;
+}
+
+inline uint TreeIterator::front() const {
+  
+  return this->tree->POSTORDER.front();
+  
+}
+
+inline uint TreeIterator::back() const {
+  
+  return this->tree->POSTORDER.back();
+  
 }

@@ -1,9 +1,11 @@
-// #include <vector>
-// #include "typedefs.h"
-// #include "tree_bones.h"
-// #include "treeiterator_bones.h"
-// #include "treeiterator_meat.h"
-// #include <memory> // For the std::shared_ptr
+#ifndef H_PRUNER
+#include <vector>
+#include "typedefs.h"
+#include "tree_bones.h"
+#include "treeiterator_bones.h"
+#include "treeiterator_meat.h"
+#include <memory> // For the std::shared_ptr
+#endif
 
 #ifndef H_PRUNER_TREE_MEAT
 #define H_PRUNER_TREE_MEAT
@@ -182,7 +184,7 @@ inline Tree::Tree(const v_uint & parents_, const v_uint & offspring_, uint & out
   this->postorder();
   
   // Initializing iterator 
-  this->iterator = TreeIterator(this);
+  this->iter = TreeIterator(this);
   
   // Some checks
   if (!this->is_connected())
@@ -280,14 +282,37 @@ inline v_uint Tree::get_preorder() const {
 inline void Tree::prune_postorder() {
   
   // Set the head in the first node of the sequence
-  this->iterator.bottom();
+  this->iter.bottom();
   int status = 0;
   while (status == 0) {
     
     this->eval_fun();
-    status = this->iterator.up();
+    status = this->iter.up();
     
   }
+  
+  return;
+  
+}
+
+inline void Tree::prune_postorder(v_uint & seq) {
+
+  // Let's reset the sequence
+  v_uint OLDPOSTORDER = POSTORDER;
+  POSTORDER.swap(seq);
+    
+  // Set the head in the first node of the sequence
+  this->iter.bottom();
+  int status = 0;
+  while (status == 0) {
+    
+    this->eval_fun();
+    status = this->iter.up();
+    
+  }
+  
+  // Going back to the previous order
+  POSTORDER.swap(OLDPOSTORDER);
   
   return;
   
@@ -296,14 +321,37 @@ inline void Tree::prune_postorder() {
 inline void Tree::prune_preorder() {
   
   // Set the head in the first node of the sequence
-  this->iterator.top();
+  this->iter.top();
   int status = 0;
   while (status == 0) {
     
     this->eval_fun();
-    status = this->iterator.down();
+    status = this->iter.down();
     
   }
+  
+  return;
+  
+}
+
+inline void Tree::prune_preorder(v_uint & seq) {
+  
+  // Let's reset the sequence
+  v_uint OLDPOSTORDER = POSTORDER;
+  POSTORDER.swap(seq);
+  
+  // Set the head in the first node of the sequence
+  this->iter.top();
+  int status = 0;
+  while (status == 0) {
+    
+    this->eval_fun();
+    status = this->iter.down();
+    
+  }
+  
+  // Going back to the previous order
+  POSTORDER.swap(OLDPOSTORDER);
   
   return;
   

@@ -12,9 +12,9 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-void {\bfseries eval\+\_\+fun} ()\hypertarget{classTree_a5a24565d179a3bd6edae1ff323060a93}{}\label{classTree_a5a24565d179a3bd6edae1ff323060a93}
+void \hyperlink{classTree_a5a24565d179a3bd6edae1ff323060a93}{eval\+\_\+fun} ()\hypertarget{classTree_a5a24565d179a3bd6edae1ff323060a93}{}\label{classTree_a5a24565d179a3bd6edae1ff323060a93}
 
-\item 
+\begin{DoxyCompactList}\small\item\em Evaluates the function by passing the arguments and the iterator. \end{DoxyCompactList}\item 
 \hyperlink{classTree_a0f964d9ba9834822d3e18946a5361839}{Tree} (const \hyperlink{typedefs_8h_ad56dde311aef1af823f4351451e8a381}{v\+\_\+uint} \&parents\+\_\+, const \hyperlink{typedefs_8h_ad56dde311aef1af823f4351451e8a381}{v\+\_\+uint} \&offspring\+\_\+, \hyperlink{typedefs_8h_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \&out)
 \begin{DoxyCompactList}\small\item\em Creating method using parents and offpring. \end{DoxyCompactList}\item 
 const \hyperlink{typedefs_8h_ad56dde311aef1af823f4351451e8a381}{v\+\_\+uint} $\ast$ {\bfseries get\+\_\+parents\+\_\+of} (\hyperlink{typedefs_8h_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} i)\hypertarget{classTree_adb9bede67bc875b58bb240d4c5421821}{}\label{classTree_adb9bede67bc875b58bb240d4c5421821}
@@ -58,15 +58,19 @@ void {\bfseries reset\+\_\+visited} ()\hypertarget{classTree_adb83bb19c14623ce57
 \item 
 void \hyperlink{classTree_a7d465880d18acf79f3a772ea5412b0d7}{prune\+\_\+postorder} ()
 \begin{DoxyCompactList}\small\item\em Do the tree-\/traversal using the postorder. \end{DoxyCompactList}\item 
+void \hyperlink{classTree_a8318027f3d2b1a07bf25e813c7c80056}{prune\+\_\+postorder} (\hyperlink{typedefs_8h_ad56dde311aef1af823f4351451e8a381}{v\+\_\+uint} \&seq)
+\begin{DoxyCompactList}\small\item\em Do the tree-\/traversal using the postorder with a user specific sequence. \end{DoxyCompactList}\item 
 void \hyperlink{classTree_ac85bfb083b3856e65987e1d15885a61c}{prune\+\_\+preorder} ()
-\begin{DoxyCompactList}\small\item\em Do the tree-\/traversal using the preorder. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Do the tree-\/traversal using the preorder. \end{DoxyCompactList}\item 
+void \hyperlink{classTree_a6841109c7ff37bcabdf3a4d79009ad21}{prune\+\_\+preorder} (\hyperlink{typedefs_8h_ad56dde311aef1af823f4351451e8a381}{v\+\_\+uint} \&seq)
+\begin{DoxyCompactList}\small\item\em Do the tree-\/traversal using the preorder with a user specific sequence. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{typedefs_8h_a36d9dc9d55255609cd5999fe2a705730}{sptr\+\_\+args} \hyperlink{classTree_a115276dfa96383736e591b150ace3f8a}{args}\hypertarget{classTree_a115276dfa96383736e591b150ace3f8a}{}\label{classTree_a115276dfa96383736e591b150ace3f8a}
+\hyperlink{typedefs_8h_a9a6fab8407274f7c3ab719f6e822ea3a}{sptr\+\_\+treedata} \hyperlink{classTree_ac2ff3911dfe768b18be9f6cc2baca89e}{args}\hypertarget{classTree_ac2ff3911dfe768b18be9f6cc2baca89e}{}\label{classTree_ac2ff3911dfe768b18be9f6cc2baca89e}
 
 \begin{DoxyCompactList}\small\item\em Arbitrary set of arguments. \end{DoxyCompactList}\item 
-std\+::function$<$ void(\hyperlink{typedefs_8h_a36d9dc9d55255609cd5999fe2a705730}{sptr\+\_\+args}, \hyperlink{classTreeIterator}{Tree\+Iterator} \&)$>$ \hyperlink{classTree_ae70c3a427f2c5cee0d4dac4903df57e6}{fun}
+std\+::function$<$ void(\hyperlink{typedefs_8h_a9a6fab8407274f7c3ab719f6e822ea3a}{sptr\+\_\+treedata}, \hyperlink{classTreeIterator}{Tree\+Iterator} \&)$>$ \hyperlink{classTree_ad98f51efc931f96c687c65d4387d19e9}{fun}
 \begin{DoxyCompactList}\small\item\em Callable function during the the tree traversal. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -94,7 +98,7 @@ std\+::function$<$ void(\hyperlink{typedefs_8h_a36d9dc9d55255609cd5999fe2a705730
 \subsection*{Friends}
 \begin{DoxyCompactItemize}
 \item 
-class {\bfseries Fun\+Args}\hypertarget{classTree_a667d4fbc407b7cce57e87064b934f905}{}\label{classTree_a667d4fbc407b7cce57e87064b934f905}
+class {\bfseries Tree\+Data}\hypertarget{classTree_a3ef069a6a857ec671312e3f76cb5aa24}{}\label{classTree_a3ef069a6a857ec671312e3f76cb5aa24}
 
 \item 
 class {\bfseries Tree\+Iterator}\hypertarget{classTree_a925e5a7f5dc110e63f7062d0e6898af9}{}\label{classTree_a925e5a7f5dc110e63f7062d0e6898af9}
@@ -153,7 +157,23 @@ The tree is initialized using an edgelist by listing each edges\textquotesingle{
 
 Do the tree-\/traversal using the postorder. 
 
-The user defined function {\ttfamily fun} will be called at each step. This allows users implementing their own model. \index{Tree@{Tree}!prune\+\_\+preorder@{prune\+\_\+preorder}}
+The user defined function {\ttfamily fun} will be called at each step. This allows users implementing their own model. \index{Tree@{Tree}!prune\+\_\+postorder@{prune\+\_\+postorder}}
+\index{prune\+\_\+postorder@{prune\+\_\+postorder}!Tree@{Tree}}
+\subsubsection[{\texorpdfstring{prune\+\_\+postorder(v\+\_\+uint \&seq)}{prune_postorder(v_uint &seq)}}]{\setlength{\rightskip}{0pt plus 5cm}void Tree\+::prune\+\_\+postorder (
+\begin{DoxyParamCaption}
+\item[{{\bf v\+\_\+uint} \&}]{seq}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classTree_a8318027f3d2b1a07bf25e813c7c80056}{}\label{classTree_a8318027f3d2b1a07bf25e813c7c80056}
+
+
+Do the tree-\/traversal using the postorder with a user specific sequence. 
+
+Same as {\ttfamily prune\+\_\+postorder} but with a different sequence 
+\begin{DoxyParams}{Parameters}
+{\em seq} & A new sequence to apply. \\
+\hline
+\end{DoxyParams}
+\index{Tree@{Tree}!prune\+\_\+preorder@{prune\+\_\+preorder}}
 \index{prune\+\_\+preorder@{prune\+\_\+preorder}!Tree@{Tree}}
 \subsubsection[{\texorpdfstring{prune\+\_\+preorder()}{prune_preorder()}}]{\setlength{\rightskip}{0pt plus 5cm}void Tree\+::prune\+\_\+preorder (
 \begin{DoxyParamCaption}
@@ -164,12 +184,28 @@ The user defined function {\ttfamily fun} will be called at each step. This allo
 
 Do the tree-\/traversal using the preorder. 
 
-See \hyperlink{classTree_a7d465880d18acf79f3a772ea5412b0d7}{Tree\+::prune\+\_\+postorder}. 
+See \hyperlink{classTree_a7d465880d18acf79f3a772ea5412b0d7}{Tree\+::prune\+\_\+postorder}. \index{Tree@{Tree}!prune\+\_\+preorder@{prune\+\_\+preorder}}
+\index{prune\+\_\+preorder@{prune\+\_\+preorder}!Tree@{Tree}}
+\subsubsection[{\texorpdfstring{prune\+\_\+preorder(v\+\_\+uint \&seq)}{prune_preorder(v_uint &seq)}}]{\setlength{\rightskip}{0pt plus 5cm}void Tree\+::prune\+\_\+preorder (
+\begin{DoxyParamCaption}
+\item[{{\bf v\+\_\+uint} \&}]{seq}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classTree_a6841109c7ff37bcabdf3a4d79009ad21}{}\label{classTree_a6841109c7ff37bcabdf3a4d79009ad21}
+
+
+Do the tree-\/traversal using the preorder with a user specific sequence. 
+
+Same as {\ttfamily prune\+\_\+preorder} but with a different sequence 
+\begin{DoxyParams}{Parameters}
+{\em seq} & A new sequence to apply. \\
+\hline
+\end{DoxyParams}
+
 
 \subsection{Member Data Documentation}
 \index{Tree@{Tree}!fun@{fun}}
 \index{fun@{fun}!Tree@{Tree}}
-\subsubsection[{\texorpdfstring{fun}{fun}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::function$<$void({\bf sptr\+\_\+args}, {\bf Tree\+Iterator}\&)$>$ Tree\+::fun}\hypertarget{classTree_ae70c3a427f2c5cee0d4dac4903df57e6}{}\label{classTree_ae70c3a427f2c5cee0d4dac4903df57e6}
+\subsubsection[{\texorpdfstring{fun}{fun}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::function$<$void({\bf sptr\+\_\+treedata}, {\bf Tree\+Iterator}\&)$>$ Tree\+::fun}\hypertarget{classTree_ad98f51efc931f96c687c65d4387d19e9}{}\label{classTree_ad98f51efc931f96c687c65d4387d19e9}
 
 
 Callable function during the the tree traversal. 

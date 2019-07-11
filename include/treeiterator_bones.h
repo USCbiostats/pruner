@@ -1,4 +1,6 @@
-// #include "typedefs.h"
+#ifndef H_PRUNER
+#include "typedefs.h"
+#endif
 
 #ifndef H_PRUNER_TREEITERATOR_BONES
 #define H_PRUNER_TREEITERATOR_BONES
@@ -44,11 +46,16 @@ public:
   //! Returns the id (index) of the current node
   uint id() const {return current_node;};
   
+  uint operator*() const {return current_node;};
+  
   //! Check whether the current node is root
   bool is_root() const;
   
   //! Checks whether the current node is a leaf or not
   bool is_leaf() const;
+  
+  uint front() const;
+  uint back() const;
   
 };
 

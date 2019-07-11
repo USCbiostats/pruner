@@ -3,12 +3,12 @@
 #include "../include/pruner.h"
 
 // STEP 1: Need to declare this class
-class pruner::FunArgs {
+class pruner::TreeData {
   int nnodes;
 public:
   
-  ~FunArgs() {};
-  FunArgs(int n): nnodes(n) {};
+  ~TreeData() {};
+  TreeData(int n): nnodes(n) {};
   
   int get_nnodes() {return this->nnodes;};
   void set_nnodes(int n) {
@@ -19,19 +19,19 @@ public:
 
 // STEP 2: Define a function to be passed to the algorithm
 void myfunction(
-    std::shared_ptr<pruner::FunArgs> a,
+    pruner::sptr_treedata a,
     pruner::TreeIterator & iter) {
   
   // Moving a single step up
   printf("Currently sitting on the node %i.\nCurrent parents are: ", iter.id());
-  for (pruner::v_uint::const_iterator i = iter.begin_par(); i != iter.end_par(); ++i) {
+  for (auto i = iter.begin_par(); i != iter.end_par(); ++i) {
     printf(" %i", *i);
   }
   printf("\n");
   
   iter.up();
   printf("Currently sitting on the node %i.\nCurrent parents are: ", iter.id());
-  for (pruner::v_uint::const_iterator i = iter.begin_par(); i != iter.end_par(); ++i) {
+  for (auto i = iter.begin_par(); i != iter.end_par(); ++i) {
     printf(" %i", *i);
   }
   printf("\n");
@@ -53,12 +53,14 @@ int main () {
   
   // We can pass the function:
   // Adding function arguments
-  tree.args = std::make_shared< pruner::FunArgs >(1);
+  tree.args = std::make_shared< pruner::TreeData >(1);
   tree.fun = myfunction;
   
   // Calling functions
   tree.args->set_nnodes(5);
   tree.eval_fun();   // Implicit call
+  
+  tree.prune_postorder();
   
   
   return 0;

@@ -11,12 +11,12 @@ Shows how can this library be used within R.
 \textcolor{comment}{// Users work from here on -----------------------------------------------------}
 
 \textcolor{comment}{// Need to declare this class}
-\textcolor{keyword}{class }pruner::FunArgs \{
+\textcolor{keyword}{class }pruner::TreeData \{
   \textcolor{keywordtype}{int} nnodes;
 \textcolor{keyword}{public}:
   
-  ~FunArgs() \{\};
-  FunArgs(\textcolor{keywordtype}{int} n): nnodes(n) \{\};
+  ~TreeData() \{\};
+  TreeData(\textcolor{keywordtype}{int} n): nnodes(n) \{\};
   
   \textcolor{keywordtype}{int} get\_nnodes() \{\textcolor{keywordflow}{return} this->nnodes;\};
   \textcolor{keywordtype}{void} set\_nnodes(\textcolor{keywordtype}{int} n) \{
@@ -26,7 +26,7 @@ Shows how can this library be used within R.
 \};
 
 \textcolor{keywordtype}{void} myfunction(
-    pruner::sptr\_args a,
+    \hyperlink{namespacepruner_a533476fef17527e75c4fba71d8c4ce50}{pruner::sptr\_treedata} a,
     \hyperlink{classpruner_1_1TreeIterator}{pruner::TreeIterator} & iter
   ) \{
   
@@ -47,19 +47,20 @@ Shows how can this library be used within R.
 \}
 
 \textcolor{comment}{// [[Rcpp::export]]}
-List fancytree(\textcolor{keyword}{const} pruner::v\_uint & parents, \textcolor{keyword}{const} pruner::v\_uint & offspring) \{
+List fancytree(\textcolor{keyword}{const} \hyperlink{namespacepruner_af0145646bd7ede012cd336b416bc5579}{pruner::v\_uint} & parents, \textcolor{keyword}{const} 
+      \hyperlink{namespacepruner_af0145646bd7ede012cd336b416bc5579}{pruner::v\_uint} & offspring) \{
   
   \textcolor{comment}{// Creating the object}
   \hyperlink{typedefs_8h_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} ans;
   \hyperlink{classpruner_1_1Tree}{pruner::Tree} mytree(parents, offspring, ans);
   
   \textcolor{comment}{// Adding function arguments}
-  mytree.\hyperlink{classpruner_1_1Tree_a555fc962c816cb826fb4e765bb54bf3b}{args} = std::make\_shared< pruner::FunArgs >(1);
-  mytree.\hyperlink{classpruner_1_1Tree_aefea176861bd8f37492fb15db2d28dad}{fun} = myfunction;
+  mytree.\hyperlink{classpruner_1_1Tree_ac61a4133ceae4ea3473ea84df94f0931}{args} = std::make\_shared< pruner::TreeData >(1);
+  mytree.\hyperlink{classpruner_1_1Tree_a095f59358c914fb66939d2d82ca3ebc4}{fun} = myfunction;
   
   \textcolor{comment}{// Calling functions}
-  mytree.\hyperlink{classpruner_1_1Tree_a555fc962c816cb826fb4e765bb54bf3b}{args}->set\_nnodes(5);
-  mytree.eval\_fun();   \textcolor{comment}{// Implicit call}
+  mytree.\hyperlink{classpruner_1_1Tree_ac61a4133ceae4ea3473ea84df94f0931}{args}->set\_nnodes(5);
+  mytree.\hyperlink{classpruner_1_1Tree_abaa9ef6d7eacf37302d29c12c2180c3a}{eval\_fun}();   \textcolor{comment}{// Implicit call}
   
   \textcolor{comment}{// Example printing}
   mytree.print();

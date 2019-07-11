@@ -1,6 +1,8 @@
-// #include <memory>
-// #include "typedefs.h"
-// #include "treeiterator_bones.h"
+#ifndef H_PRUNER
+#include <memory>
+#include "typedefs.h"
+#include "treeiterator_bones.h"
+#endif
 
 #ifndef H_PRUNER_TREE_BONES
 #define H_PRUNER_TREE_BONES
@@ -18,7 +20,7 @@
 /** Arguments to be passed to Tree::fun.
  * 
  */
-class FunArgs;
+class TreeData;
 class Tree;
 class TreeIterator;
 
@@ -37,7 +39,7 @@ private:
   bool is_dag_(int i = -1, int caller = -1, bool up_search = false);
   void postorder_(uint i);
   void postorder();
-  TreeIterator iterator;
+  TreeIterator iter;
   
 protected:
   //! Each nodes' parents.
@@ -62,13 +64,13 @@ protected:
    */
   v_uint POSTORDER;
   
-  friend class FunArgs;
+  friend class TreeData;
   friend class TreeIterator;
   
 public:
   
   //! Arbitrary set of arguments
-  sptr_args args;
+  sptr_treedata args;
   
   //! Callable function during the the tree traversal
   /**
@@ -77,10 +79,15 @@ public:
    * on the current node. The argument of class TreeIterator allows them to
    * get that information by accessing the member function TreeIterator::id.
    */
-  std::function<void(sptr_args, TreeIterator&)> fun;
+  std::function<void(sptr_treedata, TreeIterator&)> fun;
   
+  //! Evaluates the function by passing the arguments and the iterator
   void eval_fun() {
-    fun(this->args, this->iterator);
+    
+    if (fun)
+      fun(this->args, this->iter);
+    
+    return;
   };
    
   // Creation ------------------------------------------------------------------
@@ -133,11 +140,22 @@ public:
    */
   void prune_postorder();
   
+  //! Do the tree-traversal using the postorder with a user specific sequence
+  /** Same as `prune_postorder` but with a different sequence
+   * @param seq A new sequence to apply.
+   */
+  void prune_postorder(v_uint & seq);
+  
   //! Do the tree-traversal using the preorder
   /**
    * See Tree::prune_postorder.
    */
   void prune_preorder();
+  //! Do the tree-traversal using the preorder with a user specific sequence
+  /** Same as `prune_preorder` but with a different sequence
+   * @param seq A new sequence to apply.
+   */
+  void prune_preorder(v_uint & seq);
 
   
 };
@@ -147,7 +165,7 @@ public:
  * 
  * \example 01-adding-function.cpp In this example we add a function to the tree
  * (including a pointer to the arguments). This includes the definition of the
- * class FunArgs, which is stored as args in the Tree object.
+ * class TreeData, which is stored as args in the Tree object.
  * 
  * \example 02-rcpp.cpp Shows how can this library be used within R.
  * 

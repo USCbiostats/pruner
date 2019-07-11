@@ -1,5 +1,5 @@
 \hypertarget{01-adding-function_8cpp-example}{}\section{01-\/adding-\/function.\+cpp}
-In this example we add a function to the tree (including a pointer to the arguments). This includes the definition of the class Fun\+Args, which is stored as args in the \hyperlink{classTree}{Tree} object.
+In this example we add a function to the tree (including a pointer to the arguments). This includes the definition of the class Tree\+Data, which is stored as args in the \hyperlink{classTree}{Tree} object.
 
 
 \begin{DoxyCodeInclude}
@@ -8,12 +8,12 @@ In this example we add a function to the tree (including a pointer to the argume
 \textcolor{preprocessor}{#include "../include/pruner.h"}
 
 \textcolor{comment}{// STEP 1: Need to declare this class}
-\textcolor{keyword}{class }pruner::FunArgs \{
+\textcolor{keyword}{class }pruner::TreeData \{
   \textcolor{keywordtype}{int} nnodes;
 \textcolor{keyword}{public}:
   
-  ~FunArgs() \{\};
-  FunArgs(\textcolor{keywordtype}{int} n): nnodes(n) \{\};
+  ~TreeData() \{\};
+  TreeData(\textcolor{keywordtype}{int} n): nnodes(n) \{\};
   
   \textcolor{keywordtype}{int} get\_nnodes() \{\textcolor{keywordflow}{return} this->nnodes;\};
   \textcolor{keywordtype}{void} set\_nnodes(\textcolor{keywordtype}{int} n) \{
@@ -24,21 +24,19 @@ In this example we add a function to the tree (including a pointer to the argume
 
 \textcolor{comment}{// STEP 2: Define a function to be passed to the algorithm}
 \textcolor{keywordtype}{void} myfunction(
-    std::shared\_ptr<pruner::FunArgs> a,
+    \hyperlink{namespacepruner_a533476fef17527e75c4fba71d8c4ce50}{pruner::sptr\_treedata} a,
     \hyperlink{classpruner_1_1TreeIterator}{pruner::TreeIterator} & iter) \{
   
   \textcolor{comment}{// Moving a single step up}
   printf(\textcolor{stringliteral}{"Currently sitting on the node %i.\(\backslash\)nCurrent parents are: "}, iter.\hyperlink{classpruner_1_1TreeIterator_ae76ec4f2c1390d72889f78a51d65d19c}{id}());
-  \textcolor{keywordflow}{for} (pruner::v\_uint::const\_iterator i = iter.\hyperlink{classpruner_1_1TreeIterator_a3cb8dd28630f065472e135f7db822abf}{begin\_par}(); i != iter.
-      \hyperlink{classpruner_1_1TreeIterator_aac5656fc5b550cb8dfa4a9ebd5ea910a}{end\_par}(); ++i) \{
+  \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} i = iter.\hyperlink{classpruner_1_1TreeIterator_a3cb8dd28630f065472e135f7db822abf}{begin\_par}(); i != iter.\hyperlink{classpruner_1_1TreeIterator_aac5656fc5b550cb8dfa4a9ebd5ea910a}{end\_par}(); ++i) \{
     printf(\textcolor{stringliteral}{" %i"}, *i);
   \}
   printf(\textcolor{stringliteral}{"\(\backslash\)n"});
   
   iter.\hyperlink{classpruner_1_1TreeIterator_adca1d999f093a69e2f5d044b358e5da7}{up}();
   printf(\textcolor{stringliteral}{"Currently sitting on the node %i.\(\backslash\)nCurrent parents are: "}, iter.\hyperlink{classpruner_1_1TreeIterator_ae76ec4f2c1390d72889f78a51d65d19c}{id}());
-  \textcolor{keywordflow}{for} (pruner::v\_uint::const\_iterator i = iter.\hyperlink{classpruner_1_1TreeIterator_a3cb8dd28630f065472e135f7db822abf}{begin\_par}(); i != iter.
-      \hyperlink{classpruner_1_1TreeIterator_aac5656fc5b550cb8dfa4a9ebd5ea910a}{end\_par}(); ++i) \{
+  \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} i = iter.\hyperlink{classpruner_1_1TreeIterator_a3cb8dd28630f065472e135f7db822abf}{begin\_par}(); i != iter.\hyperlink{classpruner_1_1TreeIterator_aac5656fc5b550cb8dfa4a9ebd5ea910a}{end\_par}(); ++i) \{
     printf(\textcolor{stringliteral}{" %i"}, *i);
   \}
   printf(\textcolor{stringliteral}{"\(\backslash\)n"});
@@ -48,11 +46,11 @@ In this example we add a function to the tree (including a pointer to the argume
 \textcolor{keywordtype}{int} main () \{
   
   \textcolor{comment}{// Fake tree data}
-  pruner::v\_uint source = \{0u, 0u, 1u, 2u, 3u\};
-  pruner::v\_uint target = \{1u, 5u, 2u, 3u, 4u\};
+  \hyperlink{namespacepruner_af0145646bd7ede012cd336b416bc5579}{pruner::v\_uint} source = \{0u, 0u, 1u, 2u, 3u\};
+  \hyperlink{namespacepruner_af0145646bd7ede012cd336b416bc5579}{pruner::v\_uint} target = \{1u, 5u, 2u, 3u, 4u\};
   
   \textcolor{comment}{// Initialization of a tree object}
-  pruner::uint res;
+  \hyperlink{namespacepruner_a659e6e64a9e2b8e981c3d34262a2f67e}{pruner::uint} res;
   \hyperlink{classpruner_1_1Tree}{pruner::Tree} tree(source, target, res);
   
   \textcolor{comment}{// Looking at the data}
@@ -60,12 +58,14 @@ In this example we add a function to the tree (including a pointer to the argume
   
   \textcolor{comment}{// We can pass the function:}
   \textcolor{comment}{// Adding function arguments}
-  tree.\hyperlink{classpruner_1_1Tree_a555fc962c816cb826fb4e765bb54bf3b}{args} = std::make\_shared< pruner::FunArgs >(1);
-  tree.\hyperlink{classpruner_1_1Tree_aefea176861bd8f37492fb15db2d28dad}{fun} = myfunction;
+  tree.\hyperlink{classpruner_1_1Tree_ac61a4133ceae4ea3473ea84df94f0931}{args} = std::make\_shared< pruner::TreeData >(1);
+  tree.\hyperlink{classpruner_1_1Tree_a095f59358c914fb66939d2d82ca3ebc4}{fun} = myfunction;
   
   \textcolor{comment}{// Calling functions}
-  tree.\hyperlink{classpruner_1_1Tree_a555fc962c816cb826fb4e765bb54bf3b}{args}->set\_nnodes(5);
-  tree.eval\_fun();   \textcolor{comment}{// Implicit call}
+  tree.\hyperlink{classpruner_1_1Tree_ac61a4133ceae4ea3473ea84df94f0931}{args}->set\_nnodes(5);
+  tree.\hyperlink{classpruner_1_1Tree_abaa9ef6d7eacf37302d29c12c2180c3a}{eval\_fun}();   \textcolor{comment}{// Implicit call}
+  
+  tree.\hyperlink{classpruner_1_1Tree_a7d465880d18acf79f3a772ea5412b0d7}{prune\_postorder}();
   
   
   \textcolor{keywordflow}{return} 0;

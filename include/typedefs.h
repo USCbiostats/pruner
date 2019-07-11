@@ -29,9 +29,9 @@ typedef std::vector< v_uint > vv_uint;
 //! A vector of logicals
 typedef std::vector< bool > v_bool;
 
-class FunArgs;
-//! Shorthand for shared_ptr< FunArgs >
-typedef std::shared_ptr< FunArgs > sptr_args;
+class TreeData;
+//! Shorthand for shared_ptr< TreeData >
+typedef std::shared_ptr< TreeData > sptr_treedata;
 
 // Auxiliar functions ----------------------------------------------------------
 template <class T>
