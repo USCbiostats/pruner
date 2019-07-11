@@ -15,9 +15,8 @@
 void {\bfseries eval\+\_\+fun} ()\hypertarget{classpruner_1_1Tree_abaa9ef6d7eacf37302d29c12c2180c3a}{}\label{classpruner_1_1Tree_abaa9ef6d7eacf37302d29c12c2180c3a}
 
 \item 
-{\bfseries Tree} (const \hyperlink{typedefs_8h_ad56dde311aef1af823f4351451e8a381}{v\+\_\+uint} \&parents\+\_\+, const \hyperlink{typedefs_8h_ad56dde311aef1af823f4351451e8a381}{v\+\_\+uint} \&offspring\+\_\+, \hyperlink{typedefs_8h_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \&out)\hypertarget{classpruner_1_1Tree_a0f964d9ba9834822d3e18946a5361839}{}\label{classpruner_1_1Tree_a0f964d9ba9834822d3e18946a5361839}
-
-\item 
+\hyperlink{classpruner_1_1Tree_a0f964d9ba9834822d3e18946a5361839}{Tree} (const \hyperlink{typedefs_8h_ad56dde311aef1af823f4351451e8a381}{v\+\_\+uint} \&parents\+\_\+, const \hyperlink{typedefs_8h_ad56dde311aef1af823f4351451e8a381}{v\+\_\+uint} \&offspring\+\_\+, \hyperlink{typedefs_8h_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \&out)
+\begin{DoxyCompactList}\small\item\em Creating method using parents and offpring. \end{DoxyCompactList}\item 
 const \hyperlink{typedefs_8h_ad56dde311aef1af823f4351451e8a381}{v\+\_\+uint} $\ast$ {\bfseries get\+\_\+parents\+\_\+of} (\hyperlink{typedefs_8h_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} i)\hypertarget{classpruner_1_1Tree_a63ce508227afee3535e6ebc1bf864ab1}{}\label{classpruner_1_1Tree_a63ce508227afee3535e6ebc1bf864ab1}
 
 \item 
@@ -51,12 +50,6 @@ void {\bfseries print} (bool details=true) const \hypertarget{classpruner_1_1Tre
 bool {\bfseries is\+\_\+dag} ()\hypertarget{classpruner_1_1Tree_af793b391043a88ceea805b584efb982a}{}\label{classpruner_1_1Tree_af793b391043a88ceea805b584efb982a}
 
 \item 
-bool {\bfseries is\+\_\+root} (int i=-\/1)\hypertarget{classpruner_1_1Tree_a2bff85520992d00c0eb15f42b96b58d9}{}\label{classpruner_1_1Tree_a2bff85520992d00c0eb15f42b96b58d9}
-
-\item 
-bool {\bfseries is\+\_\+leaf} (int i=-\/1)\hypertarget{classpruner_1_1Tree_aee19d96af3f9a90ae9ea21838ed6c0aa}{}\label{classpruner_1_1Tree_aee19d96af3f9a90ae9ea21838ed6c0aa}
-
-\item 
 bool {\bfseries is\+\_\+connected} () const \hypertarget{classpruner_1_1Tree_ad47fa64c50fa9931f4e98d4dc4b94272}{}\label{classpruner_1_1Tree_ad47fa64c50fa9931f4e98d4dc4b94272}
 
 \item 
@@ -70,29 +63,26 @@ void \hyperlink{classpruner_1_1Tree_ac85bfb083b3856e65987e1d15885a61c}{prune\+\_
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-std\+::shared\+\_\+ptr$<$ Fun\+Args $>$ \hyperlink{classpruner_1_1Tree_ac205a6f18c76016b2c526e62ed986d24}{args}\hypertarget{classpruner_1_1Tree_ac205a6f18c76016b2c526e62ed986d24}{}\label{classpruner_1_1Tree_ac205a6f18c76016b2c526e62ed986d24}
+\hyperlink{typedefs_8h_a36d9dc9d55255609cd5999fe2a705730}{sptr\+\_\+args} \hyperlink{classpruner_1_1Tree_a555fc962c816cb826fb4e765bb54bf3b}{args}\hypertarget{classpruner_1_1Tree_a555fc962c816cb826fb4e765bb54bf3b}{}\label{classpruner_1_1Tree_a555fc962c816cb826fb4e765bb54bf3b}
 
 \begin{DoxyCompactList}\small\item\em Arbitrary set of arguments. \end{DoxyCompactList}\item 
-std\+::function$<$ void(std\+::shared\+\_\+ptr$<$ Fun\+Args $>$, \hyperlink{classpruner_1_1Tree}{Tree} $\ast$, \hyperlink{classpruner_1_1TreeIterator}{Tree\+Iterator} $\ast$)$>$ \hyperlink{classpruner_1_1Tree_a6a54846f5e95a7d07369e4075ff651a7}{fun}
+std\+::function$<$ void(\hyperlink{typedefs_8h_a36d9dc9d55255609cd5999fe2a705730}{sptr\+\_\+args}, \hyperlink{classpruner_1_1TreeIterator}{Tree\+Iterator} \&)$>$ \hyperlink{classpruner_1_1Tree_aefea176861bd8f37492fb15db2d28dad}{fun}
 \begin{DoxyCompactList}\small\item\em Callable function during the the tree traversal. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{typedefs_8h_a889a1eb698faf8cdf9160d65a20d316d}{vv\+\_\+uint} {\bfseries parents}\hypertarget{classpruner_1_1Tree_a9911227c95222495556b75e0bb93d255}{}\label{classpruner_1_1Tree_a9911227c95222495556b75e0bb93d255}
+\hyperlink{typedefs_8h_a889a1eb698faf8cdf9160d65a20d316d}{vv\+\_\+uint} \hyperlink{classpruner_1_1Tree_a9911227c95222495556b75e0bb93d255}{parents}\hypertarget{classpruner_1_1Tree_a9911227c95222495556b75e0bb93d255}{}\label{classpruner_1_1Tree_a9911227c95222495556b75e0bb93d255}
 
-\item 
-\hyperlink{typedefs_8h_a889a1eb698faf8cdf9160d65a20d316d}{vv\+\_\+uint} {\bfseries offspring}\hypertarget{classpruner_1_1Tree_a4681c11147392e23d9a09b247700bc85}{}\label{classpruner_1_1Tree_a4681c11147392e23d9a09b247700bc85}
+\begin{DoxyCompactList}\small\item\em Each nodes\textquotesingle{} parents. \end{DoxyCompactList}\item 
+\hyperlink{typedefs_8h_a889a1eb698faf8cdf9160d65a20d316d}{vv\+\_\+uint} \hyperlink{classpruner_1_1Tree_a4681c11147392e23d9a09b247700bc85}{offspring}\hypertarget{classpruner_1_1Tree_a4681c11147392e23d9a09b247700bc85}{}\label{classpruner_1_1Tree_a4681c11147392e23d9a09b247700bc85}
 
-\item 
-\hyperlink{typedefs_8h_a15a5deffe8bbc328d6b864316ab93cea}{v\+\_\+bool} {\bfseries visited}\hypertarget{classpruner_1_1Tree_a2a8b91180af3a3af45364b10647c0fca}{}\label{classpruner_1_1Tree_a2a8b91180af3a3af45364b10647c0fca}
+\begin{DoxyCompactList}\small\item\em Each nodes\textquotesingle{} offspring. \end{DoxyCompactList}\item 
+\hyperlink{typedefs_8h_a15a5deffe8bbc328d6b864316ab93cea}{v\+\_\+bool} \hyperlink{classpruner_1_1Tree_a2a8b91180af3a3af45364b10647c0fca}{visited}\hypertarget{classpruner_1_1Tree_a2a8b91180af3a3af45364b10647c0fca}{}\label{classpruner_1_1Tree_a2a8b91180af3a3af45364b10647c0fca}
 
-\item 
-\hyperlink{typedefs_8h_ad56dde311aef1af823f4351451e8a381}{v\+\_\+uint} {\bfseries visit\+\_\+counts}\hypertarget{classpruner_1_1Tree_a883d95ef62e679309e80e167ed02a96e}{}\label{classpruner_1_1Tree_a883d95ef62e679309e80e167ed02a96e}
+\begin{DoxyCompactList}\small\item\em List of already visited nodes (auxiliar) \end{DoxyCompactList}\item 
+\hyperlink{typedefs_8h_ad56dde311aef1af823f4351451e8a381}{v\+\_\+uint} \hyperlink{classpruner_1_1Tree_a883d95ef62e679309e80e167ed02a96e}{visit\+\_\+counts}\hypertarget{classpruner_1_1Tree_a883d95ef62e679309e80e167ed02a96e}{}\label{classpruner_1_1Tree_a883d95ef62e679309e80e167ed02a96e}
 
-\item 
-\hyperlink{typedefs_8h_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} {\bfseries current\+\_\+node} = 0u\hypertarget{classpruner_1_1Tree_a4d66035f145c9f9e9bdbd4a365ad8761}{}\label{classpruner_1_1Tree_a4d66035f145c9f9e9bdbd4a365ad8761}
-
-\item 
+\begin{DoxyCompactList}\small\item\em Number of visits per node (auxilias) \end{DoxyCompactList}\item 
 \hyperlink{typedefs_8h_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} {\bfseries N\+\_\+\+N\+O\+D\+ES}\hypertarget{classpruner_1_1Tree_a1f9cc9d18f9a4c06a32c5bf127f21027}{}\label{classpruner_1_1Tree_a1f9cc9d18f9a4c06a32c5bf127f21027}
 
 \item 
@@ -127,6 +117,33 @@ The \hyperlink{classpruner_1_1Tree}{Tree} class is the core of pruner. The most 
 \hyperlink{00-hello-world_8cpp-example}{00-\/hello-\/world.\+cpp}, \hyperlink{01-adding-function_8cpp-example}{01-\/adding-\/function.\+cpp}, and \hyperlink{02-rcpp_8cpp-example}{02-\/rcpp.\+cpp}.\end{Desc}
 
 
+\subsection{Constructor \& Destructor Documentation}
+\index{pruner\+::\+Tree@{pruner\+::\+Tree}!Tree@{Tree}}
+\index{Tree@{Tree}!pruner\+::\+Tree@{pruner\+::\+Tree}}
+\subsubsection[{\texorpdfstring{Tree(const v\+\_\+uint \&parents\+\_\+, const v\+\_\+uint \&offspring\+\_\+, uint \&out)}{Tree(const v_uint &parents_, const v_uint &offspring_, uint &out)}}]{\setlength{\rightskip}{0pt plus 5cm}Tree\+::\+Tree (
+\begin{DoxyParamCaption}
+\item[{const {\bf v\+\_\+uint} \&}]{parents\+\_\+, }
+\item[{const {\bf v\+\_\+uint} \&}]{offspring\+\_\+, }
+\item[{{\bf uint} \&}]{out}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classpruner_1_1Tree_a0f964d9ba9834822d3e18946a5361839}{}\label{classpruner_1_1Tree_a0f964d9ba9834822d3e18946a5361839}
+
+
+Creating method using parents and offpring. 
+
+The tree is initialized using an edgelist by listing each edges\textquotesingle{} parent and offspring. The ids of the nodes must range 0 through {\ttfamily n -\/ 1}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em parents\+\_\+} & Ids of the parents \\
+\hline
+{\em offspring\+\_\+} & Ids of the offspring. Must be of the same length as {\ttfamily parents\+\_\+} \\
+\hline
+{\em out} & Return codes. 0 means success. \\
+\hline
+\end{DoxyParams}
+
+
 \subsection{Member Function Documentation}
 \index{pruner\+::\+Tree@{pruner\+::\+Tree}!prune\+\_\+postorder@{prune\+\_\+postorder}}
 \index{prune\+\_\+postorder@{prune\+\_\+postorder}!pruner\+::\+Tree@{pruner\+::\+Tree}}
@@ -155,7 +172,7 @@ See \hyperlink{classpruner_1_1Tree_a7d465880d18acf79f3a772ea5412b0d7}{Tree\+::pr
 \subsection{Member Data Documentation}
 \index{pruner\+::\+Tree@{pruner\+::\+Tree}!fun@{fun}}
 \index{fun@{fun}!pruner\+::\+Tree@{pruner\+::\+Tree}}
-\subsubsection[{\texorpdfstring{fun}{fun}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::function$<$void(std\+::shared\+\_\+ptr$<$ Fun\+Args $>$, {\bf Tree}$\ast$, {\bf Tree\+Iterator}$\ast$)$>$ pruner\+::\+Tree\+::fun}\hypertarget{classpruner_1_1Tree_a6a54846f5e95a7d07369e4075ff651a7}{}\label{classpruner_1_1Tree_a6a54846f5e95a7d07369e4075ff651a7}
+\subsubsection[{\texorpdfstring{fun}{fun}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::function$<$void({\bf sptr\+\_\+args}, {\bf Tree\+Iterator}\&)$>$ pruner\+::\+Tree\+::fun}\hypertarget{classpruner_1_1Tree_aefea176861bd8f37492fb15db2d28dad}{}\label{classpruner_1_1Tree_aefea176861bd8f37492fb15db2d28dad}
 
 
 Callable function during the the tree traversal. 

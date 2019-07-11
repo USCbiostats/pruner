@@ -15,9 +15,8 @@
 void {\bfseries eval\+\_\+fun} ()\hypertarget{classTree_a5a24565d179a3bd6edae1ff323060a93}{}\label{classTree_a5a24565d179a3bd6edae1ff323060a93}
 
 \item 
-{\bfseries Tree} (const \hyperlink{typedefs_8h_ad56dde311aef1af823f4351451e8a381}{v\+\_\+uint} \&parents\+\_\+, const \hyperlink{typedefs_8h_ad56dde311aef1af823f4351451e8a381}{v\+\_\+uint} \&offspring\+\_\+, \hyperlink{typedefs_8h_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \&out)\hypertarget{classTree_a0f964d9ba9834822d3e18946a5361839}{}\label{classTree_a0f964d9ba9834822d3e18946a5361839}
-
-\item 
+\hyperlink{classTree_a0f964d9ba9834822d3e18946a5361839}{Tree} (const \hyperlink{typedefs_8h_ad56dde311aef1af823f4351451e8a381}{v\+\_\+uint} \&parents\+\_\+, const \hyperlink{typedefs_8h_ad56dde311aef1af823f4351451e8a381}{v\+\_\+uint} \&offspring\+\_\+, \hyperlink{typedefs_8h_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \&out)
+\begin{DoxyCompactList}\small\item\em Creating method using parents and offpring. \end{DoxyCompactList}\item 
 const \hyperlink{typedefs_8h_ad56dde311aef1af823f4351451e8a381}{v\+\_\+uint} $\ast$ {\bfseries get\+\_\+parents\+\_\+of} (\hyperlink{typedefs_8h_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} i)\hypertarget{classTree_adb9bede67bc875b58bb240d4c5421821}{}\label{classTree_adb9bede67bc875b58bb240d4c5421821}
 
 \item 
@@ -51,12 +50,6 @@ void {\bfseries print} (bool details=true) const \hypertarget{classTree_afe757ac
 bool {\bfseries is\+\_\+dag} ()\hypertarget{classTree_af793b391043a88ceea805b584efb982a}{}\label{classTree_af793b391043a88ceea805b584efb982a}
 
 \item 
-bool {\bfseries is\+\_\+root} (int i=-\/1)\hypertarget{classTree_ac7cc72373de46f73b747206d025854c0}{}\label{classTree_ac7cc72373de46f73b747206d025854c0}
-
-\item 
-bool {\bfseries is\+\_\+leaf} (int i=-\/1)\hypertarget{classTree_a47c36d92497bd98860e17937def7620c}{}\label{classTree_a47c36d92497bd98860e17937def7620c}
-
-\item 
 bool {\bfseries is\+\_\+connected} () const \hypertarget{classTree_a9f911acd648bbae87eaa018e61289903}{}\label{classTree_a9f911acd648bbae87eaa018e61289903}
 
 \item 
@@ -70,29 +63,26 @@ void \hyperlink{classTree_ac85bfb083b3856e65987e1d15885a61c}{prune\+\_\+preorder
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-std\+::shared\+\_\+ptr$<$ Fun\+Args $>$ \hyperlink{classTree_ab9e870a9889c897bb6164eed1047b5eb}{args}\hypertarget{classTree_ab9e870a9889c897bb6164eed1047b5eb}{}\label{classTree_ab9e870a9889c897bb6164eed1047b5eb}
+\hyperlink{typedefs_8h_a36d9dc9d55255609cd5999fe2a705730}{sptr\+\_\+args} \hyperlink{classTree_a115276dfa96383736e591b150ace3f8a}{args}\hypertarget{classTree_a115276dfa96383736e591b150ace3f8a}{}\label{classTree_a115276dfa96383736e591b150ace3f8a}
 
 \begin{DoxyCompactList}\small\item\em Arbitrary set of arguments. \end{DoxyCompactList}\item 
-std\+::function$<$ void(std\+::shared\+\_\+ptr$<$ Fun\+Args $>$, \hyperlink{classTree}{Tree} $\ast$, \hyperlink{classTreeIterator}{Tree\+Iterator} $\ast$)$>$ \hyperlink{classTree_aed3ea5ee55cf81fca64812e34a5050de}{fun}
+std\+::function$<$ void(\hyperlink{typedefs_8h_a36d9dc9d55255609cd5999fe2a705730}{sptr\+\_\+args}, \hyperlink{classTreeIterator}{Tree\+Iterator} \&)$>$ \hyperlink{classTree_ae70c3a427f2c5cee0d4dac4903df57e6}{fun}
 \begin{DoxyCompactList}\small\item\em Callable function during the the tree traversal. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{typedefs_8h_a889a1eb698faf8cdf9160d65a20d316d}{vv\+\_\+uint} {\bfseries parents}\hypertarget{classTree_a4d26e079c9d0b250a4bda27de8ad223c}{}\label{classTree_a4d26e079c9d0b250a4bda27de8ad223c}
+\hyperlink{typedefs_8h_a889a1eb698faf8cdf9160d65a20d316d}{vv\+\_\+uint} \hyperlink{classTree_a4d26e079c9d0b250a4bda27de8ad223c}{parents}\hypertarget{classTree_a4d26e079c9d0b250a4bda27de8ad223c}{}\label{classTree_a4d26e079c9d0b250a4bda27de8ad223c}
 
-\item 
-\hyperlink{typedefs_8h_a889a1eb698faf8cdf9160d65a20d316d}{vv\+\_\+uint} {\bfseries offspring}\hypertarget{classTree_ade5fd3ba5b6480c4edf8590eb0e41e34}{}\label{classTree_ade5fd3ba5b6480c4edf8590eb0e41e34}
+\begin{DoxyCompactList}\small\item\em Each nodes\textquotesingle{} parents. \end{DoxyCompactList}\item 
+\hyperlink{typedefs_8h_a889a1eb698faf8cdf9160d65a20d316d}{vv\+\_\+uint} \hyperlink{classTree_ade5fd3ba5b6480c4edf8590eb0e41e34}{offspring}\hypertarget{classTree_ade5fd3ba5b6480c4edf8590eb0e41e34}{}\label{classTree_ade5fd3ba5b6480c4edf8590eb0e41e34}
 
-\item 
-\hyperlink{typedefs_8h_a15a5deffe8bbc328d6b864316ab93cea}{v\+\_\+bool} {\bfseries visited}\hypertarget{classTree_a45813764070bd88238a3372c16b423fa}{}\label{classTree_a45813764070bd88238a3372c16b423fa}
+\begin{DoxyCompactList}\small\item\em Each nodes\textquotesingle{} offspring. \end{DoxyCompactList}\item 
+\hyperlink{typedefs_8h_a15a5deffe8bbc328d6b864316ab93cea}{v\+\_\+bool} \hyperlink{classTree_a45813764070bd88238a3372c16b423fa}{visited}\hypertarget{classTree_a45813764070bd88238a3372c16b423fa}{}\label{classTree_a45813764070bd88238a3372c16b423fa}
 
-\item 
-\hyperlink{typedefs_8h_ad56dde311aef1af823f4351451e8a381}{v\+\_\+uint} {\bfseries visit\+\_\+counts}\hypertarget{classTree_ac504d0c090c1f76363fc00cff2de0e7f}{}\label{classTree_ac504d0c090c1f76363fc00cff2de0e7f}
+\begin{DoxyCompactList}\small\item\em List of already visited nodes (auxiliar) \end{DoxyCompactList}\item 
+\hyperlink{typedefs_8h_ad56dde311aef1af823f4351451e8a381}{v\+\_\+uint} \hyperlink{classTree_ac504d0c090c1f76363fc00cff2de0e7f}{visit\+\_\+counts}\hypertarget{classTree_ac504d0c090c1f76363fc00cff2de0e7f}{}\label{classTree_ac504d0c090c1f76363fc00cff2de0e7f}
 
-\item 
-\hyperlink{typedefs_8h_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} {\bfseries current\+\_\+node} = 0u\hypertarget{classTree_a94b6910514cea207bf4b144eeb7d27cf}{}\label{classTree_a94b6910514cea207bf4b144eeb7d27cf}
-
-\item 
+\begin{DoxyCompactList}\small\item\em Number of visits per node (auxilias) \end{DoxyCompactList}\item 
 \hyperlink{typedefs_8h_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} {\bfseries N\+\_\+\+N\+O\+D\+ES}\hypertarget{classTree_a41b7a5ddd47b82688c099ee47561eb4f}{}\label{classTree_a41b7a5ddd47b82688c099ee47561eb4f}
 
 \item 
@@ -124,6 +114,33 @@ The \hyperlink{classTree}{Tree} class is the core of pruner. The most relevant m
 \item {\ttfamily fun} 
 \end{DoxyItemize}
 
+\subsection{Constructor \& Destructor Documentation}
+\index{Tree@{Tree}!Tree@{Tree}}
+\index{Tree@{Tree}!Tree@{Tree}}
+\subsubsection[{\texorpdfstring{Tree(const v\+\_\+uint \&parents\+\_\+, const v\+\_\+uint \&offspring\+\_\+, uint \&out)}{Tree(const v_uint &parents_, const v_uint &offspring_, uint &out)}}]{\setlength{\rightskip}{0pt plus 5cm}Tree\+::\+Tree (
+\begin{DoxyParamCaption}
+\item[{const {\bf v\+\_\+uint} \&}]{parents\+\_\+, }
+\item[{const {\bf v\+\_\+uint} \&}]{offspring\+\_\+, }
+\item[{{\bf uint} \&}]{out}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classTree_a0f964d9ba9834822d3e18946a5361839}{}\label{classTree_a0f964d9ba9834822d3e18946a5361839}
+
+
+Creating method using parents and offpring. 
+
+The tree is initialized using an edgelist by listing each edges\textquotesingle{} parent and offspring. The ids of the nodes must range 0 through {\ttfamily n -\/ 1}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em parents\+\_\+} & Ids of the parents \\
+\hline
+{\em offspring\+\_\+} & Ids of the offspring. Must be of the same length as {\ttfamily parents\+\_\+} \\
+\hline
+{\em out} & Return codes. 0 means success. \\
+\hline
+\end{DoxyParams}
+
+
 \subsection{Member Function Documentation}
 \index{Tree@{Tree}!prune\+\_\+postorder@{prune\+\_\+postorder}}
 \index{prune\+\_\+postorder@{prune\+\_\+postorder}!Tree@{Tree}}
@@ -152,7 +169,7 @@ See \hyperlink{classTree_a7d465880d18acf79f3a772ea5412b0d7}{Tree\+::prune\+\_\+p
 \subsection{Member Data Documentation}
 \index{Tree@{Tree}!fun@{fun}}
 \index{fun@{fun}!Tree@{Tree}}
-\subsubsection[{\texorpdfstring{fun}{fun}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::function$<$void(std\+::shared\+\_\+ptr$<$ Fun\+Args $>$, {\bf Tree}$\ast$, {\bf Tree\+Iterator}$\ast$)$>$ Tree\+::fun}\hypertarget{classTree_aed3ea5ee55cf81fca64812e34a5050de}{}\label{classTree_aed3ea5ee55cf81fca64812e34a5050de}
+\subsubsection[{\texorpdfstring{fun}{fun}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::function$<$void({\bf sptr\+\_\+args}, {\bf Tree\+Iterator}\&)$>$ Tree\+::fun}\hypertarget{classTree_ae70c3a427f2c5cee0d4dac4903df57e6}{}\label{classTree_ae70c3a427f2c5cee0d4dac4903df57e6}
 
 
 Callable function during the the tree traversal. 

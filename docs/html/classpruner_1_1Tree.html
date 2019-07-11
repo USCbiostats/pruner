@@ -108,8 +108,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:abaa9ef6d7eacf37302d29c12c2180c3a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abaa9ef6d7eacf37302d29c12c2180c3a"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>eval_fun</b> ()</td></tr>
 <tr class="separator:abaa9ef6d7eacf37302d29c12c2180c3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0f964d9ba9834822d3e18946a5361839"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0f964d9ba9834822d3e18946a5361839"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Tree</b> (const <a class="el" href="typedefs_8h.html#ad56dde311aef1af823f4351451e8a381">v_uint</a> &amp;parents_, const <a class="el" href="typedefs_8h.html#ad56dde311aef1af823f4351451e8a381">v_uint</a> &amp;offspring_, <a class="el" href="typedefs_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &amp;out)</td></tr>
+<tr class="memitem:a0f964d9ba9834822d3e18946a5361839"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpruner_1_1Tree.html#a0f964d9ba9834822d3e18946a5361839">Tree</a> (const <a class="el" href="typedefs_8h.html#ad56dde311aef1af823f4351451e8a381">v_uint</a> &amp;parents_, const <a class="el" href="typedefs_8h.html#ad56dde311aef1af823f4351451e8a381">v_uint</a> &amp;offspring_, <a class="el" href="typedefs_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &amp;out)</td></tr>
+<tr class="memdesc:a0f964d9ba9834822d3e18946a5361839"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creating method using parents and offpring.  <a href="#a0f964d9ba9834822d3e18946a5361839">More...</a><br /></td></tr>
 <tr class="separator:a0f964d9ba9834822d3e18946a5361839"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a63ce508227afee3535e6ebc1bf864ab1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a63ce508227afee3535e6ebc1bf864ab1"></a>
 const <a class="el" href="typedefs_8h.html#ad56dde311aef1af823f4351451e8a381">v_uint</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>get_parents_of</b> (<a class="el" href="typedefs_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i)</td></tr>
@@ -144,12 +144,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>print</b> (bool detai
 <tr class="memitem:af793b391043a88ceea805b584efb982a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af793b391043a88ceea805b584efb982a"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_dag</b> ()</td></tr>
 <tr class="separator:af793b391043a88ceea805b584efb982a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2bff85520992d00c0eb15f42b96b58d9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2bff85520992d00c0eb15f42b96b58d9"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_root</b> (int i=-1)</td></tr>
-<tr class="separator:a2bff85520992d00c0eb15f42b96b58d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee19d96af3f9a90ae9ea21838ed6c0aa"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aee19d96af3f9a90ae9ea21838ed6c0aa"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_leaf</b> (int i=-1)</td></tr>
-<tr class="separator:aee19d96af3f9a90ae9ea21838ed6c0aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad47fa64c50fa9931f4e98d4dc4b94272"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad47fa64c50fa9931f4e98d4dc4b94272"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_connected</b> () const </td></tr>
 <tr class="separator:ad47fa64c50fa9931f4e98d4dc4b94272"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -165,31 +159,32 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>reset_visited</b> ()<
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:ac205a6f18c76016b2c526e62ed986d24"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac205a6f18c76016b2c526e62ed986d24"></a>
-std::shared_ptr&lt; FunArgs &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpruner_1_1Tree.html#ac205a6f18c76016b2c526e62ed986d24">args</a></td></tr>
-<tr class="memdesc:ac205a6f18c76016b2c526e62ed986d24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Arbitrary set of arguments. <br /></td></tr>
-<tr class="separator:ac205a6f18c76016b2c526e62ed986d24"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a54846f5e95a7d07369e4075ff651a7"><td class="memItemLeft" align="right" valign="top">std::function&lt; void(std::shared_ptr&lt; FunArgs &gt;, <a class="el" href="classpruner_1_1Tree.html">Tree</a> *, <a class="el" href="classpruner_1_1TreeIterator.html">TreeIterator</a> *)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpruner_1_1Tree.html#a6a54846f5e95a7d07369e4075ff651a7">fun</a></td></tr>
-<tr class="memdesc:a6a54846f5e95a7d07369e4075ff651a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callable function during the the tree traversal.  <a href="#a6a54846f5e95a7d07369e4075ff651a7">More...</a><br /></td></tr>
-<tr class="separator:a6a54846f5e95a7d07369e4075ff651a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a555fc962c816cb826fb4e765bb54bf3b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a555fc962c816cb826fb4e765bb54bf3b"></a>
+<a class="el" href="typedefs_8h.html#a36d9dc9d55255609cd5999fe2a705730">sptr_args</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpruner_1_1Tree.html#a555fc962c816cb826fb4e765bb54bf3b">args</a></td></tr>
+<tr class="memdesc:a555fc962c816cb826fb4e765bb54bf3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Arbitrary set of arguments. <br /></td></tr>
+<tr class="separator:a555fc962c816cb826fb4e765bb54bf3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefea176861bd8f37492fb15db2d28dad"><td class="memItemLeft" align="right" valign="top">std::function&lt; void(<a class="el" href="typedefs_8h.html#a36d9dc9d55255609cd5999fe2a705730">sptr_args</a>, <a class="el" href="classpruner_1_1TreeIterator.html">TreeIterator</a> &amp;)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpruner_1_1Tree.html#aefea176861bd8f37492fb15db2d28dad">fun</a></td></tr>
+<tr class="memdesc:aefea176861bd8f37492fb15db2d28dad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callable function during the the tree traversal.  <a href="#aefea176861bd8f37492fb15db2d28dad">More...</a><br /></td></tr>
+<tr class="separator:aefea176861bd8f37492fb15db2d28dad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:a9911227c95222495556b75e0bb93d255"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9911227c95222495556b75e0bb93d255"></a>
-<a class="el" href="typedefs_8h.html#a889a1eb698faf8cdf9160d65a20d316d">vv_uint</a>&#160;</td><td class="memItemRight" valign="bottom"><b>parents</b></td></tr>
+<a class="el" href="typedefs_8h.html#a889a1eb698faf8cdf9160d65a20d316d">vv_uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpruner_1_1Tree.html#a9911227c95222495556b75e0bb93d255">parents</a></td></tr>
+<tr class="memdesc:a9911227c95222495556b75e0bb93d255"><td class="mdescLeft">&#160;</td><td class="mdescRight">Each nodes' parents. <br /></td></tr>
 <tr class="separator:a9911227c95222495556b75e0bb93d255"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4681c11147392e23d9a09b247700bc85"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4681c11147392e23d9a09b247700bc85"></a>
-<a class="el" href="typedefs_8h.html#a889a1eb698faf8cdf9160d65a20d316d">vv_uint</a>&#160;</td><td class="memItemRight" valign="bottom"><b>offspring</b></td></tr>
+<a class="el" href="typedefs_8h.html#a889a1eb698faf8cdf9160d65a20d316d">vv_uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpruner_1_1Tree.html#a4681c11147392e23d9a09b247700bc85">offspring</a></td></tr>
+<tr class="memdesc:a4681c11147392e23d9a09b247700bc85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Each nodes' offspring. <br /></td></tr>
 <tr class="separator:a4681c11147392e23d9a09b247700bc85"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a8b91180af3a3af45364b10647c0fca"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2a8b91180af3a3af45364b10647c0fca"></a>
-<a class="el" href="typedefs_8h.html#a15a5deffe8bbc328d6b864316ab93cea">v_bool</a>&#160;</td><td class="memItemRight" valign="bottom"><b>visited</b></td></tr>
+<a class="el" href="typedefs_8h.html#a15a5deffe8bbc328d6b864316ab93cea">v_bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpruner_1_1Tree.html#a2a8b91180af3a3af45364b10647c0fca">visited</a></td></tr>
+<tr class="memdesc:a2a8b91180af3a3af45364b10647c0fca"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of already visited nodes (auxiliar) <br /></td></tr>
 <tr class="separator:a2a8b91180af3a3af45364b10647c0fca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a883d95ef62e679309e80e167ed02a96e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a883d95ef62e679309e80e167ed02a96e"></a>
-<a class="el" href="typedefs_8h.html#ad56dde311aef1af823f4351451e8a381">v_uint</a>&#160;</td><td class="memItemRight" valign="bottom"><b>visit_counts</b></td></tr>
+<a class="el" href="typedefs_8h.html#ad56dde311aef1af823f4351451e8a381">v_uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpruner_1_1Tree.html#a883d95ef62e679309e80e167ed02a96e">visit_counts</a></td></tr>
+<tr class="memdesc:a883d95ef62e679309e80e167ed02a96e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of visits per node (auxilias) <br /></td></tr>
 <tr class="separator:a883d95ef62e679309e80e167ed02a96e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d66035f145c9f9e9bdbd4a365ad8761"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4d66035f145c9f9e9bdbd4a365ad8761"></a>
-<a class="el" href="typedefs_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><b>current_node</b> = 0u</td></tr>
-<tr class="separator:a4d66035f145c9f9e9bdbd4a365ad8761"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f9cc9d18f9a4c06a32c5bf127f21027"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1f9cc9d18f9a4c06a32c5bf127f21027"></a>
 <a class="el" href="typedefs_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><b>N_NODES</b></td></tr>
 <tr class="separator:a1f9cc9d18f9a4c06a32c5bf127f21027"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -218,8 +213,60 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>TreeIterator</b></td
 <li><code>args</code></li>
 <li><code>fun</code> </li>
 </ul>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="00-hello-world_8cpp-example.html#_a0">00-hello-world.cpp</a>, <a class="el" href="01-adding-function_8cpp-example.html#_a0">01-adding-function.cpp</a>, and <a class="el" href="02-rcpp_8cpp-example.html#_a0">02-rcpp.cpp</a>.</dd>
-</dl></div><h2 class="groupheader">Member Function Documentation</h2>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="00-hello-world_8cpp-example.html#_a0">00-hello-world.cpp</a>, <a class="el" href="01-adding-function_8cpp-example.html#_a5">01-adding-function.cpp</a>, and <a class="el" href="02-rcpp_8cpp-example.html#_a5">02-rcpp.cpp</a>.</dd>
+</dl></div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a0f964d9ba9834822d3e18946a5361839"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Tree::Tree </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="typedefs_8h.html#ad56dde311aef1af823f4351451e8a381">v_uint</a> &amp;&#160;</td>
+          <td class="paramname"><em>parents_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="typedefs_8h.html#ad56dde311aef1af823f4351451e8a381">v_uint</a> &amp;&#160;</td>
+          <td class="paramname"><em>offspring_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="typedefs_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &amp;&#160;</td>
+          <td class="paramname"><em>out</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Creating method using parents and offpring. </p>
+<p>The tree is initialized using an edgelist by listing each edges' parent and offspring. The ids of the nodes must range 0 through <code>n - 1</code>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parents_</td><td>Ids of the parents </td></tr>
+    <tr><td class="paramname">offspring_</td><td>Ids of the offspring. Must be of the same length as <code>parents_</code> </td></tr>
+    <tr><td class="paramname">out</td><td>Return codes. 0 means success. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a7d465880d18acf79f3a772ea5412b0d7"></a>
 <div class="memitem">
 <div class="memproto">
@@ -273,12 +320,12 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>TreeIterator</b></td
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a class="anchor" id="a6a54846f5e95a7d07369e4075ff651a7"></a>
+<a class="anchor" id="aefea176861bd8f37492fb15db2d28dad"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::function&lt;void(std::shared_ptr&lt; FunArgs &gt;, <a class="el" href="classpruner_1_1Tree.html">Tree</a>*, <a class="el" href="classpruner_1_1TreeIterator.html">TreeIterator</a>*)&gt; pruner::Tree::fun</td>
+          <td class="memname">std::function&lt;void(<a class="el" href="typedefs_8h.html#a36d9dc9d55255609cd5999fe2a705730">sptr_args</a>, <a class="el" href="classpruner_1_1TreeIterator.html">TreeIterator</a>&amp;)&gt; pruner::Tree::fun</td>
         </tr>
       </table>
 </div><div class="memdoc">

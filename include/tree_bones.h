@@ -37,16 +37,19 @@ private:
   bool is_dag_(int i = -1, int caller = -1, bool up_search = false);
   void postorder_(uint i);
   void postorder();
-  TreeIterator I;
+  TreeIterator iterator;
   
 protected:
+  //! Each nodes' parents.
   vv_uint parents;
+  //! Each nodes' offspring.
   vv_uint offspring;
   
   // Auxiliar variables
+  //! List of already visited nodes (auxiliar)
   v_bool visited;
+  //! Number of visits per node (auxilias)
   v_uint visit_counts;
-  uint current_node = 0u;
   
   // Constant
   uint N_NODES;
@@ -65,7 +68,7 @@ protected:
 public:
   
   //! Arbitrary set of arguments
-  std::shared_ptr< FunArgs > args;
+  sptr_args args;
   
   //! Callable function during the the tree traversal
   /**
@@ -74,15 +77,24 @@ public:
    * on the current node. The argument of class TreeIterator allows them to
    * get that information by accessing the member function TreeIterator::id.
    */
-  std::function<void(std::shared_ptr< FunArgs >, Tree*, TreeIterator*)> fun;
+  std::function<void(sptr_args, TreeIterator&)> fun;
   
   void eval_fun() {
-    fun(this->args, this, &this->I);
+    fun(this->args, this->iterator);
   };
    
   // Creation ------------------------------------------------------------------
   ~Tree() {};
   Tree() {};
+  //! Creating method using parents and offpring
+  /**
+   * The tree is initialized using an edgelist by listing each edges' parent and
+   * offspring. The ids of the nodes must range 0 through `n - 1`.
+   * 
+   * @param parents_ Ids of the parents
+   * @param offspring_ Ids of the offspring. Must be of the same length as `parents_`
+   * @param out Return codes. 0 means success.
+   */
   Tree(const v_uint & parents_, const v_uint & offspring_, uint & out);
   
   // Getter --------------------------------------------------------------------
@@ -104,21 +116,6 @@ public:
   
   // Checker functions ---------------------------------------------------------
   bool is_dag();
-  bool is_root(int i = -1) {
-    if (i >= 0)
-      i = current_node;
-    if (parents[i].size() == 0u)
-      return true;
-    else 
-      return false;
-  }
-  
-  bool is_leaf(int i = -1) { // Has a parent, and doesn't have offspring
-    if (i >= 0)
-      i = current_node;
-    return !this->is_root(i) && offspring[i].size() == 0u;
-  }
-  
   bool is_connected() const {return this->POSTORDER.size() == this->N_NODES;};
   
   // Setters -------------------------------------------------------------------
@@ -141,22 +138,7 @@ public:
    * See Tree::prune_postorder.
    */
   void prune_preorder();
-  
-  // uint 
-  
-  /*** The implementation should be as follows:
-   * 1. Initialize the algorithm (this can be done once the object is created).
-   *    For this to work we need to check that the variable POSTORDER has been
-   *    created.
-   * 2. Have function next_node(), which essentially moves the head according
-   *    to wether we are going with a POSTORDER or PREORDER.
-   * 3. Once the pointer has been moved, the user should have the following functions
-   *    a. list_offspring
-   *    b. list_parent
-   *    c. 
-   */
-  
-    
+
   
 };
 

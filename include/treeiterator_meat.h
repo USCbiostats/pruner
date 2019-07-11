@@ -73,3 +73,12 @@ inline void TreeIterator::bottom() {
   this->current_node = this->tree->POSTORDER[0u];
   return;
 }
+
+
+inline bool TreeIterator::is_root() const {
+  return this->tree->parents[current_node].size() == 0u;
+}
+
+inline bool TreeIterator::is_leaf() const { 
+  return this->tree->offspring[current_node].size() == 0u;
+}

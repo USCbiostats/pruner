@@ -4,7 +4,7 @@ Shows how can this library be used within R.
 
 \begin{DoxyCodeInclude}
 \textcolor{preprocessor}{#include <Rcpp.h>}
-\textcolor{preprocessor}{#include "pruner.h"}  
+\textcolor{preprocessor}{#include "../include/pruner.h"}  
 
 \textcolor{keyword}{using namespace }Rcpp; 
 
@@ -26,20 +26,20 @@ Shows how can this library be used within R.
 \};
 
 \textcolor{keywordtype}{void} myfunction(
-    std::shared\_ptr<pruner::FunArgs> a,
-    \hyperlink{classpruner_1_1Tree}{pruner::Tree} * t,
-    \hyperlink{classpruner_1_1TreeIterator}{pruner::TreeIterator} * iter) \{
+    pruner::sptr\_args a,
+    \hyperlink{classpruner_1_1TreeIterator}{pruner::TreeIterator} & iter
+  ) \{
   
   \textcolor{comment}{// Moving a single step up}
-  printf(\textcolor{stringliteral}{"Currently sitting on the node %i.\(\backslash\)nCurrent parents are: "}, iter->\hyperlink{classpruner_1_1TreeIterator_ae76ec4f2c1390d72889f78a51d65d19c}{id}());
-  \textcolor{keywordflow}{for} (pruner::v\_uint::const\_iterator i = iter->begin\_par(); i != iter->end\_par(); ++i) \{
+  printf(\textcolor{stringliteral}{"Currently sitting on the node %i.\(\backslash\)nCurrent parents are: "}, iter.\hyperlink{classpruner_1_1TreeIterator_ae76ec4f2c1390d72889f78a51d65d19c}{id}());
+  \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} i = iter.\hyperlink{classpruner_1_1TreeIterator_a3cb8dd28630f065472e135f7db822abf}{begin\_par}(); i != iter.\hyperlink{classpruner_1_1TreeIterator_aac5656fc5b550cb8dfa4a9ebd5ea910a}{end\_par}(); ++i) \{
     printf(\textcolor{stringliteral}{" %i"}, *i);
   \}
   printf(\textcolor{stringliteral}{"\(\backslash\)n"});
   
-  iter->\hyperlink{classpruner_1_1TreeIterator_adca1d999f093a69e2f5d044b358e5da7}{up}();
-  printf(\textcolor{stringliteral}{"Currently sitting on the node %i.\(\backslash\)nCurrent parents are: "}, iter->\hyperlink{classpruner_1_1TreeIterator_ae76ec4f2c1390d72889f78a51d65d19c}{id}());
-  \textcolor{keywordflow}{for} (pruner::v\_uint::const\_iterator i = iter->begin\_par(); i != iter->end\_par(); ++i) \{
+  iter.\hyperlink{classpruner_1_1TreeIterator_adca1d999f093a69e2f5d044b358e5da7}{up}();
+  printf(\textcolor{stringliteral}{"Currently sitting on the node %i.\(\backslash\)nCurrent parents are: "}, iter.\hyperlink{classpruner_1_1TreeIterator_ae76ec4f2c1390d72889f78a51d65d19c}{id}());
+  \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} i = iter.\hyperlink{classpruner_1_1TreeIterator_a3cb8dd28630f065472e135f7db822abf}{begin\_par}(); i != iter.\hyperlink{classpruner_1_1TreeIterator_aac5656fc5b550cb8dfa4a9ebd5ea910a}{end\_par}(); ++i) \{
     printf(\textcolor{stringliteral}{" %i"}, *i);
   \}
   printf(\textcolor{stringliteral}{"\(\backslash\)n"});
@@ -54,11 +54,11 @@ List fancytree(\textcolor{keyword}{const} pruner::v\_uint & parents, \textcolor{
   \hyperlink{classpruner_1_1Tree}{pruner::Tree} mytree(parents, offspring, ans);
   
   \textcolor{comment}{// Adding function arguments}
-  mytree.\hyperlink{classpruner_1_1Tree_ac205a6f18c76016b2c526e62ed986d24}{args} = std::make\_shared< pruner::FunArgs >(1);
-  mytree.\hyperlink{classpruner_1_1Tree_a6a54846f5e95a7d07369e4075ff651a7}{fun} = myfunction;
+  mytree.\hyperlink{classpruner_1_1Tree_a555fc962c816cb826fb4e765bb54bf3b}{args} = std::make\_shared< pruner::FunArgs >(1);
+  mytree.\hyperlink{classpruner_1_1Tree_aefea176861bd8f37492fb15db2d28dad}{fun} = myfunction;
   
   \textcolor{comment}{// Calling functions}
-  mytree.\hyperlink{classpruner_1_1Tree_ac205a6f18c76016b2c526e62ed986d24}{args}->set\_nnodes(5);
+  mytree.\hyperlink{classpruner_1_1Tree_a555fc962c816cb826fb4e765bb54bf3b}{args}->set\_nnodes(5);
   mytree.eval\_fun();   \textcolor{comment}{// Implicit call}
   
   \textcolor{comment}{// Example printing}

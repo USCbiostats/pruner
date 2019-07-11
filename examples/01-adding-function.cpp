@@ -20,19 +20,18 @@ public:
 // STEP 2: Define a function to be passed to the algorithm
 void myfunction(
     std::shared_ptr<pruner::FunArgs> a,
-    pruner::Tree * t,
-    pruner::TreeIterator * iter) {
+    pruner::TreeIterator & iter) {
   
   // Moving a single step up
-  printf("Currently sitting on the node %i.\nCurrent parents are: ", iter->id());
-  for (pruner::v_uint::const_iterator i = iter->begin_par(); i != iter->end_par(); ++i) {
+  printf("Currently sitting on the node %i.\nCurrent parents are: ", iter.id());
+  for (pruner::v_uint::const_iterator i = iter.begin_par(); i != iter.end_par(); ++i) {
     printf(" %i", *i);
   }
   printf("\n");
   
-  iter->up();
-  printf("Currently sitting on the node %i.\nCurrent parents are: ", iter->id());
-  for (pruner::v_uint::const_iterator i = iter->begin_par(); i != iter->end_par(); ++i) {
+  iter.up();
+  printf("Currently sitting on the node %i.\nCurrent parents are: ", iter.id());
+  for (pruner::v_uint::const_iterator i = iter.begin_par(); i != iter.end_par(); ++i) {
     printf(" %i", *i);
   }
   printf("\n");

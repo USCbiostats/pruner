@@ -17,12 +17,11 @@ public:
 // Creating the function
 void myfun1(
     std::shared_ptr< pruner::FunArgs > args,
-    pruner::Tree*              tree,
-    pruner::TreeIterator*      titer
+    pruner::TreeIterator & titer
 ) {
   
-  std::cout << "I'm called at " << titer->id() << " (postorder)\n";
-  args->total += args->attrs[titer->id()];
+  std::cout << "I'm called at " << titer.id() << " (postorder)\n";
+  args->total += args->attrs[titer.id()];
   
   return;
   
@@ -30,12 +29,11 @@ void myfun1(
 
 void myfun2(
     std::shared_ptr< pruner::FunArgs > args,
-    pruner::Tree*              tree,
-    pruner::TreeIterator*      titer
+    pruner::TreeIterator & titer
 ) {
   
-  std::cout << "I'm called at " << titer->id() << " (preorder)\n";
-  args->total /= args->attrs[titer->id()];
+  std::cout << "I'm called at " << titer.id() << " (preorder)\n";
+  args->total /= args->attrs[titer.id()];
   
   return;
   
@@ -68,5 +66,7 @@ TEST_CASE("Postorder pruner", "[tree][postorder]") {
   tree.prune_preorder();
   
   REQUIRE(tree.args->total == (1.0 / .4 / .3 / .2 / .1));  
+  
+  // Checking
 }
 

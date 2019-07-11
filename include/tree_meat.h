@@ -32,7 +32,7 @@ inline void Tree::postorder_(uint i) {
   this->visited[i] = true;
   
   // First, check the offspring
-  for (int j = 0; j < this->offspring[i].size(); ++j) {
+  for (uint j = 0u; j < this->offspring[i].size(); ++j) {
     
     // Nothing to do here
     if (this->visited[this->offspring[i][j]])
@@ -45,7 +45,7 @@ inline void Tree::postorder_(uint i) {
   // After visiting all of its childs, we need to add this node to the pruning
   // sequence and continue with its parent(s).
   POSTORDER.push_back(i);
-  for (int j = 0; j < this->parents[i].size(); ++j) {
+  for (uint j = 0u; j < this->parents[i].size(); ++j) {
     
     // Nothing to do here
     if (this->visited[this->parents[i][j]])
@@ -65,13 +65,13 @@ inline vv_uint Tree::get_edgelist() const {
   
   // We know the number of edges before hand, so we better save the space
   // up-front.
-  res[0].reserve(this->N_EDGES);
-  res[1].reserve(this->N_EDGES);
+  res[0u].reserve(this->N_EDGES);
+  res[1u].reserve(this->N_EDGES);
   
-  for (int i = 0; i < this->N_NODES; ++i) {
-    for (int j = 0; j < this->offspring[i].size(); ++j) {
-      res[0].push_back(i);
-      res[1].push_back(this->offspring[i][j]);
+  for (uint i = 0u; i < this->N_NODES; ++i) {
+    for (uint j = 0u; j < this->offspring[i].size(); ++j) {
+      res[0u].push_back(i);
+      res[1u].push_back(this->offspring[i][j]);
     }
   }
   
@@ -94,7 +94,7 @@ inline void Tree::print(bool details) const {
   
   // What is sais below (just divide the sections :P)
   printf("List of offspring:\n");
-  for (int i = 0; i < (int) this->offspring.size(); ++i) {
+  for (uint i = 0u; i < this->offspring.size(); ++i) {
     
     printf("%4i: [", i);
     
@@ -112,7 +112,7 @@ inline void Tree::print(bool details) const {
   
   // What is sais below (just divide the sections :P)
   printf("List of parents:\n");
-  for (int i = 0; i < (int) this->parents.size(); ++i) {
+  for (uint i = 0u; i < this->parents.size(); ++i) {
     
     printf("%4i: [", i);
     
@@ -147,8 +147,8 @@ inline Tree::Tree(const v_uint & parents_, const v_uint & offspring_, uint & out
   }
   
   // Checking ranges
-  int maxid = 0, m = (int) parents_.size();
-  for (int i = 0; i < m; ++i) {
+  uint maxid = 0u, m = parents_.size();
+  for (uint i = 0u; i < m; ++i) {
     if ((parents_[i] > MAX_TREE_SIZE) || (offspring_[i] > MAX_TREE_SIZE)) {
       out = 2u;
       return;
@@ -168,7 +168,7 @@ inline Tree::Tree(const v_uint & parents_, const v_uint & offspring_, uint & out
   this->visit_counts.resize(maxid + 1u, 0u);
   
   // Adding the data
-  for (uint i = 0; i < m; ++i) {
+  for (uint i = 0u; i < m; ++i) {
     this->offspring[parents_[i]].push_back(offspring_[i]);
     this->parents[offspring_[i]].push_back(parents_[i]);
   }
@@ -182,7 +182,7 @@ inline Tree::Tree(const v_uint & parents_, const v_uint & offspring_, uint & out
   this->postorder();
   
   // Initializing iterator 
-  this->I = TreeIterator(this);
+  this->iterator = TreeIterator(this);
   
   // Some checks
   if (!this->is_connected())
@@ -280,12 +280,12 @@ inline v_uint Tree::get_preorder() const {
 inline void Tree::prune_postorder() {
   
   // Set the head in the first node of the sequence
-  this->I.bottom();
+  this->iterator.bottom();
   int status = 0;
   while (status == 0) {
     
     this->eval_fun();
-    status = this->I.up();
+    status = this->iterator.up();
     
   }
   
@@ -296,12 +296,12 @@ inline void Tree::prune_postorder() {
 inline void Tree::prune_preorder() {
   
   // Set the head in the first node of the sequence
-  this->I.top();
+  this->iterator.top();
   int status = 0;
   while (status == 0) {
     
     this->eval_fun();
-    status = this->I.down();
+    status = this->iterator.down();
     
   }
   

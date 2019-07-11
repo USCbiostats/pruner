@@ -29,6 +29,10 @@ typedef std::vector< v_uint > vv_uint;
 //! A vector of logicals
 typedef std::vector< bool > v_bool;
 
+class FunArgs;
+//! Shorthand for shared_ptr< FunArgs >
+typedef std::shared_ptr< FunArgs > sptr_args;
+
 // Auxiliar functions ----------------------------------------------------------
 template <class T>
 inline uint find_in_vector(const std::vector< T >* x, T value) {

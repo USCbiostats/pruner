@@ -1,5 +1,5 @@
 #include <Rcpp.h>
-#include "pruner.h"  
+#include "../include/pruner.h"  
 
 using namespace Rcpp; 
 
@@ -21,20 +21,20 @@ public:
 };
 
 void myfunction(
-    std::shared_ptr<pruner::FunArgs> a,
-    pruner::Tree * t,
-    pruner::TreeIterator * iter) {
+    pruner::sptr_args a,
+    pruner::TreeIterator & iter
+  ) {
   
   // Moving a single step up
-  printf("Currently sitting on the node %i.\nCurrent parents are: ", iter->id());
-  for (pruner::v_uint::const_iterator i = iter->begin_par(); i != iter->end_par(); ++i) {
+  printf("Currently sitting on the node %i.\nCurrent parents are: ", iter.id());
+  for (auto i = iter.begin_par(); i != iter.end_par(); ++i) {
     printf(" %i", *i);
   }
   printf("\n");
   
-  iter->up();
-  printf("Currently sitting on the node %i.\nCurrent parents are: ", iter->id());
-  for (pruner::v_uint::const_iterator i = iter->begin_par(); i != iter->end_par(); ++i) {
+  iter.up();
+  printf("Currently sitting on the node %i.\nCurrent parents are: ", iter.id());
+  for (auto i = iter.begin_par(); i != iter.end_par(); ++i) {
     printf(" %i", *i);
   }
   printf("\n");
