@@ -1,6 +1,6 @@
 #ifndef H_PRUNER
-#include "tree_bones.h"
-#include "treeiterator_bones.h"
+#include "tree_bones.hpp"
+#include "treeiterator_bones.hpp"
 #endif
 
 inline TreeIterator::TreeIterator(Tree * tree) {

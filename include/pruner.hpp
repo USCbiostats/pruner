@@ -8,14 +8,14 @@
 //! Tree class and TreeIterator class
 namespace pruner {
 
-#include "typedefs.h"
-#include "treeiterator_bones.h"
-#include "tree_bones.h"
+#include "typedefs.hpp"
+#include "treeiterator_bones.hpp"
+#include "tree_bones.hpp"
 
 // Meat needs to be defined later since some methods require
 
-#include "treeiterator_meat.h"
-#include "tree_meat.h"
+#include "treeiterator_meat.hpp"
+#include "tree_meat.hpp"
 
 }
 

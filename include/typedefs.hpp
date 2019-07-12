@@ -17,6 +17,14 @@ inline void print_vector(const std::vector< T > & V) {
 
 //! @file typedefs.h
 
+// Double types ----------------------------------------------------------------
+//! Vector of doubles
+typedef std::vector< double > v_dbl;
+//! Vector of vector of doubles
+typedef std::vector< v_dbl > vv_dbl;
+
+// Integer types ---------------------------------------------------------------
+
 //! Unsigned integer
 typedef unsigned int uint;
 

@@ -3,7 +3,7 @@
 #include <vector>
 #include <iostream>
 #include <type_traits>
-#include "../include/pruner.h"
+#include "../include/pruner.hpp"
 
 template <class T>
 inline void print(std::vector< T > & x) {

@@ -4,7 +4,7 @@ Shows how can this library be used within R.
 
 \begin{DoxyCodeInclude}
 \textcolor{preprocessor}{#include <Rcpp.h>}
-\textcolor{preprocessor}{#include "../include/pruner.h"}  
+\textcolor{preprocessor}{#include "../include/pruner.hpp"}  
 
 \textcolor{keyword}{using namespace }Rcpp; 
 
@@ -51,7 +51,7 @@ List fancytree(\textcolor{keyword}{const} \hyperlink{namespacepruner_af0145646bd
       \hyperlink{namespacepruner_af0145646bd7ede012cd336b416bc5579}{pruner::v\_uint} & offspring) \{
   
   \textcolor{comment}{// Creating the object}
-  \hyperlink{typedefs_8h_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} ans;
+  uint ans;
   \hyperlink{classpruner_1_1Tree}{pruner::Tree} mytree(parents, offspring, ans);
   
   \textcolor{comment}{// Adding function arguments}

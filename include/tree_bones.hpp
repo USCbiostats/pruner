@@ -1,7 +1,7 @@
 #ifndef H_PRUNER
 #include <memory>
-#include "typedefs.h"
-#include "treeiterator_bones.h"
+#include "typedefs.hpp"
+#include "treeiterator_bones.hpp"
 #endif
 
 #ifndef H_PRUNER_TREE_BONES

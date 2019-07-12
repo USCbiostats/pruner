@@ -1,5 +1,5 @@
 #ifndef H_PRUNER
-#include "typedefs.h"
+#include "typedefs.hpp"
 #endif
 
 #ifndef H_PRUNER_TREEITERATOR_BONES

@@ -1,9 +1,9 @@
 #ifndef H_PRUNER
 #include <vector>
-#include "typedefs.h"
-#include "tree_bones.h"
-#include "treeiterator_bones.h"
-#include "treeiterator_meat.h"
+#include "typedefs.hpp"
+#include "tree_bones.hpp"
+#include "treeiterator_bones.hpp"
+#include "treeiterator_meat.hpp"
 #include <memory> // For the std::shared_ptr
 #endif
 

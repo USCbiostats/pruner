@@ -1,6 +1,6 @@
 // #include <iostream>
 // #include <vector>
-// #include "../include/pruner.h"
+// #include "../include/pruner.hpp"
 
 // For creating the MAIN
 // #define CATCH_CONFIG_MAIN 

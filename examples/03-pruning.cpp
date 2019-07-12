@@ -1,5 +1,5 @@
 #include <Rcpp.h>
-#include "../include/pruner.h"
+#include "../include/pruner.hpp"
 #include "03-pruning.hpp"
 using namespace Rcpp;
 
