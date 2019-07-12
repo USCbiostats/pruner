@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['tree',['Tree',['../classpruner_1_1Tree.html#a0f964d9ba9834822d3e18946a5361839',1,'pruner::Tree::Tree()'],['../classTree.html#a0f964d9ba9834822d3e18946a5361839',1,'Tree::Tree()']]]
+  ['prune_5fpostorder',['prune_postorder',['../classpruner_1_1Tree.html#a7d465880d18acf79f3a772ea5412b0d7',1,'pruner::Tree::prune_postorder()'],['../classpruner_1_1Tree.html#a8318027f3d2b1a07bf25e813c7c80056',1,'pruner::Tree::prune_postorder(v_uint &amp;seq)'],['../classTree.html#a7d465880d18acf79f3a772ea5412b0d7',1,'Tree::prune_postorder()'],['../classTree.html#a8318027f3d2b1a07bf25e813c7c80056',1,'Tree::prune_postorder(v_uint &amp;seq)']]],
+  ['prune_5fpreorder',['prune_preorder',['../classpruner_1_1Tree.html#ac85bfb083b3856e65987e1d15885a61c',1,'pruner::Tree::prune_preorder()'],['../classpruner_1_1Tree.html#a6841109c7ff37bcabdf3a4d79009ad21',1,'pruner::Tree::prune_preorder(v_uint &amp;seq)'],['../classTree.html#ac85bfb083b3856e65987e1d15885a61c',1,'Tree::prune_preorder()'],['../classTree.html#a6841109c7ff37bcabdf3a4d79009ad21',1,'Tree::prune_preorder(v_uint &amp;seq)']]]
 ];
