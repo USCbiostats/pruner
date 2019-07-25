@@ -11,18 +11,25 @@ public:
   ~TreeData() {};
   TreeData(std::vector< double > attrs_) : attrs(attrs_), total(0.0)  {};
   std::vector< double > attrs;
+  bool odd = true;
   double total;
 };
 
 // Creating the function
-void myfun1(
+void myfun(
     std::shared_ptr< pruner::TreeData > args,
     pruner::TreeIterator & titer
 ) {
   
   std::cout << "I'm called at " << titer.id() << " (postorder)\n";
-  args->total += args->attrs[titer.id()];
   
+  if (args->odd) {
+    args->total /= args->attrs[titer.id()];
+  } else {
+    args->total *= args->attrs[titer.id()];
+  }
+  
+  args->odd = !args->odd;
   return;
   
 }
@@ -51,21 +58,32 @@ TEST_CASE("Postorder pruner", "[tree][postorder]") {
   pruner::Tree tree(source, target, res);
   std::vector< double > values = {0.1, 0.2, 0.3, 0.4};
   tree.args = std::make_shared< pruner::TreeData >(values);
-  tree.fun  = myfun1;
+  tree.fun  = myfun;
   
   // Calling the pruning algo
+  tree.args->total = 1.0;
   tree.prune_postorder();
   
-  REQUIRE(tree.args->total == 1.0);
+  REQUIRE(tree.args->total == 1.0 / .1 * .2 / .3 * .4);
+  
+  // Reprune
+  double totalcurr = tree.args->total;
+  tree.args->odd   = true;
+  tree.prune_postorder();
+  REQUIRE(tree.args->total == (totalcurr / .1 * .2 / .3 * .4));
   
   // Now repeating the thing but with preorder
   tree.args->total = 1.0;
-  tree.fun = myfun2;
+  tree.args->odd   = true;
   
   // Calling the pruning algo
   tree.prune_preorder();
   
-  REQUIRE(tree.args->total == (1.0 / .4 / .3 / .2 / .1));  
+  REQUIRE(tree.args->total == (1.0 / .4 * .3 / .2 * .1));  
+  totalcurr = tree.args->total;
+  tree.args->odd   = true;
+  tree.prune_preorder();
+  REQUIRE(tree.args->total == (totalcurr / .4 * .3 / .2 * .1));
   
   // Checking
 }
