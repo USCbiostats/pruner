@@ -1,7 +1,4 @@
 var searchData=
 [
-  ['tree',['Tree',['../classpruner_1_1Tree.html',1,'pruner']]],
-  ['tree',['Tree',['../classTree.html',1,'Tree'],['../classpruner_1_1Tree.html#a0f964d9ba9834822d3e18946a5361839',1,'pruner::Tree::Tree()'],['../classTree.html#a0f964d9ba9834822d3e18946a5361839',1,'Tree::Tree()']]],
-  ['treeiterator',['TreeIterator',['../classTreeIterator.html',1,'']]],
-  ['treeiterator',['TreeIterator',['../classpruner_1_1TreeIterator.html',1,'pruner']]]
+  ['sptr_5ftreedata',['sptr_treedata',['../namespacepruner.html#a533476fef17527e75c4fba71d8c4ce50',1,'pruner']]]
 ];

@@ -187,10 +187,29 @@ inline Tree::Tree(const v_uint & parents_, const v_uint & offspring_, uint & out
   this->iter = TreeIterator(this);
   
   // Some checks
-  if (!this->is_connected())
+  if (!this->is_connected()) {
+    
     out = 3u;
-  if (!this->is_dag())
+    return;
+    
+  } else if (!this->is_dag()) {
+    
     out = 4u;
+    return;
+    
+  }
+  
+  // Marking tip nodes
+  int status = 0;
+  this->iter.bottom();
+  this->TIPS.reserve(this->n_tips());
+  while ( status == 0 ) {
+    if (this->iter.is_tip())
+      this->TIPS.push_back(*this->iter);
+    status = this->iter.up();
+  }
+  this->iter.bottom();
+  
   
   out = 0u;
   return;
@@ -276,6 +295,56 @@ inline v_uint Tree::get_preorder() const {
   v_uint res = this->get_postorder();
   std::reverse(res.begin(), res.end());
   return res;
+  
+}
+
+inline uint Tree::get_dist_tip2root_(uint i, uint count) {
+  
+  // If we are already in a root node, then return with the reached count
+  if (parents[i].size() == 0u)
+    return count;
+  
+  // We start by adding one step (since we are not at the root!)
+  ++count;
+  
+  // Otherwise, let's see at its parents (who is closests to the root)
+  v_uint counts(parents[i].size());
+  uint j = 0;
+  for (auto iter = parents[i].begin(); iter != parents[i].end(); ++iter) {
+    
+    // Looking how far do we reach
+    counts[j] = get_dist_tip2root_(*iter, count);
+    
+    // If we reached to root in the next step. Otherwise we need to keep looking
+    // until we get to that is closests.
+    if (counts[j] == count)
+      return count;
+    
+  }
+  
+  // We keep the smallest one
+  count = counts[0];
+  for (auto iter = counts.begin() + 1; iter != counts.end(); ++iter)
+    if (*iter < count)
+      count = *iter;
+  
+  return count;
+}
+
+inline v_uint Tree::get_dist_tip2root() {
+  
+  if (this->DIST_TIPS2ROOT.size() == 0u) {
+    
+    // Making space available
+    this->DIST_TIPS2ROOT.resize(this->n_tips());
+    
+    uint i = 0;
+    for (auto iter = TIPS.begin(); iter != TIPS.end(); ++iter)
+      DIST_TIPS2ROOT[i++] = get_dist_tip2root_(*iter, 0u);
+    
+  }
+  
+  return this->DIST_TIPS2ROOT;
   
 }
 

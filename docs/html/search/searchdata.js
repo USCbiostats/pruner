@@ -1,10 +1,10 @@
 var indexSectionsWithContent =
 {
-  0: "abdefinopstuv",
+  0: "abdefginopstuv",
   1: "t",
   2: "p",
-  3: "bdeinptu",
-  4: "afopv",
+  3: "bdeginptu",
+  4: "afoptv",
   5: "suv"
 };
 

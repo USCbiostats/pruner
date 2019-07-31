@@ -67,7 +67,7 @@ void aphylo(
     pruner::TreeIterator & n
 ) {
   
-  if (n.is_leaf()) {
+  if (n.is_tip()) {
     
     // Iterating through the states
     for (uint s = 0u; s < D->states.size(); ++s) {
