@@ -317,7 +317,7 @@ inline uint Tree::get_dist_tip2root_(uint i, uint count) {
     
     // If we reached to root in the next step. Otherwise we need to keep looking
     // until we get to that is closests.
-    if (counts[j] == count)
+    if (counts[j++] == count)
       return count;
     
   }
@@ -338,9 +338,8 @@ inline v_uint Tree::get_dist_tip2root() {
     // Making space available
     this->DIST_TIPS2ROOT.resize(this->n_tips());
     
-    uint i = 0;
-    for (auto iter = TIPS.begin(); iter != TIPS.end(); ++iter)
-      DIST_TIPS2ROOT[i++] = get_dist_tip2root_(*iter, 0u);
+    for (uint i = 0u; i < TIPS.size(); ++i)
+      DIST_TIPS2ROOT[i] = get_dist_tip2root_(TIPS[i], 0u);
     
   }
   
@@ -430,7 +429,7 @@ inline uint Tree::n_tips() const {
   
   uint count = 0u;
   for (auto i = this->offspring.begin(); i != offspring.end(); ++i)
-    if (i->size() > 0u)
+    if (i->size() == 0u)
       ++count;
   
   return count;
