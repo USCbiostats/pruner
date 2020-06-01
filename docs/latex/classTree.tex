@@ -9,61 +9,83 @@
 
 {\ttfamily \#include $<$tree\+\_\+bones.\+hpp$>$}
 
+
+
+Collaboration diagram for Tree\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=147pt]{classTree__coll__graph}
+\end{center}
+\end{figure}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{classTree_a5a24565d179a3bd6edae1ff323060a93}{eval\+\_\+fun} ()\hypertarget{classTree_a5a24565d179a3bd6edae1ff323060a93}{}\label{classTree_a5a24565d179a3bd6edae1ff323060a93}
-
+\mbox{\Hypertarget{classTree_a5a24565d179a3bd6edae1ff323060a93}\label{classTree_a5a24565d179a3bd6edae1ff323060a93}} 
+void \hyperlink{classTree_a5a24565d179a3bd6edae1ff323060a93}{eval\+\_\+fun} ()
 \begin{DoxyCompactList}\small\item\em Evaluates the function by passing the arguments and the iterator. \end{DoxyCompactList}\item 
 \hyperlink{classTree_a0f964d9ba9834822d3e18946a5361839}{Tree} (const v\+\_\+uint \&parents\+\_\+, const v\+\_\+uint \&offspring\+\_\+, uint \&out)
 \begin{DoxyCompactList}\small\item\em Creating method using parents and offpring. \end{DoxyCompactList}\item 
-const v\+\_\+uint $\ast$ {\bfseries get\+\_\+parents\+\_\+of} (uint i)\hypertarget{classTree_adb9bede67bc875b58bb240d4c5421821}{}\label{classTree_adb9bede67bc875b58bb240d4c5421821}
-
+\mbox{\Hypertarget{classTree_a41116e321adcec99b0e73aea766d0ce0}\label{classTree_a41116e321adcec99b0e73aea766d0ce0}} 
+const vv\+\_\+uint $\ast$ {\bfseries get\+\_\+parents\+\_\+ptr} () const
 \item 
-const v\+\_\+uint $\ast$ {\bfseries get\+\_\+offspring\+\_\+of} (uint i)\hypertarget{classTree_a02c43c8a0bb0e7be7bf33436a8c05b30}{}\label{classTree_a02c43c8a0bb0e7be7bf33436a8c05b30}
-
+\mbox{\Hypertarget{classTree_ad52da0d981e7fb93c933d60382bfb07d}\label{classTree_ad52da0d981e7fb93c933d60382bfb07d}} 
+const vv\+\_\+uint $\ast$ {\bfseries get\+\_\+offspring\+\_\+ptr} () const
 \item 
-vv\+\_\+uint {\bfseries get\+\_\+parents} () const \hypertarget{classTree_ae4f36e6d306946015965a7d9bc577a2a}{}\label{classTree_ae4f36e6d306946015965a7d9bc577a2a}
-
+\mbox{\Hypertarget{classTree_a3c2193b841c5828d6654bcc7b6fa41f6}\label{classTree_a3c2193b841c5828d6654bcc7b6fa41f6}} 
+const v\+\_\+uint $\ast$ {\bfseries get\+\_\+postorder\+\_\+ptr} () const
 \item 
-vv\+\_\+uint {\bfseries get\+\_\+offspring} () const \hypertarget{classTree_af8780369e1bc3a0d4e396bb91ad85a72}{}\label{classTree_af8780369e1bc3a0d4e396bb91ad85a72}
-
+\mbox{\Hypertarget{classTree_a9ab87e5d50bbf66107952b70454224da}\label{classTree_a9ab87e5d50bbf66107952b70454224da}} 
+vv\+\_\+uint {\bfseries get\+\_\+parents} () const
 \item 
-v\+\_\+uint {\bfseries get\+\_\+postorder} () const \hypertarget{classTree_a333503b86f195c8e84248a59eefe2fdf}{}\label{classTree_a333503b86f195c8e84248a59eefe2fdf}
-
+\mbox{\Hypertarget{classTree_a1147fa8eaf7f141894ffe5aaad220fd1}\label{classTree_a1147fa8eaf7f141894ffe5aaad220fd1}} 
+vv\+\_\+uint {\bfseries get\+\_\+offspring} () const
 \item 
-v\+\_\+uint {\bfseries get\+\_\+preorder} () const \hypertarget{classTree_a22f81a8b7062b224f13dd1f2e7a1f7e0}{}\label{classTree_a22f81a8b7062b224f13dd1f2e7a1f7e0}
-
+\mbox{\Hypertarget{classTree_a544d422169d7c4e33cd61e741f995741}\label{classTree_a544d422169d7c4e33cd61e741f995741}} 
+v\+\_\+uint {\bfseries get\+\_\+postorder} () const
 \item 
-v\+\_\+uint \hyperlink{classTree_a73396ff6395f33e67b6c9f0d1f814ced}{get\+\_\+tips} () const \hypertarget{classTree_a73396ff6395f33e67b6c9f0d1f814ced}{}\label{classTree_a73396ff6395f33e67b6c9f0d1f814ced}
-
+\mbox{\Hypertarget{classTree_a525fcc5556afc09006966186ee6c072a}\label{classTree_a525fcc5556afc09006966186ee6c072a}} 
+v\+\_\+uint {\bfseries get\+\_\+preorder} () const
+\item 
+\mbox{\Hypertarget{classTree_a411811df044855ec7266ba16331880dd}\label{classTree_a411811df044855ec7266ba16331880dd}} 
+v\+\_\+uint \hyperlink{classTree_a411811df044855ec7266ba16331880dd}{get\+\_\+tips} () const
 \begin{DoxyCompactList}\small\item\em List of tips position indices. \end{DoxyCompactList}\item 
-v\+\_\+uint \hyperlink{classTree_a506eec876c7817e3a83f9cf1bf8090cc}{get\+\_\+dist\+\_\+tip2root} ()\hypertarget{classTree_a506eec876c7817e3a83f9cf1bf8090cc}{}\label{classTree_a506eec876c7817e3a83f9cf1bf8090cc}
-
+\mbox{\Hypertarget{classTree_a506eec876c7817e3a83f9cf1bf8090cc}\label{classTree_a506eec876c7817e3a83f9cf1bf8090cc}} 
+v\+\_\+uint \hyperlink{classTree_a506eec876c7817e3a83f9cf1bf8090cc}{get\+\_\+dist\+\_\+tip2root} ()
 \begin{DoxyCompactList}\small\item\em Distance of tips to the closest root. \end{DoxyCompactList}\item 
-uint \hyperlink{classTree_a69612e5a3a479c16d12b661e6bac4062}{n\+\_\+nodes} () const \hypertarget{classTree_a69612e5a3a479c16d12b661e6bac4062}{}\label{classTree_a69612e5a3a479c16d12b661e6bac4062}
-
+\mbox{\Hypertarget{classTree_a56f6eba2fc5df2bc20cbf2555d26dae8}\label{classTree_a56f6eba2fc5df2bc20cbf2555d26dae8}} 
+uint \hyperlink{classTree_a56f6eba2fc5df2bc20cbf2555d26dae8}{n\+\_\+nodes} () const
 \begin{DoxyCompactList}\small\item\em Returns the numner of nodes. \end{DoxyCompactList}\item 
-uint \hyperlink{classTree_a055847ae7ad6387a32113a1fe24ca61b}{n\+\_\+edges} () const \hypertarget{classTree_a055847ae7ad6387a32113a1fe24ca61b}{}\label{classTree_a055847ae7ad6387a32113a1fe24ca61b}
-
+\mbox{\Hypertarget{classTree_aec93ed515e663b13160bb1761da38751}\label{classTree_aec93ed515e663b13160bb1761da38751}} 
+uint \hyperlink{classTree_aec93ed515e663b13160bb1761da38751}{n\+\_\+edges} () const
 \begin{DoxyCompactList}\small\item\em Returns the numner of edges. \end{DoxyCompactList}\item 
-uint \hyperlink{classTree_a0fd92859e0d3e125de6ae4b4af0e301a}{n\+\_\+tips} () const \hypertarget{classTree_a0fd92859e0d3e125de6ae4b4af0e301a}{}\label{classTree_a0fd92859e0d3e125de6ae4b4af0e301a}
-
+\mbox{\Hypertarget{classTree_a8ac445babc8822e53144d5a4051f931b}\label{classTree_a8ac445babc8822e53144d5a4051f931b}} 
+uint \hyperlink{classTree_a8ac445babc8822e53144d5a4051f931b}{n\+\_\+tips} () const
 \begin{DoxyCompactList}\small\item\em Return the number of tips defined as nodes with no offspring. \end{DoxyCompactList}\item 
-vv\+\_\+uint {\bfseries get\+\_\+edgelist} () const \hypertarget{classTree_a700fd8abdcb805f53999b2fb00fc2710}{}\label{classTree_a700fd8abdcb805f53999b2fb00fc2710}
-
+\mbox{\Hypertarget{classTree_a66351f434b1a92e9121ced0535b024a2}\label{classTree_a66351f434b1a92e9121ced0535b024a2}} 
+int \hyperlink{classTree_a66351f434b1a92e9121ced0535b024a2}{n\+\_\+offspring} (uint i) const
+\begin{DoxyCompactList}\small\item\em Return the number of offsprings a given node has. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classTree_a4bacee9412759e72d7df95127d6f70a2}\label{classTree_a4bacee9412759e72d7df95127d6f70a2}} 
+int \hyperlink{classTree_a4bacee9412759e72d7df95127d6f70a2}{n\+\_\+parents} (uint i) const
+\begin{DoxyCompactList}\small\item\em Return the number of parents a given node has. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classTree_ae0a8c80679a111970b560c0cdcdbc107}\label{classTree_ae0a8c80679a111970b560c0cdcdbc107}} 
+vv\+\_\+uint {\bfseries get\+\_\+edgelist} () const
 \item 
-void {\bfseries print} (bool details=true) const \hypertarget{classTree_afe757ac173ac177a0ebefd222a06eed5}{}\label{classTree_afe757ac173ac177a0ebefd222a06eed5}
-
+\mbox{\Hypertarget{classTree_a2c14caeb3feb1de3c1478f6ce1cad15f}\label{classTree_a2c14caeb3feb1de3c1478f6ce1cad15f}} 
+void {\bfseries print} (bool details=true) const
 \item 
-bool {\bfseries is\+\_\+dag} ()\hypertarget{classTree_af793b391043a88ceea805b584efb982a}{}\label{classTree_af793b391043a88ceea805b584efb982a}
-
+\mbox{\Hypertarget{classTree_af793b391043a88ceea805b584efb982a}\label{classTree_af793b391043a88ceea805b584efb982a}} 
+bool {\bfseries is\+\_\+dag} ()
 \item 
-bool {\bfseries is\+\_\+connected} () const \hypertarget{classTree_a9f911acd648bbae87eaa018e61289903}{}\label{classTree_a9f911acd648bbae87eaa018e61289903}
-
+\mbox{\Hypertarget{classTree_a5b39d33f36af57c2966ccee73bed7e90}\label{classTree_a5b39d33f36af57c2966ccee73bed7e90}} 
+bool {\bfseries is\+\_\+connected} () const
 \item 
-void {\bfseries reset\+\_\+visited} ()\hypertarget{classTree_adb83bb19c14623ce57ac6d1b84b1c2ff}{}\label{classTree_adb83bb19c14623ce57ac6d1b84b1c2ff}
-
+\mbox{\Hypertarget{classTree_adb83bb19c14623ce57ac6d1b84b1c2ff}\label{classTree_adb83bb19c14623ce57ac6d1b84b1c2ff}} 
+void {\bfseries reset\+\_\+visited} ()
+\item 
+\mbox{\Hypertarget{classTree_a2de0f68a5de9083a4ff21b54d567fb1a}\label{classTree_a2de0f68a5de9083a4ff21b54d567fb1a}} 
+uint {\bfseries set\+\_\+postorder} (const v\+\_\+uint \&P\+O\+S\+T\+O\+R\+D\+E\+R\+\_\+, bool check=true)
 \item 
 void \hyperlink{classTree_a7d465880d18acf79f3a772ea5412b0d7}{prune\+\_\+postorder} ()
 \begin{DoxyCompactList}\small\item\em Do the tree-\/traversal using the postorder. \end{DoxyCompactList}\item 
@@ -76,51 +98,69 @@ void \hyperlink{classTree_a6841109c7ff37bcabdf3a4d79009ad21}{prune\+\_\+preorder
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-sptr\+\_\+treedata \hyperlink{classTree_ac2ff3911dfe768b18be9f6cc2baca89e}{args}\hypertarget{classTree_ac2ff3911dfe768b18be9f6cc2baca89e}{}\label{classTree_ac2ff3911dfe768b18be9f6cc2baca89e}
-
+\mbox{\Hypertarget{classTree_a205a142291d4070468c509e2b564e06c}\label{classTree_a205a142291d4070468c509e2b564e06c}} 
+Tree\+Data $\ast$ \hyperlink{classTree_a205a142291d4070468c509e2b564e06c}{args} = nullptr
 \begin{DoxyCompactList}\small\item\em Arbitrary set of arguments. \end{DoxyCompactList}\item 
-std\+::function$<$ void(sptr\+\_\+treedata, \hyperlink{classTreeIterator}{Tree\+Iterator} \&)$>$ \hyperlink{classTree_ad98f51efc931f96c687c65d4387d19e9}{fun}
+std\+::function$<$ void(Tree\+Data $\ast$, \hyperlink{classTreeIterator}{Tree\+Iterator} \&)$>$ \hyperlink{classTree_a92a3c76480465109fea154e2f2cab4ab}{fun}
 \begin{DoxyCompactList}\small\item\em Callable function during the the tree traversal. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classTree_a4f73b72aa5a79068661593ae32cb8f57}\label{classTree_a4f73b72aa5a79068661593ae32cb8f57}} 
+bool {\bfseries is\+\_\+dag\+\_\+} (int i=-\/1, int caller=-\/1, bool up\+\_\+search=false)
+\item 
+\mbox{\Hypertarget{classTree_ad082d4d0c63728243e027aba5882d76e}\label{classTree_ad082d4d0c63728243e027aba5882d76e}} 
+void {\bfseries postorder\+\_\+} (uint i)
+\item 
+\mbox{\Hypertarget{classTree_a955f3ddab30616447f4d785272cfa090}\label{classTree_a955f3ddab30616447f4d785272cfa090}} 
+void {\bfseries postorder} ()
+\item 
+\mbox{\Hypertarget{classTree_a83d01c0cde3abfcc0f09c0bf33795259}\label{classTree_a83d01c0cde3abfcc0f09c0bf33795259}} 
+uint {\bfseries get\+\_\+dist\+\_\+tip2root\+\_\+} (uint start, uint count)
+\end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-vv\+\_\+uint \hyperlink{classTree_a4d26e079c9d0b250a4bda27de8ad223c}{parents}\hypertarget{classTree_a4d26e079c9d0b250a4bda27de8ad223c}{}\label{classTree_a4d26e079c9d0b250a4bda27de8ad223c}
-
+\mbox{\Hypertarget{classTree_aae304834dc2c72501d76735331ae4c44}\label{classTree_aae304834dc2c72501d76735331ae4c44}} 
+\hyperlink{classTreeIterator}{Tree\+Iterator} {\bfseries iter}
+\item 
+\mbox{\Hypertarget{classTree_a4d26e079c9d0b250a4bda27de8ad223c}\label{classTree_a4d26e079c9d0b250a4bda27de8ad223c}} 
+vv\+\_\+uint \hyperlink{classTree_a4d26e079c9d0b250a4bda27de8ad223c}{parents}
 \begin{DoxyCompactList}\small\item\em Each nodes\textquotesingle{} parents. \end{DoxyCompactList}\item 
-vv\+\_\+uint \hyperlink{classTree_ade5fd3ba5b6480c4edf8590eb0e41e34}{offspring}\hypertarget{classTree_ade5fd3ba5b6480c4edf8590eb0e41e34}{}\label{classTree_ade5fd3ba5b6480c4edf8590eb0e41e34}
-
+\mbox{\Hypertarget{classTree_ade5fd3ba5b6480c4edf8590eb0e41e34}\label{classTree_ade5fd3ba5b6480c4edf8590eb0e41e34}} 
+vv\+\_\+uint \hyperlink{classTree_ade5fd3ba5b6480c4edf8590eb0e41e34}{offspring}
 \begin{DoxyCompactList}\small\item\em Each nodes\textquotesingle{} offspring. \end{DoxyCompactList}\item 
-v\+\_\+bool \hyperlink{classTree_a45813764070bd88238a3372c16b423fa}{visited}\hypertarget{classTree_a45813764070bd88238a3372c16b423fa}{}\label{classTree_a45813764070bd88238a3372c16b423fa}
-
+\mbox{\Hypertarget{classTree_a45813764070bd88238a3372c16b423fa}\label{classTree_a45813764070bd88238a3372c16b423fa}} 
+v\+\_\+bool \hyperlink{classTree_a45813764070bd88238a3372c16b423fa}{visited}
 \begin{DoxyCompactList}\small\item\em List of already visited nodes (auxiliar) \end{DoxyCompactList}\item 
-v\+\_\+uint \hyperlink{classTree_ac504d0c090c1f76363fc00cff2de0e7f}{visit\+\_\+counts}\hypertarget{classTree_ac504d0c090c1f76363fc00cff2de0e7f}{}\label{classTree_ac504d0c090c1f76363fc00cff2de0e7f}
-
+\mbox{\Hypertarget{classTree_ac504d0c090c1f76363fc00cff2de0e7f}\label{classTree_ac504d0c090c1f76363fc00cff2de0e7f}} 
+v\+\_\+uint \hyperlink{classTree_ac504d0c090c1f76363fc00cff2de0e7f}{visit\+\_\+counts}
 \begin{DoxyCompactList}\small\item\em Number of visits per node (auxilias) \end{DoxyCompactList}\item 
-uint {\bfseries N\+\_\+\+N\+O\+D\+ES}\hypertarget{classTree_a41b7a5ddd47b82688c099ee47561eb4f}{}\label{classTree_a41b7a5ddd47b82688c099ee47561eb4f}
-
+\mbox{\Hypertarget{classTree_a41b7a5ddd47b82688c099ee47561eb4f}\label{classTree_a41b7a5ddd47b82688c099ee47561eb4f}} 
+uint {\bfseries N\+\_\+\+N\+O\+D\+ES}
 \item 
-uint {\bfseries N\+\_\+\+E\+D\+G\+ES}\hypertarget{classTree_a123cdf871af449443aa8b7c05029d72a}{}\label{classTree_a123cdf871af449443aa8b7c05029d72a}
-
+\mbox{\Hypertarget{classTree_a123cdf871af449443aa8b7c05029d72a}\label{classTree_a123cdf871af449443aa8b7c05029d72a}} 
+uint {\bfseries N\+\_\+\+E\+D\+G\+ES}
 \item 
-uint {\bfseries N\+\_\+\+T\+I\+PS}\hypertarget{classTree_afe09b17dd0f475dcbc4054892863050e}{}\label{classTree_afe09b17dd0f475dcbc4054892863050e}
-
+\mbox{\Hypertarget{classTree_afe09b17dd0f475dcbc4054892863050e}\label{classTree_afe09b17dd0f475dcbc4054892863050e}} 
+uint {\bfseries N\+\_\+\+T\+I\+PS}
 \item 
 v\+\_\+uint \hyperlink{classTree_a310e76b803db38e7067514822b21a58f}{P\+O\+S\+T\+O\+R\+D\+ER}
 \begin{DoxyCompactList}\small\item\em Postorder sequence. \end{DoxyCompactList}\item 
-v\+\_\+uint \hyperlink{classTree_a486adc6260e94490b485e205e8e70b1f}{T\+I\+PS}\hypertarget{classTree_a486adc6260e94490b485e205e8e70b1f}{}\label{classTree_a486adc6260e94490b485e205e8e70b1f}
-
+\mbox{\Hypertarget{classTree_a486adc6260e94490b485e205e8e70b1f}\label{classTree_a486adc6260e94490b485e205e8e70b1f}} 
+v\+\_\+uint \hyperlink{classTree_a486adc6260e94490b485e205e8e70b1f}{T\+I\+PS}
 \begin{DoxyCompactList}\small\item\em List of tip (leaves) indices. \end{DoxyCompactList}\item 
-v\+\_\+uint {\bfseries D\+I\+S\+T\+\_\+\+T\+I\+P\+S2\+R\+O\+OT}\hypertarget{classTree_af6b0afbf17f53ef49a43f9b640d92fde}{}\label{classTree_af6b0afbf17f53ef49a43f9b640d92fde}
-
+\mbox{\Hypertarget{classTree_af6b0afbf17f53ef49a43f9b640d92fde}\label{classTree_af6b0afbf17f53ef49a43f9b640d92fde}} 
+v\+\_\+uint {\bfseries D\+I\+S\+T\+\_\+\+T\+I\+P\+S2\+R\+O\+OT}
 \end{DoxyCompactItemize}
 \subsection*{Friends}
 \begin{DoxyCompactItemize}
 \item 
-class {\bfseries Tree\+Data}\hypertarget{classTree_a3ef069a6a857ec671312e3f76cb5aa24}{}\label{classTree_a3ef069a6a857ec671312e3f76cb5aa24}
-
+\mbox{\Hypertarget{classTree_a3ef069a6a857ec671312e3f76cb5aa24}\label{classTree_a3ef069a6a857ec671312e3f76cb5aa24}} 
+class {\bfseries Tree\+Data}
 \item 
-class {\bfseries Tree\+Iterator}\hypertarget{classTree_a925e5a7f5dc110e63f7062d0e6898af9}{}\label{classTree_a925e5a7f5dc110e63f7062d0e6898af9}
-
+\mbox{\Hypertarget{classTree_a925e5a7f5dc110e63f7062d0e6898af9}\label{classTree_a925e5a7f5dc110e63f7062d0e6898af9}} 
+class {\bfseries Tree\+Iterator}
 \end{DoxyCompactItemize}
 
 
@@ -137,15 +177,12 @@ The \hyperlink{classTree}{Tree} class is the core of pruner. The most relevant m
 \end{DoxyItemize}
 
 \subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classTree_a0f964d9ba9834822d3e18946a5361839}\label{classTree_a0f964d9ba9834822d3e18946a5361839}} 
 \index{Tree@{Tree}!Tree@{Tree}}
 \index{Tree@{Tree}!Tree@{Tree}}
-\subsubsection[{\texorpdfstring{Tree(const v\+\_\+uint \&parents\+\_\+, const v\+\_\+uint \&offspring\+\_\+, uint \&out)}{Tree(const v_uint &parents_, const v_uint &offspring_, uint &out)}}]{\setlength{\rightskip}{0pt plus 5cm}Tree\+::\+Tree (
-\begin{DoxyParamCaption}
-\item[{const v\+\_\+uint \&}]{parents\+\_\+, }
-\item[{const v\+\_\+uint \&}]{offspring\+\_\+, }
-\item[{uint \&}]{out}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classTree_a0f964d9ba9834822d3e18946a5361839}{}\label{classTree_a0f964d9ba9834822d3e18946a5361839}
+\subsubsection{\texorpdfstring{Tree()}{Tree()}}
+{\footnotesize\ttfamily Tree\+::\+Tree (\begin{DoxyParamCaption}\item[{const v\+\_\+uint \&}]{parents\+\_\+,  }\item[{const v\+\_\+uint \&}]{offspring\+\_\+,  }\item[{uint \&}]{out }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
 
 
 Creating method using parents and offpring. 
@@ -164,24 +201,22 @@ The tree is initialized using an edgelist by listing each edges\textquotesingle{
 
 
 \subsection{Member Function Documentation}
+\mbox{\Hypertarget{classTree_a7d465880d18acf79f3a772ea5412b0d7}\label{classTree_a7d465880d18acf79f3a772ea5412b0d7}} 
 \index{Tree@{Tree}!prune\+\_\+postorder@{prune\+\_\+postorder}}
 \index{prune\+\_\+postorder@{prune\+\_\+postorder}!Tree@{Tree}}
-\subsubsection[{\texorpdfstring{prune\+\_\+postorder()}{prune_postorder()}}]{\setlength{\rightskip}{0pt plus 5cm}void Tree\+::prune\+\_\+postorder (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classTree_a7d465880d18acf79f3a772ea5412b0d7}{}\label{classTree_a7d465880d18acf79f3a772ea5412b0d7}
+\subsubsection{\texorpdfstring{prune\+\_\+postorder()}{prune\_postorder()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Tree\+::prune\+\_\+postorder (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
 
 
 Do the tree-\/traversal using the postorder. 
 
-The user defined function {\ttfamily fun} will be called at each step. This allows users implementing their own model. \index{Tree@{Tree}!prune\+\_\+postorder@{prune\+\_\+postorder}}
+The user defined function {\ttfamily fun} will be called at each step. This allows users implementing their own model. \mbox{\Hypertarget{classTree_a8318027f3d2b1a07bf25e813c7c80056}\label{classTree_a8318027f3d2b1a07bf25e813c7c80056}} 
+\index{Tree@{Tree}!prune\+\_\+postorder@{prune\+\_\+postorder}}
 \index{prune\+\_\+postorder@{prune\+\_\+postorder}!Tree@{Tree}}
-\subsubsection[{\texorpdfstring{prune\+\_\+postorder(v\+\_\+uint \&seq)}{prune_postorder(v_uint &seq)}}]{\setlength{\rightskip}{0pt plus 5cm}void Tree\+::prune\+\_\+postorder (
-\begin{DoxyParamCaption}
-\item[{v\+\_\+uint \&}]{seq}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classTree_a8318027f3d2b1a07bf25e813c7c80056}{}\label{classTree_a8318027f3d2b1a07bf25e813c7c80056}
+\subsubsection{\texorpdfstring{prune\+\_\+postorder()}{prune\_postorder()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Tree\+::prune\+\_\+postorder (\begin{DoxyParamCaption}\item[{v\+\_\+uint \&}]{seq }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
 
 
 Do the tree-\/traversal using the postorder with a user specific sequence. 
@@ -191,24 +226,22 @@ Same as {\ttfamily prune\+\_\+postorder} but with a different sequence
 {\em seq} & A new sequence to apply. \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{classTree_ac85bfb083b3856e65987e1d15885a61c}\label{classTree_ac85bfb083b3856e65987e1d15885a61c}} 
 \index{Tree@{Tree}!prune\+\_\+preorder@{prune\+\_\+preorder}}
 \index{prune\+\_\+preorder@{prune\+\_\+preorder}!Tree@{Tree}}
-\subsubsection[{\texorpdfstring{prune\+\_\+preorder()}{prune_preorder()}}]{\setlength{\rightskip}{0pt plus 5cm}void Tree\+::prune\+\_\+preorder (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classTree_ac85bfb083b3856e65987e1d15885a61c}{}\label{classTree_ac85bfb083b3856e65987e1d15885a61c}
+\subsubsection{\texorpdfstring{prune\+\_\+preorder()}{prune\_preorder()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Tree\+::prune\+\_\+preorder (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
 
 
 Do the tree-\/traversal using the preorder. 
 
-See \hyperlink{classTree_a7d465880d18acf79f3a772ea5412b0d7}{Tree\+::prune\+\_\+postorder}. \index{Tree@{Tree}!prune\+\_\+preorder@{prune\+\_\+preorder}}
+See \hyperlink{classTree_a7d465880d18acf79f3a772ea5412b0d7}{Tree\+::prune\+\_\+postorder}. \mbox{\Hypertarget{classTree_a6841109c7ff37bcabdf3a4d79009ad21}\label{classTree_a6841109c7ff37bcabdf3a4d79009ad21}} 
+\index{Tree@{Tree}!prune\+\_\+preorder@{prune\+\_\+preorder}}
 \index{prune\+\_\+preorder@{prune\+\_\+preorder}!Tree@{Tree}}
-\subsubsection[{\texorpdfstring{prune\+\_\+preorder(v\+\_\+uint \&seq)}{prune_preorder(v_uint &seq)}}]{\setlength{\rightskip}{0pt plus 5cm}void Tree\+::prune\+\_\+preorder (
-\begin{DoxyParamCaption}
-\item[{v\+\_\+uint \&}]{seq}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classTree_a6841109c7ff37bcabdf3a4d79009ad21}{}\label{classTree_a6841109c7ff37bcabdf3a4d79009ad21}
+\subsubsection{\texorpdfstring{prune\+\_\+preorder()}{prune\_preorder()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Tree\+::prune\+\_\+preorder (\begin{DoxyParamCaption}\item[{v\+\_\+uint \&}]{seq }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
 
 
 Do the tree-\/traversal using the preorder with a user specific sequence. 
@@ -221,16 +254,22 @@ Same as {\ttfamily prune\+\_\+preorder} but with a different sequence
 
 
 \subsection{Member Data Documentation}
+\mbox{\Hypertarget{classTree_a92a3c76480465109fea154e2f2cab4ab}\label{classTree_a92a3c76480465109fea154e2f2cab4ab}} 
 \index{Tree@{Tree}!fun@{fun}}
 \index{fun@{fun}!Tree@{Tree}}
-\subsubsection[{\texorpdfstring{fun}{fun}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::function$<$void(sptr\+\_\+treedata, {\bf Tree\+Iterator}\&)$>$ Tree\+::fun}\hypertarget{classTree_ad98f51efc931f96c687c65d4387d19e9}{}\label{classTree_ad98f51efc931f96c687c65d4387d19e9}
+\subsubsection{\texorpdfstring{fun}{fun}}
+{\footnotesize\ttfamily std\+::function$<$void(Tree\+Data $\ast$, \hyperlink{classTreeIterator}{Tree\+Iterator}\&)$>$ Tree\+::fun}
+
 
 
 Callable function during the the tree traversal. 
 
-The idea of this function is that the users can specify what to do during a call to \hyperlink{classTree_a7d465880d18acf79f3a772ea5412b0d7}{Tree\+::prune\+\_\+postorder} and \hyperlink{classTree_ac85bfb083b3856e65987e1d15885a61c}{Tree\+::prune\+\_\+preorder} conditional on the current node. The argument of class \hyperlink{classTreeIterator}{Tree\+Iterator} allows them to get that information by accessing the member function \hyperlink{classTreeIterator_a80badcbb276e0aa78216f5ef6ff91b62}{Tree\+Iterator\+::id}. \index{Tree@{Tree}!P\+O\+S\+T\+O\+R\+D\+ER@{P\+O\+S\+T\+O\+R\+D\+ER}}
+The idea of this function is that the users can specify what to do during a call to \hyperlink{classTree_a7d465880d18acf79f3a772ea5412b0d7}{Tree\+::prune\+\_\+postorder} and \hyperlink{classTree_ac85bfb083b3856e65987e1d15885a61c}{Tree\+::prune\+\_\+preorder} conditional on the current node. The argument of class \hyperlink{classTreeIterator}{Tree\+Iterator} allows them to get that information by accessing the member function \hyperlink{classTreeIterator_a1ad0126da70f20e1b0c5ab71940edbfe}{Tree\+Iterator\+::id}. \mbox{\Hypertarget{classTree_a310e76b803db38e7067514822b21a58f}\label{classTree_a310e76b803db38e7067514822b21a58f}} 
+\index{Tree@{Tree}!P\+O\+S\+T\+O\+R\+D\+ER@{P\+O\+S\+T\+O\+R\+D\+ER}}
 \index{P\+O\+S\+T\+O\+R\+D\+ER@{P\+O\+S\+T\+O\+R\+D\+ER}!Tree@{Tree}}
-\subsubsection[{\texorpdfstring{P\+O\+S\+T\+O\+R\+D\+ER}{POSTORDER}}]{\setlength{\rightskip}{0pt plus 5cm}v\+\_\+uint Tree\+::\+P\+O\+S\+T\+O\+R\+D\+ER\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{classTree_a310e76b803db38e7067514822b21a58f}{}\label{classTree_a310e76b803db38e7067514822b21a58f}
+\subsubsection{\texorpdfstring{P\+O\+S\+T\+O\+R\+D\+ER}{POSTORDER}}
+{\footnotesize\ttfamily v\+\_\+uint Tree\+::\+P\+O\+S\+T\+O\+R\+D\+ER\hspace{0.3cm}{\ttfamily [protected]}}
+
 
 
 Postorder sequence. 

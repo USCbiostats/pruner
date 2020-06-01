@@ -1,5 +1,6 @@
 #ifndef H_PRUNER
 #include <memory>
+#include <functional>
 #include "typedefs.hpp"
 #include "treeiterator_bones.hpp"
 #endif
@@ -33,16 +34,17 @@ class TreeIterator;
  * - `args`
  * - `fun`
  */
+
 class Tree {
   
-private:
+protected:
   bool is_dag_(int i = -1, int caller = -1, bool up_search = false);
   void postorder_(uint i);
   void postorder();
   uint get_dist_tip2root_(uint start, uint count);
   TreeIterator iter;
   
-protected:
+
   //! Each nodes' parents.
   vv_uint parents;
   //! Each nodes' offspring.
@@ -76,7 +78,7 @@ protected:
 public:
   
   //! Arbitrary set of arguments
-  sptr_treedata args;
+  TreeData * args = nullptr;
   
   //! Callable function during the the tree traversal
   /**
@@ -85,7 +87,7 @@ public:
    * on the current node. The argument of class TreeIterator allows them to
    * get that information by accessing the member function TreeIterator::id.
    */
-  std::function<void(sptr_treedata, TreeIterator&)> fun;
+  std::function<void(TreeData *, TreeIterator&)> fun;
   
   //! Evaluates the function by passing the arguments and the iterator
   void eval_fun() {
@@ -97,7 +99,10 @@ public:
   };
    
   // Creation ------------------------------------------------------------------
-  ~Tree() {};
+  ~Tree() {
+    args = nullptr;
+    return;
+  };
   Tree() {};
   //! Creating method using parents and offpring
   /**
@@ -113,8 +118,9 @@ public:
   // Getter --------------------------------------------------------------------
   
   // As pointers
-  const v_uint * get_parents_of(uint i);
-  const v_uint * get_offspring_of(uint i);
+  const vv_uint * get_parents_ptr()   const {return &this->parents;};
+  const vv_uint * get_offspring_ptr() const {return &this->offspring;};
+  const v_uint * get_postorder_ptr()  const {return &this->POSTORDER;};
   
   // As data
   vv_uint get_parents()   const {return this->parents;};
@@ -136,6 +142,12 @@ public:
   //! Return the number of tips defined as nodes with no offspring.
   uint n_tips() const;
   
+  //! Return the number of offsprings a given node has
+  int n_offspring(uint i) const;
+  
+  //! Return the number of parents a given node has
+  int n_parents(uint i) const;
+  
   vv_uint get_edgelist()  const;
   
   void print(bool details = true) const;
@@ -150,6 +162,8 @@ public:
     std::fill(this->visit_counts.begin(), this->visit_counts.end(), 0u);
     return ;
   };
+  
+  uint set_postorder(const v_uint & POSTORDER_, bool check = true);
   
   // Pre-Post/order ------------------------------------------------------------
   

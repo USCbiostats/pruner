@@ -19,7 +19,7 @@ public:
 
 // STEP 2: Define a function to be passed to the algorithm
 void myfunction(
-    pruner::sptr_treedata a,
+    pruner::TreeData * a,
     pruner::TreeIterator & iter) {
   
   // Moving a single step up
@@ -53,7 +53,7 @@ int main () {
   
   // We can pass the function:
   // Adding function arguments
-  tree.args = std::make_shared< pruner::TreeData >(1);
+  tree.args = new pruner::TreeData(1);
   tree.fun = myfunction;
   
   // Calling functions
@@ -61,6 +61,9 @@ int main () {
   tree.eval_fun();   // Implicit call
   
   tree.prune_postorder();
+  
+  delete tree.args;
+  tree.args = nullptr;
   
   
   return 0;

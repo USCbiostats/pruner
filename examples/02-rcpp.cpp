@@ -21,7 +21,7 @@ public:
 };
 
 void myfunction(
-    pruner::sptr_treedata a,
+    pruner::TreeData * a,
     pruner::TreeIterator & iter
   ) {
   
@@ -49,7 +49,7 @@ List fancytree(const pruner::v_uint & parents, const pruner::v_uint & offspring)
   pruner::Tree mytree(parents, offspring, ans);
   
   // Adding function arguments
-  mytree.args = std::make_shared< pruner::TreeData >(1);
+  mytree.args = new pruner::TreeData(1);
   mytree.fun = myfunction;
   
   // Calling functions
@@ -59,11 +59,16 @@ List fancytree(const pruner::v_uint & parents, const pruner::v_uint & offspring)
   // Example printing
   mytree.print();
   
-  return List::create(
+  List res = List::create(
     _["edgelist"]  = mytree.get_edgelist(),
     _["postorder"] = mytree.get_postorder(),
     _["dag"]       = mytree.is_dag()
   );
+  
+  delete mytree.args;
+  mytree.args = nullptr;
+  
+  return res;
   
 }
 

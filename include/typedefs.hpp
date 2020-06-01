@@ -38,8 +38,6 @@ typedef std::vector< v_uint > vv_uint;
 typedef std::vector< bool > v_bool;
 
 class TreeData;
-//! Shorthand for shared_ptr< TreeData >
-typedef std::shared_ptr< TreeData > sptr_treedata;
 
 // Auxiliar functions ----------------------------------------------------------
 template <class T>

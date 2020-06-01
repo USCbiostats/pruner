@@ -1,9 +1,9 @@
-#include <iostream>
-#include <vector>
-#include "../include/pruner.hpp"
-// For creating the MAIN
-#define CATCH_CONFIG_MAIN
-#include "catch.hpp"
+// #include <iostream>
+// #include <vector>
+// #include "../include/pruner.hpp"
+// // For creating the MAIN
+// #define CATCH_CONFIG_MAIN
+// #include "catch.hpp"
 
 // Need to predefined this object
 class pruner::TreeData {
@@ -17,7 +17,7 @@ public:
 
 // Creating the function
 void myfun(
-    std::shared_ptr< pruner::TreeData > args,
+    pruner::TreeData * args,
     pruner::TreeIterator & titer
 ) {
   
@@ -35,7 +35,7 @@ void myfun(
 }
 
 void myfun2(
-    std::shared_ptr< pruner::TreeData > args,
+    pruner::TreeData * args,
     pruner::TreeIterator & titer
 ) {
   
@@ -57,7 +57,7 @@ TEST_CASE("Postorder pruner", "[tree][postorder]") {
   unsigned int res;
   pruner::Tree tree(source, target, res);
   std::vector< double > values = {0.1, 0.2, 0.3, 0.4};
-  tree.args = std::make_shared< pruner::TreeData >(values);
+  tree.args = new pruner::TreeData(values);
   tree.fun  = myfun;
   
   // Calling the pruning algo
@@ -85,6 +85,18 @@ TEST_CASE("Postorder pruner", "[tree][postorder]") {
   tree.prune_preorder();
   REQUIRE(tree.args->total == (totalcurr / .4 * .3 / .2 * .1));
   
-  // Checking
+  // Checking if messing with the pruning seq
+  pruner::v_uint oldpseq = tree.get_postorder();
+  pruner::v_uint newpseq = {0u, 1u, 2u};
+  res = tree.set_postorder(newpseq);
+  tree.args->total = 1.0;
+  tree.args->odd   = true;
+  REQUIRE(tree.get_postorder() == newpseq);
+  tree.prune_postorder();
+  REQUIRE(tree.args->total == (1.0 / .1 * .2 / .3));
+  
+  delete tree.args;
+  tree.args = nullptr;
+  
 }
 

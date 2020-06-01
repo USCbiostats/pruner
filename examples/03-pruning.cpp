@@ -63,7 +63,7 @@ public:
 };
 
 void aphylo(
-    pruner::sptr_treedata D,
+    pruner::TreeData * D,
     pruner::TreeIterator & n
 ) {
   
@@ -140,6 +140,25 @@ void aphylo(
   
 }
 
+class AphyloPruner: public pruner::Tree {
+public:
+  pruner::TreeData D;
+  AphyloPruner(
+    const pruner::vv_uint & A,
+    const pruner::v_uint & Ntype,
+    const pruner::v_uint & source,
+    const pruner::v_uint & target,
+    pruner::uint & res
+  ) : D(A, Ntype), Tree(source, target, res) {
+    
+    this->args = &D;
+    this->fun  = aphylo;
+    
+    return;
+    
+  }
+};
+
 // Now the fun begins ----------------------------------------------------------
 
 // [[Rcpp::export]]
@@ -151,11 +170,9 @@ SEXP tree_new(
   
   // Initializing the tree
   uint res;
-  Rcpp::XPtr< pruner::Tree > xptr(new pruner::Tree(edgelist[0], edgelist[1], res), true);
+  Rcpp::XPtr< AphyloPruner > xptr(
+      new AphyloPruner(A, Ntype, edgelist[0], edgelist[1], res), true);
   xptr->print(false);
-  
-  xptr->args = std::make_shared< pruner::TreeData >(A, Ntype);
-  xptr->fun  = aphylo;
   
   return wrap(xptr);
 }
@@ -216,7 +233,7 @@ aphylo_ll <- aphylo::LogLike
 
 microbenchmark::microbenchmark(
   new = tree_ll(tree_ptr, mu = mu, psi = psi, eta = eta, pi = Pi),
-  old = aphylo_ll(dat, psi = psi, mu = mu, Pi = Pi, eta = eta),
+  old = aphylo_ll(dat, psi = psi, mu_d = mu, mu_s = mu, Pi = Pi, eta = eta),
   times = 100, unit = "relative"
 )
 
