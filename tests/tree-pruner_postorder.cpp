@@ -6,7 +6,7 @@
 // #include "catch.hpp"
 
 // Need to predefined this object
-class pruner::TreeData {
+class TreeData {
 public:
   ~TreeData() {};
   TreeData(std::vector< double > attrs_) : attrs(attrs_), total(0.0)  {};
@@ -17,8 +17,8 @@ public:
 
 // Creating the function
 void myfun(
-    pruner::TreeData * args,
-    pruner::TreeIterator & titer
+    TreeData * args,
+    pruner::TreeIterator<TreeData> & titer
 ) {
   
   std::cout << "I'm called at " << titer.id() << " (postorder)\n";
@@ -35,8 +35,8 @@ void myfun(
 }
 
 void myfun2(
-    pruner::TreeData * args,
-    pruner::TreeIterator & titer
+    TreeData * args,
+    pruner::TreeIterator<TreeData> & titer
 ) {
   
   std::cout << "I'm called at " << titer.id() << " (preorder)\n";
@@ -55,9 +55,9 @@ TEST_CASE("Postorder pruner", "[tree][postorder]") {
   
   // Initialization of a tree object
   unsigned int res;
-  pruner::Tree tree(source, target, res);
+  pruner::Tree<TreeData> tree(source, target, res);
   std::vector< double > values = {0.1, 0.2, 0.3, 0.4};
-  tree.args = new pruner::TreeData(values);
+  tree.args = new TreeData(values);
   tree.fun  = myfun;
   
   // Calling the pruning algo

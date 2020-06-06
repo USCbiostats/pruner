@@ -4,7 +4,7 @@
 using namespace Rcpp;
 
 
-class pruner::TreeData {
+class TreeData {
 
 public:
   
@@ -63,8 +63,8 @@ public:
 };
 
 void aphylo(
-    pruner::TreeData * D,
-    pruner::TreeIterator & n
+    TreeData * D,
+    pruner::TreeIterator<TreeData> & n
 ) {
   
   if (n.is_tip()) {
@@ -140,9 +140,9 @@ void aphylo(
   
 }
 
-class AphyloPruner: public pruner::Tree {
+class AphyloPruner: public pruner::Tree<TreeData> {
 public:
-  pruner::TreeData D;
+  TreeData D;
   AphyloPruner(
     const pruner::vv_uint & A,
     const pruner::v_uint & Ntype,
@@ -156,6 +156,10 @@ public:
     
     return;
     
+  };
+  
+  ~AphyloPruner() {
+    this->args = nullptr;
   }
 };
 
@@ -180,7 +184,7 @@ SEXP tree_new(
 // [[Rcpp::export]]
 SEXP tree_print(SEXP tree_ptr) {
   
-  Rcpp::XPtr< pruner::Tree > p(tree_ptr);
+  Rcpp::XPtr< pruner::Tree<TreeData> > p(tree_ptr);
   p->print();
   
   return tree_ptr;
@@ -195,7 +199,7 @@ List tree_ll(
     const v_dbl & eta,
     const double & pi
 ) {
-  Rcpp::XPtr< pruner::Tree > p(tree_ptr);
+  Rcpp::XPtr< pruner::Tree<TreeData> > p(tree_ptr);
   
   // Setting the parameters
   p->args->set_mu(mu);

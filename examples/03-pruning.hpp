@@ -4,7 +4,7 @@ typedef std::vector< v_uint > vv_uint;
 typedef std::vector< double > v_dbl;
 typedef std::vector< v_dbl > vv_dbl;
 
-// This function creates pre-filled arrays
+// This function creates pre-filled arrays 
 template <class T>
 inline std::vector< std::vector< T > > new_vector_array(uint n, uint m, const T val) {
   

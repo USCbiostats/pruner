@@ -3,7 +3,7 @@
 // #include "../include/pruner.hpp"
 // For creating the MAIN
 //#define CATCH_CONFIG_MAIN 
-//nclude "catch.hpp"
+// #include "catch.hpp"
 
 // int main () {
 TEST_CASE("Tips are tagged right", "[tip]") {
@@ -14,7 +14,7 @@ TEST_CASE("Tips are tagged right", "[tip]") {
 
   // Initialization of a tree object
   unsigned int res;
-  pruner::Tree tree(source, target, res);
+  pruner::Tree<> tree(source, target, res);
   
   pruner::v_uint seq = {0u, 2u, 4u};
   REQUIRE(tree.get_tips() == seq);
@@ -24,7 +24,7 @@ TEST_CASE("Tips are tagged right", "[tip]") {
   target = {0u, 3u, 2u, 4u, 5u, 7u, 7u};
 
   // Initialization of a tree object
-  pruner::Tree tree2(source, target, res);
+  pruner::Tree<> tree2(source, target, res);
   
   seq = {1u, 2u, 2u, 1u};
   REQUIRE(tree2.get_dist_tip2root() == seq);

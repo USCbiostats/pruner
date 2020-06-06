@@ -10,7 +10,7 @@ int main () {
 
   // Initialization of a tree object
   unsigned int res;
-  pruner::Tree tree(source, target, res);
+  pruner::Tree<> tree(source, target, res);
   
   // Looking at the data
   tree.print();         

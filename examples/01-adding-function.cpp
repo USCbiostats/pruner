@@ -3,7 +3,7 @@
 #include "../include/pruner.hpp"
 
 // STEP 1: Need to declare this class
-class pruner::TreeData {
+class TreeData {
   int nnodes;
 public:
   
@@ -19,8 +19,8 @@ public:
 
 // STEP 2: Define a function to be passed to the algorithm
 void myfunction(
-    pruner::TreeData * a,
-    pruner::TreeIterator & iter) {
+    TreeData * a,
+    pruner::TreeIterator<TreeData> & iter) {
   
   // Moving a single step up
   printf("Currently sitting on the node %i.\nCurrent parents are: ", iter.id());
@@ -46,14 +46,14 @@ int main () {
   
   // Initialization of a tree object
   pruner::uint res;
-  pruner::Tree tree(source, target, res);
+  pruner::Tree<TreeData> tree(source, target, res);
   
   // Looking at the data
   tree.print();         
   
   // We can pass the function:
   // Adding function arguments
-  tree.args = new pruner::TreeData(1);
+  tree.args = new TreeData(1);
   tree.fun = myfunction;
   
   // Calling functions

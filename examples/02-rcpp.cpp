@@ -6,7 +6,7 @@ using namespace Rcpp;
 // Users work from here on -----------------------------------------------------
 
 // Need to declare this class
-class pruner::TreeData {
+class TreeData {
   int nnodes;
 public:
   
@@ -21,8 +21,8 @@ public:
 };
 
 void myfunction(
-    pruner::TreeData * a,
-    pruner::TreeIterator & iter
+    TreeData * a,
+    pruner::TreeIterator<TreeData> & iter
   ) {
   
   // Moving a single step up
@@ -46,10 +46,10 @@ List fancytree(const pruner::v_uint & parents, const pruner::v_uint & offspring)
   
   // Creating the object
   uint ans;
-  pruner::Tree mytree(parents, offspring, ans);
+  pruner::Tree<TreeData> mytree(parents, offspring, ans);
   
   // Adding function arguments
-  mytree.args = new pruner::TreeData(1);
+  mytree.args = new TreeData(1);
   mytree.fun = myfunction;
   
   // Calling functions

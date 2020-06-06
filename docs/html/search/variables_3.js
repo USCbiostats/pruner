@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['parents',['parents',['../classpruner_1_1Tree.html#a9911227c95222495556b75e0bb93d255',1,'pruner::Tree::parents()'],['../classTree.html#a4d26e079c9d0b250a4bda27de8ad223c',1,'Tree::parents()']]],
-  ['postorder',['POSTORDER',['../classpruner_1_1Tree.html#a547937e845fdbceafae4db25cd74f880',1,'pruner::Tree::POSTORDER()'],['../classTree.html#a310e76b803db38e7067514822b21a58f',1,'Tree::POSTORDER()']]]
+  ['parents',['parents',['../classpruner_1_1Tree.html#a51b1535a9a1cc841e6884175c81497b6',1,'pruner::Tree::parents()'],['../classTree.html#a8a12753341be73b360786b89853dabef',1,'Tree::parents()']]],
+  ['postorder',['POSTORDER',['../classpruner_1_1Tree.html#aa93805054bcd43cca478cc5a825bc99a',1,'pruner::Tree::POSTORDER()'],['../classTree.html#a9cef7f2ba6064b21ce62ab2e7292332a',1,'Tree::POSTORDER()']]]
 ];

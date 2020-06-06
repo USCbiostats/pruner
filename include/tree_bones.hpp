@@ -21,9 +21,6 @@
 /** Arguments to be passed to Tree::fun.
  * 
  */
-class TreeData;
-class Tree;
-class TreeIterator;
 
 
 //! Tree class 
@@ -35,6 +32,7 @@ class TreeIterator;
  * - `fun`
  */
 
+template <typename Data_Type = bool>
 class Tree {
   
 protected:
@@ -42,7 +40,7 @@ protected:
   void postorder_(uint i);
   void postorder();
   uint get_dist_tip2root_(uint start, uint count);
-  TreeIterator iter;
+  TreeIterator<Data_Type> iter;
   
 
   //! Each nodes' parents.
@@ -72,13 +70,13 @@ protected:
   v_uint TIPS;
   v_uint DIST_TIPS2ROOT;
   
-  friend class TreeData;
-  friend class TreeIterator;
+  friend Data_Type;
+  friend class TreeIterator< Data_Type >;
   
 public:
   
   //! Arbitrary set of arguments
-  TreeData * args = nullptr;
+  Data_Type * args = nullptr;
   
   //! Callable function during the the tree traversal
   /**
@@ -87,7 +85,7 @@ public:
    * on the current node. The argument of class TreeIterator allows them to
    * get that information by accessing the member function TreeIterator::id.
    */
-  std::function<void(TreeData *, TreeIterator&)> fun;
+  std::function<void(Data_Type *, TreeIterator<Data_Type>&)> fun;
   
   //! Evaluates the function by passing the arguments and the iterator
   void eval_fun() {

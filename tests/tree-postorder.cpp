@@ -15,7 +15,7 @@ TEST_CASE("Post order sequences respects all", "[postorder]") {
 
   // Initialization of a tree object
   unsigned int res;
-  pruner::Tree tree1(source, target, res);
+  pruner::Tree<> tree1(source, target, res);
   
   // Looking at the data
   tree1.print(false);
@@ -27,7 +27,7 @@ TEST_CASE("Post order sequences respects all", "[postorder]") {
   target = {0u, 1u, 2u};
 
   // Initialization of a tree object
-  pruner::Tree tree2(source, target, res);
+  pruner::Tree<> tree2(source, target, res);
   
   // Looking at the data
   tree2.print(false);
@@ -39,7 +39,7 @@ TEST_CASE("Post order sequences respects all", "[postorder]") {
   target = {0u, 1u, 2u, 2u};
 
   // Initialization of a tree object
-  pruner::Tree tree3(source, target, res);
+  pruner::Tree<> tree3(source, target, res);
   
   // Looking at the data
   tree3.print(false);
@@ -51,17 +51,17 @@ TEST_CASE("Post order sequences respects all", "[postorder]") {
   target = {0u, 1u, 2u, 2u, 3u, 4u};
 
   // Initialization of a tree object
-  pruner::Tree tree4(source, target, res);
+  pruner::Tree<> tree4(source, target, res);
   
   // Looking at the data
-  tree4.print(false);
+  tree4.print(false); 
   po = tree4.get_postorder();
   print(po);    
 
   REQUIRE(tree1.get_postorder().size() == 4u);
  
   // return 0;
-  pruner::TreeIterator myiter(&tree1);
+  pruner::TreeIterator<> myiter(&tree1);
   myiter.top();
   REQUIRE(myiter.id() == *myiter);
   

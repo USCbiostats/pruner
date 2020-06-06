@@ -14,7 +14,7 @@ TEST_CASE("DAG no DAG", "[dag]") {
 
   // Initialization of a tree object
   unsigned int res;
-  pruner::Tree tree(source, target, res);
+  pruner::Tree<> tree(source, target, res);
   
   REQUIRE(tree.is_connected() == false);
   REQUIRE(tree.is_dag() == true);

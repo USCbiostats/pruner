@@ -11,7 +11,7 @@ Shows how can this library be used within R.
 \textcolor{comment}{// Users work from here on -----------------------------------------------------}
 
 \textcolor{comment}{// Need to declare this class}
-\textcolor{keyword}{class }pruner::TreeData \{
+\textcolor{keyword}{class }TreeData \{
   \textcolor{keywordtype}{int} nnodes;
 \textcolor{keyword}{public}:
   
@@ -26,20 +26,20 @@ Shows how can this library be used within R.
 \};
 
 \textcolor{keywordtype}{void} myfunction(
-    pruner::TreeData * a,
-    \hyperlink{classpruner_1_1TreeIterator}{pruner::TreeIterator} & iter
+    TreeData * a,
+    \hyperlink{classpruner_1_1TreeIterator}{pruner::TreeIterator<TreeData>} & iter
   ) \{
   
   \textcolor{comment}{// Moving a single step up}
-  printf(\textcolor{stringliteral}{"Currently sitting on the node %i.\(\backslash\)nCurrent parents are: "}, iter.\hyperlink{classpruner_1_1TreeIterator_aa0d37262febc59a1b229e98ce610b30a}{id}());
-  \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} i = iter.\hyperlink{classpruner_1_1TreeIterator_ac401c51b2a8b33e7db63b850350c21ce}{begin\_par}(); i != iter.\hyperlink{classpruner_1_1TreeIterator_a89ccb546a2fc6add499ac54ecb5271f8}{end\_par}(); ++i) \{
+  printf(\textcolor{stringliteral}{"Currently sitting on the node %i.\(\backslash\)nCurrent parents are: "}, iter.\hyperlink{classpruner_1_1TreeIterator_a526f5f2b7f6c6b93c5c4575ca5aba17d}{id}());
+  \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} i = iter.\hyperlink{classpruner_1_1TreeIterator_ad1435c13e19ed83e6222285753996567}{begin\_par}(); i != iter.\hyperlink{classpruner_1_1TreeIterator_aec582d1a4bf6b892532d41f1f9b8044d}{end\_par}(); ++i) \{
     printf(\textcolor{stringliteral}{" %i"}, *i);
   \}
   printf(\textcolor{stringliteral}{"\(\backslash\)n"});
   
-  iter.\hyperlink{classpruner_1_1TreeIterator_adca1d999f093a69e2f5d044b358e5da7}{up}();
-  printf(\textcolor{stringliteral}{"Currently sitting on the node %i.\(\backslash\)nCurrent parents are: "}, iter.\hyperlink{classpruner_1_1TreeIterator_aa0d37262febc59a1b229e98ce610b30a}{id}());
-  \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} i = iter.\hyperlink{classpruner_1_1TreeIterator_ac401c51b2a8b33e7db63b850350c21ce}{begin\_par}(); i != iter.\hyperlink{classpruner_1_1TreeIterator_a89ccb546a2fc6add499ac54ecb5271f8}{end\_par}(); ++i) \{
+  iter.\hyperlink{classpruner_1_1TreeIterator_af7f80d5909938115bf9e6455ac8950b3}{up}();
+  printf(\textcolor{stringliteral}{"Currently sitting on the node %i.\(\backslash\)nCurrent parents are: "}, iter.\hyperlink{classpruner_1_1TreeIterator_a526f5f2b7f6c6b93c5c4575ca5aba17d}{id}());
+  \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} i = iter.\hyperlink{classpruner_1_1TreeIterator_ad1435c13e19ed83e6222285753996567}{begin\_par}(); i != iter.\hyperlink{classpruner_1_1TreeIterator_aec582d1a4bf6b892532d41f1f9b8044d}{end\_par}(); ++i) \{
     printf(\textcolor{stringliteral}{" %i"}, *i);
   \}
   printf(\textcolor{stringliteral}{"\(\backslash\)n"});
@@ -52,15 +52,15 @@ List fancytree(\textcolor{keyword}{const} \hyperlink{namespacepruner_af0145646bd
   
   \textcolor{comment}{// Creating the object}
   uint ans;
-  \hyperlink{classpruner_1_1Tree}{pruner::Tree} mytree(parents, offspring, ans);
+  \hyperlink{classpruner_1_1Tree}{pruner::Tree<TreeData>} mytree(parents, offspring, ans);
   
   \textcolor{comment}{// Adding function arguments}
-  mytree.\hyperlink{classpruner_1_1Tree_afe84a58af72b0d544dcc7ceff96daf8d}{args} = \textcolor{keyword}{new} pruner::TreeData(1);
-  mytree.\hyperlink{classpruner_1_1Tree_a243f4077cc9974d6de6a6af0f3e9b0fd}{fun} = myfunction;
+  mytree.\hyperlink{classpruner_1_1Tree_add57f4e3ee3a539a3f1d95772c607e1b}{args} = \textcolor{keyword}{new} TreeData(1);
+  mytree.\hyperlink{classpruner_1_1Tree_adc2f509b8bf17ba16364632c17870c87}{fun} = myfunction;
   
   \textcolor{comment}{// Calling functions}
-  mytree.\hyperlink{classpruner_1_1Tree_afe84a58af72b0d544dcc7ceff96daf8d}{args}->set\_nnodes(5);
-  mytree.\hyperlink{classpruner_1_1Tree_abaa9ef6d7eacf37302d29c12c2180c3a}{eval\_fun}();   \textcolor{comment}{// Implicit call}
+  mytree.\hyperlink{classpruner_1_1Tree_add57f4e3ee3a539a3f1d95772c607e1b}{args}->set\_nnodes(5);
+  mytree.\hyperlink{classpruner_1_1Tree_a5e079a7857ea4c7e44f339d64c77c7fe}{eval\_fun}();   \textcolor{comment}{// Implicit call}
   
   \textcolor{comment}{// Example printing}
   mytree.print();
@@ -71,8 +71,8 @@ List fancytree(\textcolor{keyword}{const} \hyperlink{namespacepruner_af0145646bd
     \_[\textcolor{stringliteral}{"dag"}]       = mytree.is\_dag()
   );
   
-  \textcolor{keyword}{delete} mytree.\hyperlink{classpruner_1_1Tree_afe84a58af72b0d544dcc7ceff96daf8d}{args};
-  mytree.\hyperlink{classpruner_1_1Tree_afe84a58af72b0d544dcc7ceff96daf8d}{args} = \textcolor{keyword}{nullptr};
+  \textcolor{keyword}{delete} mytree.\hyperlink{classpruner_1_1Tree_add57f4e3ee3a539a3f1d95772c607e1b}{args};
+  mytree.\hyperlink{classpruner_1_1Tree_add57f4e3ee3a539a3f1d95772c607e1b}{args} = \textcolor{keyword}{nullptr};
   
   \textcolor{keywordflow}{return} res;
   

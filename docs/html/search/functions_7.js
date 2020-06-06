@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['tree',['Tree',['../classpruner_1_1Tree.html#a0f964d9ba9834822d3e18946a5361839',1,'pruner::Tree::Tree()'],['../classTree.html#a0f964d9ba9834822d3e18946a5361839',1,'Tree::Tree()']]]
+  ['tree',['Tree',['../classpruner_1_1Tree.html#a792b1c2d2a658a43a1c9098514c7b193',1,'pruner::Tree::Tree()'],['../classTree.html#a792b1c2d2a658a43a1c9098514c7b193',1,'Tree::Tree()']]]
 ];
