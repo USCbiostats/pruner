@@ -4,7 +4,7 @@ language: cpp
 
 compiler: g++
 
-script: cd tests/ && make 
+# script: cd tests/ && make 
 
 branches:
   only:
@@ -17,6 +17,7 @@ addons:
 
 script:
   - doxygen Doxyfile.dox
+  - cd tests/ && make
 
 deploy:
   provider: pages
