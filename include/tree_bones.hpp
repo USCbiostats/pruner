@@ -6,7 +6,7 @@
 #endif
 
 #ifndef H_PRUNER_TREE_BONES
-#define H_PRUNER_TREE_BONES
+#define H_PRUNER_TREE_BONES 1
 
 #ifndef MAX_TREE_SIZE
 #define MAX_TREE_SIZE 50000
