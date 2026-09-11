@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata from this file."
+type: software
+title: "pruner: Implementing the Felsenstein's Tree Pruning Algorithm"
+version: "0.0-99"
+authors:
+  - family-names: "Vega Yon"
+    given-names: "George G."
+    orcid: "https://orcid.org/0000-0002-3171-0844"
+abstract: "A C++ template library implementing Felsenstein's tree-pruning algorithm for phylogenetic likelihood calculations."
+license: "MIT"
+repository-code: "https://github.com/USCbiostats/pruner"
+url: "https://uscbiostats.github.io/pruner"
+keywords:
+  - "phylogenetics"
+  - "algorithms"
+  - "C++"
